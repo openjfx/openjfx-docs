@@ -35,9 +35,9 @@ tasks {
 }
 
 dependencies {
-    compile("org.openjfx:javafx-base:11:${platform}")
-    compile("org.openjfx:javafx-graphics:11:${platform}")
-    compile("org.openjfx:javafx-controls:11:${platform}")
+    compile("org.openjfx:javafx-base:11:$platform")
+    compile("org.openjfx:javafx-graphics:11:$platform")
+    compile("org.openjfx:javafx-controls:11:$platform")
 }
 
 repositories {
