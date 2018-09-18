@@ -14,22 +14,28 @@ val platform = when {
     else -> ""
 }
 
+fun addToModulePath(file: File) = when {
+    file.name.startsWith("javafx-") -> true
+    else -> false
+}
+
+fun modularArgs(classpath: FileCollection) = listOf(
+        "--module-path", classpath.filter{addToModulePath(it)}.asPath,
+        "--add-modules", "javafx.controls"
+)
+
 tasks {
     named<JavaCompile>("compileJava") {
         doFirst {
-            options.compilerArgs = listOf(
-                    "--module-path", classpath.asPath,
-                    "--add-modules", "javafx.controls"
-            )
+            options.compilerArgs = modularArgs(classpath)
+            classpath = classpath.filter{!addToModulePath(it)}
         }
     }
 
     named<JavaExec>("run") {
         doFirst {
-            jvmArgs = listOf(
-                    "--module-path", classpath.asPath,
-                    "--add-modules", "javafx.controls"
-            )
+            jvmArgs = modularArgs(classpath)
+            classpath = classpath.filter{!addToModulePath(it)}
         }
     }
 }
