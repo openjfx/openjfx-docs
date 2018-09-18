@@ -19,7 +19,7 @@ fun addToModulePath(file: File) = when {
     else -> false
 }
 
-fun modularArgs(classpath: FileCollection) = listOf(
+fun javaArgs(classpath: FileCollection) = listOf(
         "--module-path", classpath.filter{addToModulePath(it)}.asPath,
         "--add-modules", "javafx.controls"
 )
@@ -27,14 +27,14 @@ fun modularArgs(classpath: FileCollection) = listOf(
 tasks {
     named<JavaCompile>("compileJava") {
         doFirst {
-            options.compilerArgs = modularArgs(classpath)
+            options.compilerArgs = javaArgs(classpath)
             classpath = classpath.filter{!addToModulePath(it)}
         }
     }
 
     named<JavaExec>("run") {
         doFirst {
-            jvmArgs = modularArgs(classpath)
+            jvmArgs = javaArgs(classpath)
             classpath = classpath.filter{!addToModulePath(it)}
         }
     }
