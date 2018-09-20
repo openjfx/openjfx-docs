@@ -1,17 +1,12 @@
-apply plugin: 'application'
+plugins {
+    id 'application'
+    id 'com.google.osdetector' version '1.6.0'
+}
+
+ext.platform = osdetector.os == 'osx' ? 'mac' : osdetector.os
 
 group 'com.gluonhq'
 version '1.0.0-SNAPSHOT'
-
-def currentOS = org.gradle.internal.os.OperatingSystem.current()
-def platform
-if (currentOS.isWindows()) {
-    platform = 'win'
-} else if (currentOS.isLinux()) {
-    platform = 'linux'
-} else if (currentOS.isMacOsX()) {
-    platform = 'mac'
-}
 
 repositories {
     mavenCentral()

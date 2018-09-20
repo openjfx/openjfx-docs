@@ -7,15 +7,12 @@
 </p>
 
 <pre><code>
-def currentOS = org.gradle.internal.os.OperatingSystem.current()
-def platform
-if (currentOS.isWindows()) {
-    platform = 'win'
-} else if (currentOS.isLinux()) {
-    platform = 'linux'
-} else if (currentOS.isMacOsX()) {
-    platform = 'mac'
+plugins {
+    id 'application'
+    id 'com.google.osdetector' version '1.6.0'
 }
+
+ext.platform = osdetector.os == 'osx' ? 'mac' : osdetector.os
 </code></pre>
 
 <p>Next, we add all the dependencies using the platform:</p>
@@ -30,7 +27,7 @@ dependencies {
 
 <p>
     Please note that classifiers are not taken into account when resolving
-    transitive dependency in Gradle. Therefore, we need to specify all three JavaFX modules
+    transitive dependencies in Gradle. Therefore, we need to specify all three JavaFX modules
     with platform as classifier.
 </p>
 
