@@ -1,13 +1,13 @@
 <h2>Run HelloWorld using JavaFX 11</h2>
 
 <p>
-    Download the
-    <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX SDK</a>
-    for your operating system.</p>
+    Download an appropriate
+    <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX runtime</a>
+    for your operating system and unzip them to a desired location.
+</p>
 
 <p>
-    You can now compile and run JavaFX 11 applications from the command line. In order to do so,
-    you have to point the module-path to the location of the JavaFX Modules, e.g.
+    Add an environment variable pointing to the lib directory of the runtime:
 </p>
 
 <pre><code>
@@ -15,7 +15,11 @@ export PATH_TO_FX=/path/to/javafx-sdk-11/lib
 </code></pre>
 
 <p>
-    Compiling the code (e.g. use <a href="HelloFX.java">HelloFX.java</a>) goes as follows:
+    You can now compile and run JavaFX 11 applications from the command line using the JavaFX runtime.
+</p>
+
+<p>
+    Compile the application (e.g. use <a href="HelloFX.java">HelloFX.java</a>) using:
 </p>
     
 <pre><code>
@@ -23,8 +27,9 @@ javac --module-path $PATH_TO_FX --add-modules=javafx.controls HelloFX.java
 </code></pre>
 
 <p>
-    Make sure to add the required modules, keeping into account transitive dependencies are solved
-    (hence there is no need to add the javafx.graphics module, since it is required by the javafx.controls module).
+    Make sure to add the required modules, keeping into account transitive dependencies are automatically resolved
+    (there is no need to add <kbd>javafx.graphics</kbd> module, since it is transitively required by the 
+    <kbd>javafx.controls</kbd> module).
 </p>
 
 <p>
@@ -34,5 +39,3 @@ Next, run the application using:
 <pre><code>
 java --module-path $PATH_TO_FX --add-modules=javafx.controls HelloFX
 </code></pre>
-
-
