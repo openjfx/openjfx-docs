@@ -7,10 +7,17 @@
 </p>
 
 <pre><code>
-plugins {
-    id 'application'
-    id 'com.google.osdetector' version '1.6.0'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.gradle:osdetector-gradle-plugin:1.6.0'
+    }
 }
+
+apply plugin: 'application'
+apply plugin: 'com.google.osdetector'
 
 ext.platform = osdetector.os == 'osx' ? 'mac' : osdetector.os
 </code></pre>
@@ -70,5 +77,5 @@ gradle run
 
 <div class="alert alert-warning">
     <strong>Note: </strong>
-    Make sure to use gradle version 4.8+ and set the JAVA_HOME environment variable to JDK 11.
+    Make sure to use gradle version 4.10+ and set the JAVA_HOME environment variable to JDK 11.
 </div>

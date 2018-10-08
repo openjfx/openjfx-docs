@@ -1,7 +1,14 @@
-plugins {
-    id 'application'
-    id 'com.google.osdetector' version '1.6.0'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.google.gradle:osdetector-gradle-plugin:1.6.0'
+    }
 }
+
+apply plugin: 'application'
+apply plugin: 'com.google.osdetector
 
 ext.platform = osdetector.os == 'osx' ? 'mac' : osdetector.os
 
