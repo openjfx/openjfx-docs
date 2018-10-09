@@ -11,7 +11,8 @@
 </p>
 
 <pre><code>
-export PATH_TO_FX=/path/to/javafx-sdk-11/lib
+export PATH_TO_FX=/path/to/javafx-sdk-11/lib  #Linux and macOS
+set PATH_TO_FX="path\to\javafx-sdk-11\lib"  &::Windows
 </code></pre>
 
 <p>
@@ -23,7 +24,8 @@ export PATH_TO_FX=/path/to/javafx-sdk-11/lib
 </p>
     
 <pre><code>
-javac --module-path $PATH_TO_FX --add-modules=javafx.controls HelloFX.java
+javac --module-path $PATH_TO_FX --add-modules=javafx.controls HelloFX.java  #Linux and macOS
+javac --module-path %PATH_TO_FX% --add-modules=javafx.controls HelloFX.java  &::Windows
 </code></pre>
 
 <p>
@@ -37,5 +39,6 @@ Next, run the application using:
 </p>
 
 <pre><code>
-java --module-path $PATH_TO_FX --add-modules=javafx.controls HelloFX
+java --module-path $PATH_TO_FX --add-modules=javafx.controls HelloFX  #Linux and macOS
+java --module-path %PATH_TO_FX% --add-modules=javafx.controls HelloFX  &::Windows
 </code></pre>
