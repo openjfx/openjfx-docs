@@ -8,7 +8,7 @@ buildscript {
 }
 
 apply plugin: 'application'
-apply plugin: 'com.google.osdetector
+apply plugin: 'com.google.osdetector'
 
 ext.platform = osdetector.os == 'osx' ? 'mac' : osdetector.os
 
