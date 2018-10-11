@@ -19,7 +19,7 @@ buildscript {
 apply plugin: 'application'
 apply plugin: 'com.google.osdetector'
 
-ext.platform = osdetector.os == 'osx' ? 'mac' : osdetector.os
+ext.platform = osdetector.os == 'osx' ? 'mac' : osdetector.os == 'windows' ? 'win' : osdetector.os
 </code></pre>
 
 <p>Next, we add all the dependencies using the platform:</p>
