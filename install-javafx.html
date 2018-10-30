@@ -28,18 +28,17 @@ javac --module-path $PATH_TO_FX --add-modules=javafx.controls HelloFX.java
 
 <p>
 Note: if you have a more complex application, you will need to add more modules.
-For example, if your application is using <code>FXML</code>, you will need to
-add the <kbd>javafx.fxml</kdb> module as well as follows:
-<pre>
-<code>
-javac --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml HelloFX.java
-</code>
-</pre>
+For example, if your application is using <kbd>FXML</kbd>, you will need to
+add the <kbd>javafx.fxml</kbd> module as well as follows:
 </p>
+
+<pre><code>
+javac --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml HelloFX.java
+</code></pre>
 
 <p>
     Make sure to add the required modules, keeping into account transitive dependencies are automatically resolved
-    (there is no need to add <kbd>javafx.graphics</kbd> module, since it is transitively required by the 
+    (for instance, there is no need to add <kbd>javafx.graphics</kbd> module, since it is transitively required by the 
     <kbd>javafx.controls</kbd> module).
 </p>
 

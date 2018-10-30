@@ -1,0 +1,74 @@
+<h2>Creating modular projects</h2>
+
+<p>
+    If your JavaFX 11 project is modular then you need to follow these instructions.
+</p>
+
+<p>
+    Download the appropriate
+    <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX jmods</a>
+    for your operating system and unzip them to a desired location.
+</p>
+
+<p>
+    Add an environment variable pointing to the lib directory of the runtime:
+</p>
+
+<pre><code>
+export PATH_TO_FX_MODS=/path/to/javafx-jmods-11/
+</code></pre>
+
+<p>
+    Download the project from <a href="hellofx.zip">here</a>.
+</p>
+
+<p>
+    Compile the application (e.g. use <a href="hellofx/src/main/java/hellofx/HelloFX.java">HelloFX.java</a> with its 
+    <a href="hellofx/src/main/java/module-info.java">module-info</a> file that defines the <kbd>hellofx</kbd> module)
+     either using the JavaFX SDK (see <a href="index.html#install-javafx">PATH_TO_FX</a>):
+</p>
+    
+<pre><code>
+javac --module-path $PATH_TO_FX -d mods/hellofx $(find src/main/java -name "*.java")
+</code></pre>
+    
+<p>
+    or using the JavaFX jmods:
+</p>
+
+<pre><code>
+javac --module-path $PATH_TO_FX_MODS -d mods/hellofx $(find src/main/java -name "*.java")
+</code></pre>
+
+<p>
+    However if you want to run the modular application with the <kbd>java</kbd> command you need the JavaFX SDK:
+</p>
+
+<pre><code>
+java --module-path $PATH_TO_FX:mods -m hellofx/hellofx.HelloFX
+</code></pre>
+
+<h3>jlink</h3>
+
+<p>
+    With a modular project, <a href="https://docs.oracle.com/en/java/javase/11/tools/jlink.html">jlink</a>
+    can be used to create a custom runtime image using the JavaFX jmods:
+</p>
+
+<pre><code>
+ $JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS:mods --add-modules=hellofx --output hellofx
+</code></pre>
+
+<p>
+    And you after the image is built, you can run it:
+</p>
+
+<pre><code>
+hellofx/bin/java -m hellofx/hellofx.HelloFX
+</code></pre>
+
+<p>
+    Note that this JRE is platform-specific.
+</p>
+
+
