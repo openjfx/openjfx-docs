@@ -1,0 +1,213 @@
+<h2>JavaFX 11 and IntelliJ</h2>
+
+<p>This section explains how to use Java 11 and JavaFX 11 from IntelliJ. 
+    Version IntelliJ IDEA 2018.2.5 was used for the following screenshots.
+</p>
+
+<p>
+    You can create a JavaFX 11 project and use <a href="#IDE">IDE</a>,
+    <a href="#Maven">Maven</a> or <a href="#Gradle">Gradle</a> build tools.
+</p>
+
+<a name="IDE"></a><h3>IDE</h3>
+
+<p>
+    Follow these steps to create a JavaFX project and use the IDE tools to build it and run it.
+</p>
+
+<p>
+    Download the appropriate
+    <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX SDK</a>
+    for your operating system and unzip it to a desired location, for instance
+    <kbd>/Users/your-user/Downloads/javafx-sdk-11</kbd>.
+</p>
+
+<p>
+    <strong>1. Create a JavaFX project</strong>
+    
+    <a href="images/ide/intellij/ide/idea01.png" target="_blank"><img src="images/ide/intellij/ide/idea01.png" alt="Create a JavaFX project"/></a>
+   
+    Provide a name to the project, like <kbd>HelloFX</kbd>, and a location.
+    
+    When the project opens, the JavaFX classes are not recognized.
+    
+    <a href="images/ide/intellij/ide/idea02.png" target="_blank"><img src="images/ide/intellij/ide/idea02.png" alt="Missing JavaFX classes"/></a>
+</p>
+
+<p>
+    <strong>2. Set JDK 11</strong>
+</p>
+<p>    
+    Go to <kbd>File -> Project Structure -> Project</kbd>, and set the project SDK to 11. You can also set the language level to 11.
+    <a href="images/ide/intellij/ide/idea03.png" target="_blank"><img src="images/ide/intellij/ide/idea03.png" alt="Set JDK 11"/></a>
+</p>
+
+<p>
+    <strong>3. Create a library</strong>
+</p>
+<p>    
+    Go to <kbd>File -> Project Structure -> Libraries</kbd> and add the JavaFX 11 SDK as a library to the project. 
+    Point to the <kbd>lib</kbd> folder of the JavaFX SDK.
+    <a href="images/ide/intellij/ide/idea04.png" target="_blank"><img src="images/ide/intellij/ide/idea04.png" alt="Create Library"/></a>
+    Once the library is applied, the JavaFX classes will be recognized by the IDE.
+    <a href="images/ide/intellij/ide/idea05.png" target="_blank"><img src="images/ide/intellij/ide/idea05.png" alt="JavaFX classes are recognized"/></a>
+</p>
+
+<div class="alert alert-warning">
+    <strong>Warning: </strong>
+    If you run now the project it will compile but you will get this error:
+
+<pre><code>
+Error: JavaFX runtime components are missing, and are required to run this application
+</code></pre>
+
+</div>
+    
+<p>
+    <strong>4. Add VM options</strong>
+</p>
+<p>
+    To solve the issue, click on <kbd>Run -> Edit Configurations...</kbd> and add these VM options:
+</p>
+
+<pre><code>
+--module-path /path/to/javafx-sdk-11/lib --add-modules=javafx.controls,javafx.fxml
+</code></pre>
+    
+<p>    
+    Note that the default project created by IntelliJ uses FXML, so <kbd>javafx.fxml</kbd> 
+    is required along with <kbd>javafx.controls</kbd>. If your project uses other modules, 
+    you will need to add them as well.
+    
+    <a href="images/ide/intellij/ide/idea06.png" target="_blank"><img src="images/ide/intellij/ide/idea06.png" alt="VM options"/></a>
+    
+    Click apply and close the dialog.
+</p>
+
+<p>
+    <strong>5. Run the project</strong>
+</p>
+<p>
+    Click <kbd>Run -> Run...</kbd> to run the project, now it should work fine.
+</p>
+
+<a name="Maven"></a><h3>Maven</h3>
+
+<p>
+    Follow these steps to create a JavaFX project and use the Maven tools to build it and run it.
+</p>
+
+<p>
+    <strong>1. Create a Maven project</strong>
+</p>
+<p>
+    If you select the <kbd>org.codehous.mojo.archetypes:javafx</kbd> archetype, the latest version is from 2015, 
+    so it will rely on the old <kbd>jfxrt.jar</kbd>. But you can modify later on the pom based on this <a href="pom.xml">one</a>.
+    <a href="images/ide/intellij/maven/idea01.png" target="_blank"><img src="images/ide/intellij/maven/idea01.png" alt="Create a Maven project"/></a>
+   
+    Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>. 
+    Then provide a name to the project, like <kbd>HelloFX</kbd> and a location for the project.
+    
+    When the project opens, after you synchronize the project, the JavaFX classes are not recognized.
+    
+    <a href="images/ide/intellij/maven/idea02.png" target="_blank"><img src="images/ide/intellij/maven/idea02.png" alt="Missing JavaFX classes"/></a>
+</p>
+
+<p>
+    <strong>2. Modify the pom</strong>
+</p>
+<p>
+    Replace the existing plugins based on this <a href="pom.xml">pom</a> file, and set the 
+    <kbd>mainClass</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
+</p>
+<p>
+    Add the required dependencies for <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>. 
+    <a href="images/ide/intellij/maven/idea03.png" target="_blank"><img src="images/ide/intellij/maven/idea03.png" alt="Update the pom"/></a>
+   
+    You can download the resulting pom file from <a href="images/ide/intellij/maven/pom.xml">here</a>.
+</p>
+
+<p>
+    Import the changes. The JavaFX classes will be recognized. Notice also that Maven manages 
+    the required dependencies: it will add <kbd>javafx.base</kbd> and 
+    <kbd>javafx.graphics</kbd> that are required by <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>, 
+    but most important, it will add the required classifier based on your platform, downloading 
+    the specific platform jars.
+    <a href="images/ide/intellij/maven/idea04.png" target="_blank"><img src="images/ide/intellij/maven/idea04.png" alt="Platform dependencies"/></a>
+   
+    As for any other maven dependencies, these jars can be found in the local <kbd>.m2</kbd> repository.
+</p>
+
+<p>
+    <strong>3. Run the project</strong>
+</p>
+<p>
+    You can open the Maven Projects window and click on <kbd>HelloFX->Plugins->compiler->compiler:compile</kbd> to 
+    compile the project, and on <kbd>HelloFX->Plugins->exec->exec:java</kbd> to execute the project.
+    <a href="images/ide/intellij/maven/idea05.png" target="_blank"><img src="images/ide/intellij/maven/idea05.png" alt="Run project"/></a>
+</p>
+<p>
+    You can also open a terminal and run <kbd>mvn compile exec:java</kbd> to run the project.
+</p>
+
+<a name="Gradle"></a><h3>Gradle</h3>
+
+<p>
+    Follow these steps to create a JavaFX project and use the Gradle tools to build it and run it.
+</p>
+
+<p>
+    <strong>1. Create a Gradle project</strong>
+</p>
+<p>
+    Create a Gradle project with Java.
+    <a href="images/ide/intellij/gradle/idea01.png" target="_blank"><img src="images/ide/intellij/gradle/idea01.png" alt="Create a Gradle project"/></a>
+   
+    Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>. 
+    Select the Gradle JVM based on the project JDK 11.
+    Then provide a name to the project, like <kbd>HelloFX</kbd> and a location for the project.
+    
+    When the project opens, add a package and an empty <kbd>HelloFX</kbd> class.
+    
+    <a href="images/ide/intellij/gradle/idea02.png" target="_blank"><img src="images/ide/intellij/gradle/idea02.png" alt="Open project"/></a>
+</p>
+
+<p>
+    <strong>2. Modify the build</strong>
+</p>
+<p>
+    Edit the <kbd>build.gradle</kbd> file and replace it with this <a href="build.gradle">build</a> file, setting the 
+    <kbd>mainClassName</kbd> accordingly to <kbd>hellofx.HelloFX</kbd>.
+</p>
+<p>
+    Note we have added the required dependencies with the classifier for the platform. 
+    Since Gradle doesn't resolve transitive dependencies with classifiers, we need to add all 
+    the modules (<kbd>javafx.base</kbd>, <kbd>javafx.graphics</kbd> and for <kbd>javafx.controls</kbd>)
+    Synchronize the project and you will get the JavaFX dependencies.
+    <a href="images/ide/intellij/gradle/idea03.png" target="_blank"><img src="images/ide/intellij/gradle/idea03.png" alt="Update the build"/></a>
+    As for any other Gradle dependencies, these jars can be found in the local <kbd>.gradle</kbd> repository.
+
+    You can download the resulting build file from <a href="images/ide/intellij/gradle/build.gradle">here</a>.
+</p>
+
+<p>
+    <strong>3. Add the source code</strong>
+</p>
+<p>
+    Based on this <a href="HelloFX.java">HelloFX</a> class, add its content to the project main class. Note that the 
+    JavaFX classes are recognized by the IDE.
+    <a href="images/ide/intellij/gradle/idea04.png" target="_blank"><img src="images/ide/intellij/gradle/idea04.png" alt="HelloFX"/></a>
+    You can download the resulting class from <a href="images/ide/intellij/gradle/HelloFX.java">here</a>.
+</p>
+
+<p>
+    <strong>4. Run the project</strong>
+</p>
+<p>
+    You can open the Gradle window and click on <kbd>hellofx->Tasks->build->build</kbd> to 
+    build the project, and on <kbd>hellofx->Tasks->application->run</kbd> to execute the project.
+    <a href="images/ide/intellij/gradle/idea05.png" target="_blank"><img src="images/ide/intellij/gradle/idea05.png" alt="Run project"/></a>
+</p>
+<p>
+    You can also open a terminal and run <kbd>./gradlew run</kbd> to run the project.
+</p>

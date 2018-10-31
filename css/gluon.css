@@ -212,3 +212,9 @@ img.hello-world {
     color: #16181b;
     background-color: transparent;
 }
+
+img {
+    object-fit: contain;
+    width: 100%;
+    height: 300px;
+}
