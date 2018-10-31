@@ -1,101 +1,44 @@
-<h2>Creating a Fat Jar</h2>
+<h2>Creating a fat Jar</h2>
 
-    
+<div class="alert alert-warning">
 <p>
-    You can create a runnable fat jar for your JavaFX 11 project over the
-    <a href="#command-line">command line</a>, <a href="#Maven">Maven</a> or 
-    <a href="#Gradle">Gradle</a>.
+    <strong>Warning</strong>: Since Java 9, applications should be modular, and distributed
+    with tools like <a href="index.html#modular">jlink</a>. However, if you still need to have a 
+    non modular application and you want to distribute a single jar, you can do a fat jar.
+</p>
+</div>
+<p>
+    You can create a runnable fat jar for your JavaFX 11 project on
+    <a href="#Maven">Maven</a>, <a href="#Gradle">Gradle</a> or even 
+    <a href="#command-line">command line</a>.
 </p>
 
 <p>
-    In order to create a runnable jar with all the required JavaFX dependencies, 
-    you need to use a launcher class that doesn't extend from <kbd>Application</kbd>, 
-    like the <a href="hellofx/src/main/java/hellofx/Launcher.java">Launcher</a> class, that 
-    calls to the <a href="hellofx/src/main/java/hellofx/HelloFX.java">HelloFX</a> class.
+    As explained <a href="http://mail.openjdk.java.net/pipermail/openjfx-dev/2018-June/021977.html">here</a>,
+    in order to create a runnable jar with all the required JavaFX dependencies, 
+    you will need to use a launcher class that doesn't extend from <kbd>Application</kbd>.
 </p>
-
 <p>
-    Download the project from <a href="hellofx.zip">here</a>.
-</p>
-
-<a name="command-line"></a><h3>Command Line</h3>
-
-<p>
-    If you want to create a runnable fat jar with your JavaFX 11 project over the
-    command line, then follow these instructions.
-</p>
-
-<p>   
-    Note that this is a tedious manual process that should be avoided by using the 
-    <a href="#Maven">Maven</a>'s shade plugin or the <a href="#Gradle">Gradle</a>'s jar task.
-</p>
-
-<p>
-    Download the appropriate
-    <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX SDK</a>
-    for your operating system and unzip it to a desired location.
-</p>
-
-<p>
-    Add an environment variable pointing to the lib directory of the runtime:
-</p>
-
-<pre><code>
-export PATH_TO_FX=/path/to/javafx-sdk-11/lib
-</code></pre>
-
-<p>
-    Compile the project:
-</p>
-
-<pre><code>
-javac --module-path $PATH_TO_FX --add-modules=javafx.controls -d out $(find src/main/java -name "*.java")
-</code></pre>
-
-<p>
-    And create the fat jar, adding the JavaFX required jars and the platform-specific native libraries:
-</p>
-
-<pre><code>
-find $PATH_TO_FX/{javafx.base.jar,javafx.graphics.jar,javafx.controls.jar} -name "*.jar" -exec tar xfk {} -C out \;
-cp $PATH_TO_FX/{libprism*.dylib,libjavafx*.dylib,libglass.dylib,libdecora_sse.dylib} out
-rm out/META-INF/MANIFEST.MF out/module-info.class
-mkdir libs
-jar --create --file=libs/hellofx.jar --main-class=hellofx.Launcher -C out .
-</code></pre>
-
-<p>
-    And after the jar is built, you can run it:
-</p>
-
-<pre><code>
-java -jar libs/hellofx.jar
-</code></pre>
-
-<p>
-    Note that this jar is platform-specific. However it can be easily a multiplatform jar if the
-    different native libraries from each platform were included. This requires downloading the SDK for the 
-    three platforms, and copying all the necessary native libraries into the module.
+    For the purpose of this guide, we'll use a <a href="hellofx/src/main/java/hellofx/Launcher.java">Launcher</a> class, 
+    that calls to the <kbd>main</kbd> method of the <a href="hellofx/src/main/java/hellofx/HelloFX.java">HelloFX</a> class. 
+    You can download a simple <kbd>hellofx</kbd> project from <a href="hellofx.zip">here</a>.
 </p>
 
 <a name="Maven"></a><h3>Maven</h3>
-<p>
-    If your want to create a runnable fat jar with your JavaFX 11 project with 
-    the Maven shade plugin, then follow these instructions.
-</p>
 
 <p>
-    If develop your JavaFX applications using Maven, you don't have to download
+    If you develop your JavaFX applications using Maven, you don't have to download
     the JavaFX SDK. Just specify the modules and the versions you want in the <kbd>pom.xml</kbd> file,
-    and the build system will download the required modules, 
-    including the native libraries for your platform.
+    and the build system will download the required modules, including the native libraries 
+    for your platform.
 </p>
 <p>
-    Here is a <a href="hellofx/pom.xml">pom.xml</a> file which shows how to achieve this.
+    Here is a <a href="hellofx/pom.xml">pom.xml</a> file which shows how to create a 
+    runnable fat jar for the <kbd>hellofx</kbd> project with the Maven shade plugin.
 </p>
 
 <p>
-    Run the plugin and create the fat jar:
+    Run the plugin to create the fat jar:
 </p>
 
 <pre><code>
@@ -114,7 +57,8 @@ java -jar shade/hellofx.jar
 
 <p>
     You can create a cross-platform fat jar by adding the dependencies from the 
-    three platforms that require native libraries to your pom file:
+    three platforms that require native libraries to your pom file, in this sample 
+    only the ones from <kbd>javafx.graphics</kbd>:
 </p>
 
 <textarea rows="22" cols="80" style="border:none;">
@@ -144,13 +88,9 @@ java -jar shade/hellofx.jar
 </textarea>
 
 <a id="Gradle"></a><h3>Gradle</h3>
-<p>
-    If your want to create a runnable fat jar with your JavaFX 11 project with 
-    the Gradle, then follow these instructions.
-</p>
 
 <p>
-    If develop your JavaFX applications using Gradle, you don't have to download
+    If you develop your JavaFX applications using Gradle, you don't have to download
     the JavaFX SDK. Just specify the modules and the versions you want in the <kbd>build.gradle</kbd> file,
     and the build system will download the required modules, 
     including the native libraries for your platform. However, for Gradle we need to 
@@ -158,7 +98,8 @@ java -jar shade/hellofx.jar
 </p>
 
 <p>
-    Modify the <kbd>jar</kbd> task in your <a href="hellofx/build.gradle">build</a> 
+    In order to create a runnable fat jar with your JavaFX 11 project with Gradle, then
+    modify the <kbd>jar</kbd> task in the <a href="hellofx/build.gradle">build</a> 
     file to include the launcher class:
 </p>
 
@@ -188,11 +129,77 @@ java -jar build/libs/hellofx.jar
 
 <p>
     You can create a cross-platform fat jar by adding the dependencies from the 
-    three platforms that require native libraries to your pom file:
+    three platforms that require native libraries to the build file, in this sample 
+    only the ones from <kbd>javafx.graphics</kbd>:
 </p>
 
 <pre><code>
 compile "org.openjfx:javafx-graphics:11:win"
 compile "org.openjfx:javafx-graphics:11:linux"
 compile "org.openjfx:javafx-graphics:11:mac"
-</code></pre>  
+</code></pre>
+
+<a name="command-line"></a><h3>Command Line</h3>
+
+<p>
+    Finally, you can also create a runnable fat jar for your JavaFX 11 project on
+    command line.
+</p>
+
+<div class="alert alert-warning">
+<p>
+    <strong>Warning</strong>: This is a discouraged tedious error-prone manual process 
+    that should be avoided by using the <a href="#Maven">Maven</a>'s shade plugin or 
+    the <a href="#Gradle">Gradle</a>'s jar task, in case <a href="index.html#modular">jlink</a>
+    is not applicable.
+</p>
+</div>
+
+<p>
+    Download the appropriate
+    <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX SDK</a>
+    for your operating system and unzip it to a desired location.
+</p>
+
+<p>
+    Add an environment variable pointing to the lib directory of the runtime:
+</p>
+
+<pre><code>
+export PATH_TO_FX=/path/to/javafx-sdk-11/lib
+</code></pre>
+
+<p>
+    Compile the project:
+</p>
+
+<pre><code>
+javac --module-path $PATH_TO_FX --add-modules=javafx.controls -d out $(find src/main/java -name "*.java")
+</code></pre>
+
+<p>
+    And create the fat jar, adding the JavaFX required jars and the platform-specific native libraries. For 
+    the <kbd>hellofx</kbd> project:
+</p>
+
+<pre><code>
+find $PATH_TO_FX/{javafx.base.jar,javafx.graphics.jar,javafx.controls.jar} -exec unzip -nq {} -d out \;
+cp $PATH_TO_FX/{libprism*.dylib,libjavafx*.dylib,libglass.dylib,libdecora_sse.dylib} out
+rm out/META-INF/MANIFEST.MF out/module-info.class
+mkdir libs
+jar --create --file=libs/hellofx.jar --main-class=hellofx.Launcher -C out .
+</code></pre>
+
+<p>
+    And after the jar is built, you can run it:
+</p>
+
+<pre><code>
+java -jar libs/hellofx.jar
+</code></pre>
+
+<p>
+    Note that this jar is platform-specific. However it can be easily a multi-platform jar if the
+    different native libraries from each platform were included. This requires downloading the JavaFX SDKs
+    for all the platforms, and copying all the necessary native libraries.
+</p>
