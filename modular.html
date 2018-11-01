@@ -14,9 +14,27 @@
     Add an environment variable pointing to the lib directory of the runtime:
 </p>
 
-<pre><code>
-export PATH_TO_FX_MODS=/path/to/javafx-jmods-11/
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-mods" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-mods" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-mods">
+<pre class="no-border-radius"><code>
+export PATH_TO_FX_MODS=path/to/javafx-jmods-11
 </code></pre>
+    </div>
+    <div class="tab-pane" id="win-mods">
+<pre><code>
+set PATH_TO_FX_MODS="path\to\javafx-jmods-11"
+</code></pre>
+    </div>
+</div>
 
 <p>
     Download the project from <a href="hellofx.zip">here</a>.
@@ -28,25 +46,79 @@ export PATH_TO_FX_MODS=/path/to/javafx-jmods-11/
      either using the JavaFX SDK (see <a href="index.html#install-javafx">PATH_TO_FX</a>):
 </p>
     
-<pre><code>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-javacd" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-javacd" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-javacd">
+<pre class="no-border-radius"><code>
 javac --module-path $PATH_TO_FX -d mods/hellofx $(find src/main/java -name "*.java")
 </code></pre>
-    
+    </div>
+    <div class="tab-pane" id="win-javacd">
+<pre><code>
+dir /s /b *.java > sources.txt & javac --module-path %PATH_TO_FX% -d mods/hellofx @sources.txt & del sources.txt
+</code></pre>
+    </div>
+</div>
+
 <p>
     or using the JavaFX jmods:
 </p>
 
-<pre><code>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-javacdmod" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-javacdmod" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-javacdmod">
+<pre class="no-border-radius"><code>
 javac --module-path $PATH_TO_FX_MODS -d mods/hellofx $(find src/main/java -name "*.java")
 </code></pre>
+    </div>
+    <div class="tab-pane" id="win-javacdmod">
+<pre><code>
+dir /s /b *.java > sources.txt & javac --module-path %PATH_TO_FX_MODS% -d mods/hellofx @sources.txt & del sources.txt
+</code></pre>
+    </div>
+</div>
 
 <p>
     However if you want to run the modular application with the <kbd>java</kbd> command you need the JavaFX SDK:
 </p>
 
-<pre><code>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-javamod" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-javamod" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-javamod">
+<pre class="no-border-radius"><code>
 java --module-path $PATH_TO_FX:mods -m hellofx/hellofx.HelloFX
 </code></pre>
+    </div>
+    <div class="tab-pane" id="win-javamod">
+<pre><code>
+java --module-path "%PATH_TO_FX%;mods" -m hellofx/hellofx.HelloFX
+</code></pre>
+    </div>
+</div>
 
 <h3>jlink</h3>
 
@@ -55,17 +127,53 @@ java --module-path $PATH_TO_FX:mods -m hellofx/hellofx.HelloFX
     can be used to create a custom runtime image using the JavaFX jmods:
 </p>
 
-<pre><code>
- $JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS:mods --add-modules=hellofx --output hellofx
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-jlink" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-jlink" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-jlink">
+<pre class="no-border-radius"><code>
+$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS:mods --add-modules=hellofx --output hellofx
 </code></pre>
+    </div>
+    <div class="tab-pane" id="win-jlink">
+<pre><code>
+%JAVA_HOME%\bin\jlink --module-path "%PATH_TO_FX_MODS%;mods" --add-modules=hellofx --output hellofx
+</code></pre>
+    </div>
+</div>
 
 <p>
     And you after the image is built, you can run it:
 </p>
 
-<pre><code>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-run" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-run" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-run">
+<pre class="no-border-radius"><code>
 hellofx/bin/java -m hellofx/hellofx.HelloFX
 </code></pre>
+    </div>
+    <div class="tab-pane" id="win-run">
+<pre><code>
+hellofx\bin\java -m hellofx/hellofx.HelloFX
+</code></pre>
+    </div>
+</div>
 
 <p>
     Note that this JRE is platform-specific.
