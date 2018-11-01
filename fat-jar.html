@@ -1,11 +1,9 @@
 <h2>Creating a fat Jar</h2>
 
 <div class="alert alert-warning">
-<p>
     <strong>Warning</strong>: Since Java 9, applications should be modular, and distributed
     with tools like <a href="index.html#modular">jlink</a>. However, if you still need to have a 
     non modular application and you want to distribute a single jar, you can do a fat jar.
-</p>
 </div>
 <p>
     You can create a runnable fat jar for your JavaFX 11 project on
@@ -53,7 +51,7 @@ mvn compile package
 java -jar shade/hellofx.jar
 </code></pre>
 
-<h4>Cross-platfrom jar</h4>
+<h4>Cross-platform jar</h4>
 
 <p>
     You can create a cross-platform fat jar by adding the dependencies from the 
@@ -61,7 +59,7 @@ java -jar shade/hellofx.jar
     only the ones from <kbd>javafx.graphics</kbd>:
 </p>
 
-<textarea rows="22" cols="80" style="border:none;">
+<textarea rows="22" cols="80" style="border:none;" readonly>
 
     <dependencies>
         ...
@@ -125,7 +123,7 @@ jar {
 java -jar build/libs/hellofx.jar
 </code></pre>    
 
-<h4>Cross-platfrom jar</h4>
+<h4>Cross-platform jar</h4>
 
 <p>
     You can create a cross-platform fat jar by adding the dependencies from the 
@@ -147,12 +145,10 @@ compile "org.openjfx:javafx-graphics:11:mac"
 </p>
 
 <div class="alert alert-warning">
-<p>
     <strong>Warning</strong>: This is a discouraged tedious error-prone manual process 
     that should be avoided by using the <a href="#Maven">Maven</a>'s shade plugin or 
     the <a href="#Gradle">Gradle</a>'s jar task, in case <a href="index.html#modular">jlink</a>
     is not applicable.
-</p>
 </div>
 
 <p>
