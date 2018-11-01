@@ -63,7 +63,7 @@ javac --module-path $PATH_TO_FX -d mods/hellofx $(find src/main/java -name "*.ja
     </div>
     <div class="tab-pane" id="win-javacd">
 <pre><code>
-dir /s /b *.java > sources.txt & javac --module-path %PATH_TO_FX% -d mods/hellofx @sources.txt & del sources.txt
+dir /s /b src\main\java\*.java > sources.txt & javac --module-path %PATH_TO_FX% -d mods/hellofx @sources.txt & del sources.txt
 </code></pre>
     </div>
 </div>
@@ -89,7 +89,7 @@ javac --module-path $PATH_TO_FX_MODS -d mods/hellofx $(find src/main/java -name 
     </div>
     <div class="tab-pane" id="win-javacdmod">
 <pre><code>
-dir /s /b *.java > sources.txt & javac --module-path %PATH_TO_FX_MODS% -d mods/hellofx @sources.txt & del sources.txt
+dir /s /b src\main\java\*.java > sources.txt & javac --module-path %PATH_TO_FX_MODS% -d mods/hellofx @sources.txt & del sources.txt
 </code></pre>
     </div>
 </div>
