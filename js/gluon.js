@@ -42,7 +42,17 @@ $(function() {
             encodeURIComponent("\n\nDescribe the problem: ");
         $(this).attr('href', emailWithSubject);
     });
-    
+
+    // All tabs showing code should be linked
+    $(document).on('click', 'a[class="nav-link"][data-toggle="tab"]', function(e) {
+        e.preventDefault();
+        var href = $(this).attr('href');
+        var os = href.split("-")[0]; // #win or #nix
+        $('a[class="nav-link"][data-toggle="tab"][href^="' + os + '"]').each(function() {
+            $(this).tab('show');
+        });
+    });
+
     // TODO: Find a better lib to include local html files
     // Because we are using the csi js lib to include the pages,
     // this doesn't work on document ready

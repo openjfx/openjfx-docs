@@ -10,9 +10,27 @@
     Add an environment variable pointing to the lib directory of the runtime:
 </p>
 
-<pre><code>
-export PATH_TO_FX=/path/to/javafx-sdk-11/lib
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-env" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-env" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-env">
+<pre class="no-border-radius"><code>
+export PATH_TO_FX=path/to/javafx-sdk-11/lib
 </code></pre>
+    </div>
+    <div class="tab-pane" id="win-env">
+<pre><code>
+set PATH_TO_FX="path\to\javafx-sdk-11\lib"
+</code></pre>
+    </div>
+</div>
 
 <p>
     You can now compile and run JavaFX 11 applications from the command line using the JavaFX runtime.
@@ -21,21 +39,56 @@ export PATH_TO_FX=/path/to/javafx-sdk-11/lib
 <p>
     Compile the application (e.g. use <a href="HelloFX.java">HelloFX.java</a>) using:
 </p>
-    
-<pre><code>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-javac" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-javac" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-javac">
+<pre class="no-border-radius"><code>
 javac --module-path $PATH_TO_FX --add-modules=javafx.controls HelloFX.java
 </code></pre>
+    </div>
+    <div class="tab-pane" id="win-javac">
+<pre><code>
+javac --module-path %PATH_TO_FX% --add-modules=javafx.controls HelloFX.java
+</code></pre>
+    </div>
+</div>
 
 <p>
-Note: if you have a more complex application, you will need to add more modules.
-For example, if your application is using <code>FXML</code>, you will need to
-add the <kbd>javafx.fxml</kdb> module as well as follows:
-<pre>
-<code>
-javac --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml HelloFX.java
-</code>
-</pre>
+    <b>Note:</b> Additional modules are required for extended functionality.
+    For example, if your application is using <kbd>FXML</kbd>, you will need to
+    add the <kbd>javafx.fxml</kbd> module, as shown below:
 </p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-fxml" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-fxml" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-fxml">
+<pre class="no-border-radius"><code>
+javac --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml HelloFX.java
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-fxml">
+<pre><code>
+javac --module-path %PATH_TO_FX% --add-modules=javafx.controls,javafx.fxml HelloFX.java
+</code></pre>
+    </div>
+</div>
 
 <p>
     Make sure to add the required modules, keeping into account transitive dependencies are automatically resolved
@@ -47,6 +100,24 @@ javac --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml HelloF
 Next, run the application using:
 </p>
 
-<pre><code>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-java" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-java" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-java">
+<pre class="no-border-radius"><code>
 java --module-path $PATH_TO_FX --add-modules=javafx.controls HelloFX
 </code></pre>
+    </div>
+    <div class="tab-pane" id="win-java">
+<pre><code>
+java --module-path %PATH_TO_FX% --add-modules=javafx.controls HelloFX
+</code></pre>
+    </div>
+</div>
