@@ -227,3 +227,16 @@ img.hello-world {
     color: #16181b;
     background-color: transparent;
 }
+
+/* Nav Tab */
+.nav-tabs,
+.nav-tabs .nav-link {
+    border: 0;
+    color: rgba(0,0,0,.8);
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--code-color);
+    background-color: var(--terminal-color);
+}
+
