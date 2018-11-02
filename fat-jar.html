@@ -47,9 +47,26 @@ mvn compile package
     Run the application using:
 </p>
 
-<pre><code>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-maven" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-maven" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-maven">
+<pre class="no-border-radius"><code>
 java -jar shade/hellofx.jar
 </code></pre>
+    </div>
+    <div class="tab-pane" id="win-maven">
+<pre><code>
+java -jar shade\hellofx.jar
+</code></pre>
+    </div>
+</div>
 
 <h4>Cross-platform jar</h4>
 
@@ -115,11 +132,30 @@ jar {
     Now run the task to create the fat jar and run it:
 </p>
 
-<pre><code>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-gradle" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-gradle" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-gradle">
+<pre class="no-border-radius"><code>
 ./gradlew jar
 
 java -jar build/libs/hellofx.jar
-</code></pre>    
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-gradle">
+<pre><code>
+gradlew.bat jar
+
+java -jar build\libs\hellofx.jar
+</code></pre>
+    </div>
+</div>
 
 <h4>Cross-platform jar</h4>
 
