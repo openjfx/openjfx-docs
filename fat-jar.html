@@ -202,7 +202,7 @@ javac --module-path $PATH_TO_FX --add-modules=javafx.controls -d out $(find src/
     </div>
     <div class="tab-pane" id="win-javacout">
 <pre><code>
-dir /s /b src\main\java\*.java > sources.txt & javac --module-path %PATH_TO_FX% -d out @sources.txt & del sources.txt
+dir /s /b src\main\java\*.java > sources.txt & javac --module-path %PATH_TO_FX% --add-modules=javafx.controls -d out @sources.txt & del sources.txt
 </code></pre>
     </div>
 </div>
