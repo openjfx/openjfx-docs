@@ -77,19 +77,22 @@ then install the patch from the Eclipse MarketPlace:
 
 <div class="alert alert-warning">
     <strong>Warning: </strong>
-    If you run now the project it will compile but you will get this error:
+    If you now run the project it will compile but you will get this error:
 
 <pre><code>
 Error: JavaFX runtime components are missing, and are required to run this application
 </code></pre>
 
+    This error is shown since the Java 11 launcher checks if the main class extends 
+    <kbd>javafx.application.Application</kbd>. If that is the case, it is required to 
+    have the <kbd>javafx.graphics</kbd> module on the module-path.
 </div>
     
 <p>
     <strong>3. Add VM arguments</strong>
 </p>
 <p>
-    Click on <kbd>Run -> Run Configurations... -> Java Application</kbd>, 
+    To solve this issue, click on <kbd>Run -> Run Configurations... -> Java Application</kbd>, 
     create a new launch configuration for your project named `hellofx` and add these VM arguments:
 </p>
 
@@ -240,7 +243,7 @@ Exception in thread "JavaFX Application Thread" java.lang.NullPointerException
     
 This is happening running on Windows when Eclipse VM is set to Oracle JDK 1.8 using Maven or Gradle projects.
 
-While this gets fixed, a possible fix is to edit <kbd>eclipse.ini</kbd> and change the <kbd>-vm</kbd> option to JDK 11.
+A workaround for this is to edit <kbd>eclipse.ini</kbd> and change the <kbd>-vm</kbd> option to JDK 11.
 
 If that is not possible, another workaround is to add this VM argument to 
 <kbd>Run -> Run Configurations... -> Maven -> JRE -> VM Arguments</kbd>:
@@ -331,7 +334,7 @@ Exception in thread "JavaFX Application Thread" java.lang.NullPointerException
     
 This is happening running on Windows when Eclipse VM is set to Oracle JDK 1.8 using Maven or Gradle projects.
 
-While this gets fixed, a possible fix is to edit <kbd>eclipse.ini</kbd> and change the <kbd>-vm</kbd> option to JDK 11.
+A workaround for this is to edit <kbd>eclipse.ini</kbd> and change the <kbd>-vm</kbd> option to JDK 11.
 
 If that is not possible, another workaround is to add this VM argument to the build file:
 

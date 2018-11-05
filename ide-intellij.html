@@ -61,6 +61,10 @@
 Error: JavaFX runtime components are missing, and are required to run this application
 </code></pre>
 
+    This error is shown since the Java 11 launcher checks if the main class extends 
+    <kbd>javafx.application.Application</kbd>. If that is the case, it is required to 
+    have the <kbd>javafx.graphics</kbd> module on the module-path.
+
 </div>
     
 <p>
