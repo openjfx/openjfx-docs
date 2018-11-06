@@ -1,4 +1,8 @@
 $(function() {
+    // constants
+    var JDK = "11.0.1";
+    var JFX = "11";
+    
     // Hide all non-active div
     $('.hidden').hide();
     
@@ -60,8 +64,12 @@ $(function() {
     // Because we are using the csi js lib to include the pages,
     // this doesn't work on document ready
     
+    // Replace all constants
     // Replace all $ with non-selectable span
     setTimeout(function() {
+        $('.JDK').each(function() { $(this).text(JDK) });
+        $('.JFX').each(function() { $(this).text(JFX) });
+    
         $('code').each(function () {
             var content = $(this).html();
             var unselectableContent  = replaceAll(content, "$ ", "<span class=\"no-select\">$ </span>");
