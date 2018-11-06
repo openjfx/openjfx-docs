@@ -261,6 +261,8 @@ If that is not possible, another workaround is to add this VM argument to
 
     Make sure you have the Buildship Gradle Integration 2.0 plugin installed. It can be installed
     from the Eclipse Marketplace otherwise.
+    
+    Update to 2.2.3 version from this <a href="http://download.eclipse.org/buildship/updates/e48/snapshots/2.x/">URL</a>.
 </p>
 
 <p>
@@ -307,10 +309,23 @@ If that is not possible, another workaround is to add this VM argument to
 <p>
     <strong>4. Run the project</strong>
 </p>
+
+<div class="alert alert-warning">
+    <strong>Note: </strong>
+    If you run Eclipse with a VM setting lower than JDK 11, you need to add 
+    the property <kbd>org.gradle.java.home</kbd> to a <kbd>gradle.properties</kbd> file, 
+    with the correct path to JDK 11. This file can be part of the project or under 
+    the gradle user home under <kbd>USER_HOME/.gradle</kbd>. 
+</div>
+
 <p>
     You can open the Gradle Task window and click on <kbd>build -> build</kbd> to 
-    build the project, and on <kbd>Run -> Run configurations... -> Gradle Project -> hellofx</kbd> to add a run task to  the project.
-    <a href="images/ide/intellij/gradle/idea05.png" target="_blank"><img src="images/ide/intellij/gradle/idea05.png" alt="Run project"/></a>
+    build the project, and <kbd>application -> run</kbd> to 
+    run the project. 
+    <a href="images/ide/eclipse/gradle/eclipse05.png" target="_blank"><img src="images/ide/eclipse/gradle/eclipse05.png" alt="Run project"/></a>
+    
+    You can also click on <kbd>Run -> Run configurations... -> Gradle Project -> hellofx</kbd> to add a run task to  the project.
+    <a href="images/ide/eclipse/gradle/eclipse06.png" target="_blank"><img src="images/ide/eclipse/gradle/eclipse06.png" alt="Run configuration"/></a>
 </p>
 <p>
     You can also open a terminal and run <kbd>./gradlew run</kbd> to run the project.
