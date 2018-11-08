@@ -16,11 +16,6 @@
     in order to create a runnable jar with all the required JavaFX dependencies, 
     you will need to use a launcher class that doesn't extend from <kbd>Application</kbd>.
 </p>
-<p>
-    For the purpose of this guide, we'll use a <a href="hellofx/src/main/java/hellofx/Launcher.java">Launcher</a> class, 
-    that calls to the <kbd>main</kbd> method of the <a href="hellofx/src/main/java/hellofx/HelloFX.java">HelloFX</a> class. 
-    You can download a simple <kbd>hellofx</kbd> project from <a href="hellofx.zip">here</a>.
-</p>
 
 <a name="Maven"></a><h3>Maven</h3>
 
@@ -31,8 +26,10 @@
     for your platform.
 </p>
 <p>
-    Here is a <a href="hellofx/pom.xml">pom.xml</a> file which shows how to create a 
-    runnable fat jar for the <kbd>hellofx</kbd> project with the Maven shade plugin.
+    A simple Maven example can be found in this  
+    <a href="https://github.com/openjfx/samples/tree/master/CommandLine/Non-modular/Maven" target="_blank">project</a>.
+    The <a href="https://github.com/openjfx/samples/blob/master/CommandLine/Non-modular/Maven/hellofx/pom.xml" target="_blank">pom.xml</a> 
+    file shows how to create a runnable fat jar for this <kbd>hellofx</kbd> project with the Maven shade plugin.
 </p>
 
 <p>
@@ -111,8 +108,10 @@ java -jar shade\hellofx.jar
 </p>
 
 <p>
-    In order to create a runnable fat jar with your JavaFX 11 project with Gradle, then
-    modify the <kbd>jar</kbd> task in the <a href="hellofx/build.gradle">build</a> 
+    A simple Gradle example can be found in this  
+    <a href="https://github.com/openjfx/samples/tree/master/CommandLine/Non-modular/Gradle" target="_blank">project</a>.
+    In order to create a runnable fat jar for this project with Gradle, then
+    modify the <kbd>jar</kbd> task in the <a href="https://github.com/openjfx/samples/blob/master/CommandLine/Non-modular/Gradle/hellofx/build.gradle" target="_blank">build</a> 
     file to include the launcher class:
 </p>
 
@@ -186,6 +185,9 @@ compile "org.openjfx:javafx-graphics:11:mac"
 </div>
 
 <p>
+    An example can be found in this  
+    <a href="https://github.com/openjfx/samples/tree/master/CommandLine/Non-modular/CLI" target="_blank">project</a>.
+    
     Download the appropriate
     <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX SDK</a>
     for your operating system and unzip it to a desired location.
@@ -309,9 +311,11 @@ java -jar libs\hellofx.jar
     </div>
 </div>
 
-<p>
-    Note that this jar is platform-specific. However it can be easily a multi-platform jar if the
+<div class="alert alert-warning">
+    <strong>Note: </strong>
+    This JRE is platform-specific. However it can be easily a multi-platform jar if the
     different native libraries from each platform were included. This requires downloading the JavaFX SDKs
     for all the platforms, extracting all the necessary jars (for instance, <kbd>javafx.graphics</kbd> is 
-    different for each platform), and copying all the native libraries as shown above.
-</p>
+    different for each platform), and copying all the native libraries as shown above. As it was mentioned 
+    above, this process shouldn't be done manually.
+</div>

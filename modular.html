@@ -1,7 +1,7 @@
 <h2>Creating modular projects</h2>
 
 <p>
-    If your JavaFX 11 project is modular then you need to follow these instructions.
+    If you have a modular JavaFX 11 project then you need to follow these instructions.
 </p>
 
 <p>
@@ -36,14 +36,19 @@ set PATH_TO_FX_MODS="path\to\javafx-jmods-11"
     </div>
 </div>
 
+<h3>Command Line</h3>
+
 <p>
-    Download the project from <a href="hellofx.zip">here</a>.
+    You can run or create a runtime of your JavaFX 11 project from command line. A simple example can be found in this 
+    <a href="https://github.com/openjfx/samples/tree/master/CommandLine/Modular/CLI" target="_blank">project</a>.
 </p>
 
 <p>
-    Compile the application (e.g. use <a href="hellofx/src/main/java/hellofx/HelloFX.java">HelloFX.java</a> with its 
-    <a href="hellofx/src/main/java/module-info.java">module-info</a> file that defines the <kbd>hellofx</kbd> module)
-     either using the JavaFX SDK (see <a href="index.html#install-javafx">PATH_TO_FX</a>):
+    The application has a single class <a href="https://github.com/openjfx/samples/blob/master/CommandLine/Modular/CLI/hellofx/src/hellofx/HelloFX.java" target="_blank">HelloFX.java</a> with its 
+    <a href="https://github.com/openjfx/samples/blob/master/CommandLine/Modular/CLI/hellofx/src/module-info.java" target="_blank">module-info</a> 
+    file that defines the <kbd>hellofx</kbd> module.
+    
+    Compile it either using the JavaFX SDK (see <a href="index.html#install-javafx">PATH_TO_FX</a>):
 </p>
     
 <ul class="nav nav-tabs">
@@ -120,7 +125,7 @@ java --module-path "%PATH_TO_FX%;mods" -m hellofx/hellofx.HelloFX
     </div>
 </div>
 
-<h3>jlink</h3>
+<a name="jlink"></a><h4>jlink</h4>
 
 <p>
     With a modular project, <a href="https://docs.oracle.com/en/java/javase/11/tools/jlink.html">jlink</a>
@@ -144,13 +149,13 @@ $JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS:mods --add-modules=hellofx -
     </div>
     <div class="tab-pane" id="win-jlink">
 <pre><code>
-%JAVA_HOME%\bin\jlink --module-path "%PATH_TO_FX_MODS%;mods" --add-modules=hellofx --output hellofx
+jlink --module-path "%PATH_TO_FX_MODS%;mods" --add-modules=hellofx --output hellofx
 </code></pre>
     </div>
 </div>
 
 <p>
-    And you after the image is built, you can run it:
+    And after the image is built, you can run it:
 </p>
 
 <ul class="nav nav-tabs">
@@ -175,8 +180,104 @@ hellofx\bin\java -m hellofx/hellofx.HelloFX
     </div>
 </div>
 
+<div class="alert alert-warning">
+    <strong>Note: </strong>
+    This JRE is platform-specific.
+</div>
+
+<h3>Maven</h3>
+
 <p>
-    Note that this JRE is platform-specific.
+    You can run or create a runtime of your JavaFX 11 Maven project. A simple example can be found in this  
+    <a href="https://github.com/openjfx/samples/tree/master/CommandLine/Modular/Maven" target="_blank">project</a>.
 </p>
 
+<p>
+    The application has a main class <a href="https://github.com/openjfx/samples/blob/master/CommandLine/Modular/Maven/hellofx/src/main/java/org/openjfx/MainApp.java" target="_blank">MainApp.java</a> with its 
+    <a href="https://github.com/openjfx/samples/blob/master/CommandLine/Modular/Maven/hellofx/src/main/java/module-info.java" target="_blank">module-info</a> 
+    file that defines the <kbd>hellofx</kbd> module. It also uses FXML, and requires the <kbd>javafx.fxml</kbd> dependency added to
+    the <a href="https://github.com/openjfx/samples/blob/master/CommandLine/Modular/Maven/hellofx/pom.xml" target="_blank">pom.xml</a>.
+</p>
 
+<p>
+    It can be compiled and run on command line with <kbd>javac</kbd>, but using Maven we can simply do:
+</p>
+
+<pre><code>
+mvn clean compile package exec:java
+</code></pre>
+
+<p>
+    However, to create a custom runtime, the same steps referred <a href="#jlink">above</a> are required.
+</p>
+
+<h3>Gradle</h3>
+
+<p>
+    You can run or create a runtime of your JavaFX 11 Gradle project. A simple example can be found in this 
+    <a href="https://github.com/openjfx/samples/tree/master/CommandLine/Modular/Gradle" target="_blank">project</a>.
+</p>
+
+<p>
+    The application has a main class <a href="https://github.com/openjfx/samples/blob/master/CommandLine/Modular/Gradle/hellofx/src/main/java/hellofx/HelloFX.java" target="_blank">HelloFX.java</a> with its 
+    <a href="https://github.com/openjfx/samples/blob/master/CommandLine/Modular/Gradle/hellofx/src/main/java/module-info.java" target="_blank">module-info</a> 
+    file that defines the <kbd>hellofx</kbd> module, and the required 
+    <a href="https://github.com/openjfx/samples/blob/master/CommandLine/Modular/Gradle/hellofx/build.gradle" target="_blank">build.gradle</a> file.
+</p>
+
+<p>
+    It can be compiled and run on command line with <kbd>javac</kbd>, but using Gradle we can simply do:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-cligradlerun" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-cligradlerun" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-cligradlerun">
+<pre class="no-border-radius"><code>
+./gradlew run
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-cligradlerun">
+<pre><code>
+gradlew run
+</code></pre>
+    </div>
+</div>
+
+<p>
+    To create a custom runtime the referred <a href="#jlink">steps</a> have been added to the <kbd>jlink</kbd> task 
+    included in the build file. To create the image and run it do:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-cligradlelink" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-cligradlelink" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-cligradlelink">
+<pre class="no-border-radius"><code>
+export PATH_TO_FX_MODS=path/to/javafx-jmods-11
+./gradlew jlink
+build/hellofx/bin/java -m hellofx/hellofx.HelloFX
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-cligradlelink">
+<pre><code>
+export PATH_TO_FX_MODS=path/to/javafx-jmods-11
+gradlew jlink
+build\hellofx\bin\java -m hellofx/hellofx.HelloFX 
+</code></pre>
+    </div>
+</div>
