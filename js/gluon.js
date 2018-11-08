@@ -35,12 +35,15 @@ $(function() {
     });
     
     // Add href to report a problem buttons
-    $('a[data-section]').each(function() {
+    /*$('a[data-section]').each(function() {
         var emailWithSubject = "https://gluonhq.com/about-us/contact-us/?comment=" + 
             encodeURIComponent("Problem with Getting Started in section '") +
             encodeURIComponent($(this).attr('data-section') + "'") +
             encodeURIComponent("\n\nDescribe the problem: ");
         $(this).attr('href', emailWithSubject);
+    });*/
+    $('a[data-section]').each(function() {
+        $(this).attr('href', 'https://github.com/openjfx/openjfx-docs/issues');
     });
 
     // All tabs showing code should be linked
