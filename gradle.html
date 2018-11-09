@@ -1,7 +1,7 @@
 <h2>Run HelloWorld using Gradle</h2>
 
 <p>
-    Similar to Maven, we can declare JavaFX jars as dependency in <kbd>build.gradle</kbd>.
+    Similar to Maven, we can declare JavaFX jars as dependency in the <kbd>build.gradle</kbd> file.
     However, for Gradle we need to find and specify the platform/OS as classifier. This requires a
     small script:
 </p>
@@ -22,7 +22,10 @@ apply plugin: 'com.google.osdetector'
 ext.platform = osdetector.os == 'osx' ? 'mac' : osdetector.os == 'windows' ? 'win' : osdetector.os
 </code></pre>
 
-<p>Next, we add all the dependencies using the platform:</p>
+<p>
+    Next, we add all the dependencies using the platform. For instance, if we only need the <kbd>javafx.controls</kbd> 
+    module, we will include:
+</p>
 
 <pre><code>
 dependencies {
@@ -32,11 +35,12 @@ dependencies {
 }
 </code></pre>
 
-<p>
-    Please note that classifiers are not taken into account when resolving
-    transitive dependencies in Gradle. Therefore, we need to specify all three JavaFX modules
-    with platform as classifier.
-</p>
+<div class="alert alert-warning">
+    <strong>Note: </strong>
+    The classifiers are not taken into account when resolving
+    transitive dependencies in Gradle. Therefore, we need to specify all this three JavaFX modules
+    with <kbd>platform</kbd> as classifier.
+</div>
 
 <p>
     Next, we set <kbd>--module-path</kbd> to the value that would have been the classpath
@@ -65,15 +69,36 @@ run {
 </code></pre>
 
 <p>
-    Here is a <a href="build.gradle">build.gradle</a> file which shows how to achieve this.
+    Here is a <a href="https://github.com/openjfx/samples/blob/master/HelloFX/Gradle/hellofx/build.gradle" target="_blank">build.gradle</a> 
+    file which shows how to achieve this, taken from 
+    this <a href="https://github.com/openjfx/samples/tree/master/HelloFX/Gradle" target="_blank">sample</a>.
 </p>
 <p>
-    Run the application (e.g. use <a href="HelloFX.java">HelloFX.java</a>) using:
+    Run the application (e.g. use <a href="https://github.com/openjfx/samples/blob/master/HelloFX/Gradle/hellofx/src/main/java/HelloFX.java" target="_blank">HelloFX.java</a> 
+    from the given sample) using:
 </p>
 
-<pre><code>
-gradle run
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-grad" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-grad" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-grad">
+<pre class="no-border-radius"><code>
+./gradlew run
 </code></pre>
+    </div>
+    <div class="tab-pane" id="win-grad">
+<pre><code>
+gradlew run
+</code></pre>
+    </div>
+</div>
 
 <div class="alert alert-warning">
     <strong>Note: </strong>
