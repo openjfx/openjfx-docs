@@ -1,16 +1,16 @@
-<h2>JavaFX <span class="JFX">11</span> and IntelliJ</h2>
+<h2>JavaFX <span class="JFX_MAJOR">11</span> and IntelliJ</h2>
 
-<p>This section explains how to use Java <span class="JDK">11</span> and JavaFX <span class="JFX">11</span> from IntelliJ. 
+<p>This section explains how to use Java <span class="JDK_MAJOR">11</span> and JavaFX <span class="JFX_MAJOR">11</span> from IntelliJ. 
     Version IntelliJ IDEA 2018.2.5 was used for the following screenshots.
 </p>
 
 <p>
-    Download an appropriate <a href="https://jdk.java.net/11/">JDK <span class="JDK">11</span></a> for your operating system. 
-    Make sure <kbd>JAVA_HOME</kbd> is properly set to the Java <span class="JDK">11</span> installation directory. 
+    Download an appropriate <a href="https://jdk.java.net/11/">JDK <span class="JDK_MAJOR">11</span></a> for your operating system. 
+    Make sure <kbd>JAVA_HOME</kbd> is properly set to the Java <span class="JDK_MAJOR">11</span> installation directory. 
 </p>
 
 <p>
-    You can create a JavaFX <span class="JFX">11</span> project and use <a href="#IDE">IDE</a>,
+    You can create a JavaFX <span class="JFX_MAJOR">11</span> project and use <a href="#IDE">IDE</a>,
     <a href="#Maven">Maven</a> or <a href="#Gradle">Gradle</a> build tools.
 </p>
 
@@ -24,7 +24,7 @@
     Download the appropriate
     <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX SDK</a>
     for your operating system and unzip it to a desired location, for instance
-    <kbd>/Users/your-user/Downloads/javafx-sdk-<span class="JFX">11</span></kbd>.
+    <kbd>/Users/your-user/Downloads/javafx-sdk-<span class="JFX_MAJOR">11</span></kbd>.
 </p>
 
 <p>
@@ -40,10 +40,10 @@
 </p>
 
 <p>
-    <strong>2. Set JDK <span class="JDK">11</span></strong>
+    <strong>2. Set JDK <span class="JDK_MAJOR">11</span></strong>
 </p>
 <p>    
-    Go to <kbd>File -> Project Structure -> Project</kbd>, and set the project SDK to <span class="JDK">11</span>. You can also set the language level to 11.
+    Go to <kbd>File -> Project Structure -> Project</kbd>, and set the project SDK to <span class="JDK_MAJOR">11</span>. You can also set the language level to 11.
     <a href="images/ide/intellij/ide/idea03.png" target="_blank"><img src="images/ide/intellij/ide/idea03.png" alt="Set JDK 11"/></a>
 </p>
 
@@ -51,7 +51,7 @@
     <strong>3. Create a library</strong>
 </p>
 <p>    
-    Go to <kbd>File -> Project Structure -> Libraries</kbd> and add the JavaFX <span class="JFX">11</span> SDK as a library to the project. 
+    Go to <kbd>File -> Project Structure -> Libraries</kbd> and add the JavaFX <span class="JFX_MAJOR">11</span> SDK as a library to the project. 
     Point to the <kbd>lib</kbd> folder of the JavaFX SDK.
     <a href="images/ide/intellij/ide/idea04.png" target="_blank"><img src="images/ide/intellij/ide/idea04.png" alt="Create Library"/></a>
     Once the library is applied, the JavaFX classes will be recognized by the IDE.
@@ -66,7 +66,7 @@
 Error: JavaFX runtime components are missing, and are required to run this application
 </code></pre>
 
-    This error is shown since the Java <span class="JDK">11</span> launcher checks if the main class extends 
+    This error is shown since the Java <span class="JDK_MAJOR">11</span> launcher checks if the main class extends 
     <kbd>javafx.application.Application</kbd>. If that is the case, it is required to 
     have the <kbd>javafx.graphics</kbd> module on the module-path.
 
@@ -80,7 +80,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 </p>
 
 <pre><code>
---module-path /path/to/javafx-sdk-<span class="JFX">11</span>/lib --add-modules=javafx.controls,javafx.fxml
+--module-path /path/to/javafx-sdk-<span class="JFX_MAJOR">11</span>/lib --add-modules=javafx.controls,javafx.fxml
 </code></pre>
     
 <p>    
@@ -173,7 +173,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     <a href="images/ide/intellij/gradle/idea01.png" target="_blank"><img src="images/ide/intellij/gradle/idea01.png" alt="Create a Gradle project"/></a>
    
     Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>. 
-    Select the Gradle JVM based on the project JDK <span class="JDK">11</span>.
+    Select the Gradle JVM based on the project JDK <span class="JDK_MAJOR">11</span>.
     Then provide a name to the project, like <kbd>HelloFX</kbd> and a location for the project.
     
     When the project opens, add a package and an empty <kbd>HelloFX</kbd> class.

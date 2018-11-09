@@ -1,13 +1,13 @@
-<h2>JavaFX <span class="JFX">11</span> and NetBeans</h2>
+<h2>JavaFX <span class="JFX_MAJOR">11</span> and NetBeans</h2>
 
-<p>This section explains how to use Java <span class="JDK">11</span> and JavaFX <span class="JFX">11</span> from NetBeans. 
+<p>This section explains how to use Java <span class="JDK_MAJOR">11</span> and JavaFX <span class="JFX_MAJOR">11</span> from NetBeans. 
     Version Apache NetBeans <a href="https://dist.apache.org/repos/dist/dev/incubator/netbeans/incubating-netbeans/incubating-10.0-vc2/incubating-netbeans-10.0-vc2-bin.zip">10.0 vc2</a> 
     was used for the following screenshots.
 </p>
 
 <p>
-    Download an appropriate <a href="https://jdk.java.net/11/">JDK <span class="JDK">11</span></a> for your operating system. 
-    Make sure <kbd>JAVA_HOME</kbd> is properly set to the Java <span class="JDK">11</span> installation directory. 
+    Download an appropriate <a href="https://jdk.java.net/11/">JDK <span class="JDK_MAJOR">11</span></a> for your operating system. 
+    Make sure <kbd>JAVA_HOME</kbd> is properly set to the Java <span class="JDK_MAJOR">11</span> installation directory. 
 </p>
 
 <div class="alert alert-warning">
@@ -17,7 +17,7 @@
     under the NetBeans installation folder and setting the <kbd>netbeans_jdkhome</kbd> property: 
     
 <pre><code>
-netbeans_jdkhome=/path/to/jdk-<span class="JDK">11</span>
+netbeans_jdkhome=/path/to/jdk-<span class="JDK_MAJOR">11</span>
 </code></pre>
 
     Save and restart NetBeans.
@@ -25,7 +25,7 @@ netbeans_jdkhome=/path/to/jdk-<span class="JDK">11</span>
 </div>
 
 <p>
-    You can create a JavaFX <span class="JFX">11</span> project and use <a href="#IDE">IDE</a>,
+    You can create a JavaFX <span class="JFX_MAJOR">11</span> project and use <a href="#IDE">IDE</a>,
     <a href="#Maven">Maven</a> or <a href="#Gradle">Gradle</a> build tools.
 </p>
 
@@ -39,13 +39,13 @@ netbeans_jdkhome=/path/to/jdk-<span class="JDK">11</span>
     Download the appropriate
     <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX SDK</a>
     for your operating system and unzip it to a desired location, for instance
-    <kbd>/Users/your-user/Downloads/javafx-sdk-<span class="JFX">11</span></kbd>.
+    <kbd>/Users/your-user/Downloads/javafx-sdk-<span class="JFX_MAJOR">11</span></kbd>.
 </p>
 
 <p>
     Create a new global <kbd>Library</kbd> under <kbd>Tools -> Libraries -> New Library</kbd>. 
     
-    Name it <kbd>JavaFX11</kbd> and include the jars under the <kbd>lib</kbd> folder from JavaFX <span class="JFX">11</span>.
+    Name it <kbd>JavaFX11</kbd> and include the jars under the <kbd>lib</kbd> folder from JavaFX <span class="JFX_MAJOR">11</span>.
     
     <a href="images/ide/netbeans/ide/netbeans00.png" target="_blank"><img src="images/ide/netbeans/ide/netbeans00.png" alt="Create library"/></a>
     
@@ -70,11 +70,11 @@ netbeans_jdkhome=/path/to/jdk-<span class="JDK">11</span>
 </div>
 
 <p>
-    <strong>2. Set JDK <span class="JDK">11</span></strong>
+    <strong>2. Set JDK <span class="JDK_MAJOR">11</span></strong>
 </p>
 <p>    
-    Make sure your project is configured to run with JDK <span class="JDK">11</span>.
-    Go to <kbd>Properties -> Libraries -> Java Platform</kbd>, and set it to JDK <span class="JDK">11</span>. 
+    Make sure your project is configured to run with JDK <span class="JDK_MAJOR">11</span>.
+    Go to <kbd>Properties -> Libraries -> Java Platform</kbd>, and set it to JDK <span class="JDK_MAJOR">11</span>. 
     <a href="images/ide/netbeans/ide/netbeans02.png" target="_blank"><img src="images/ide/netbeans/ide/netbeans02.png" alt="Set JDK 11"/></a>
 </p>
 
@@ -86,7 +86,7 @@ netbeans_jdkhome=/path/to/jdk-<span class="JDK">11</span>
     add the <kbd>JavaFX11</kbd> library.
     
     Go to <kbd>Properties -> Libraries -> Compile -> Class-path -> + -> Add JAR/Folder </kbd> and 
-    add the required JavaFX <span class="JFX">11</span> jars to the project.
+    add the required JavaFX <span class="JFX_MAJOR">11</span> jars to the project.
     
     <a href="images/ide/netbeans/ide/netbeans03.png" target="_blank"><img src="images/ide/netbeans/ide/netbeans03.png" alt="Add jars to classpath"/></a>
     
@@ -112,7 +112,7 @@ netbeans_jdkhome=/path/to/jdk-<span class="JDK">11</span>
 Error: JavaFX runtime components are missing, and are required to run this application
 </code></pre>
 
-    This error is shown since the Java <span class="JDK">11</span> launcher checks if the main class extends 
+    This error is shown since the Java <span class="JDK_MAJOR">11</span> launcher checks if the main class extends 
     <kbd>javafx.application.Application</kbd>. If that is the case, it is required to 
     have the <kbd>javafx.graphics</kbd> module on the module-path.
 
@@ -143,7 +143,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     the VM options:
 
 <pre><code>
--module-path /path/to/javafx-sdk-<span class="JFX">11</span>/lib --add-modules=javafx.controls,javafx.fxml
+-module-path /path/to/javafx-sdk-<span class="JFX_MAJOR">11</span>/lib --add-modules=javafx.controls,javafx.fxml
 </code></pre>
     
     Note also that if <kbd>JavaFX11</kbd> is not added to the module-path in the first place, the project

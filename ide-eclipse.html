@@ -1,12 +1,12 @@
-<h2>JavaFX <span class="JFX">11</span> and Eclipse</h2>
+<h2>JavaFX <span class="JFX_MAJOR">11</span> and Eclipse</h2>
 
-<p>This section explains how to use Java <span class="JDK">11</span> and JavaFX <span class="JFX">11</span> from Eclipse. 
+<p>This section explains how to use Java <span class="JDK_MAJOR">11</span> and JavaFX <span class="JFX_MAJOR">11</span> from Eclipse. 
     Version Eclipse 2018-09 (4.9) Build id: I20180906-0745 was used for the following screenshots.
 </p>
 
 <p>
-    Download an appropriate <a href="https://jdk.java.net/11/">JDK <span class="JDK">11</span></a> for your operating system. 
-    Make sure <kbd>JAVA_HOME</kbd> is properly set to the Java <span class="JDK">11</span> installation directory. 
+    Download an appropriate <a href="https://jdk.java.net/11/">JDK <span class="JDK_MAJOR">11</span></a> for your operating system. 
+    Make sure <kbd>JAVA_HOME</kbd> is properly set to the Java <span class="JDK_MAJOR">11</span> installation directory. 
 </p>
 
 <p>
@@ -15,7 +15,7 @@
 
 <div class="alert alert-warning">
     <strong>Note: </strong>
-    If you get this message when you add JDK <span class="JDK">11</span>
+    If you get this message when you add JDK <span class="JDK_MAJOR">11</span>
 
 <pre><code>
 You selected a JRE that this version of Eclipse JDT does not yet support fully. Some of the features may not work as expected.
@@ -26,7 +26,7 @@ then install the patch from the Eclipse MarketPlace:
 </div>
 
 <p>
-    You can create a JavaFX <span class="JFX">11</span> project and use <a href="#IDE">IDE</a>,
+    You can create a JavaFX <span class="JFX_MAJOR">11</span> project and use <a href="#IDE">IDE</a>,
     <a href="#Maven">Maven</a> or <a href="#Gradle">Gradle</a> build tools.
 </p>
 
@@ -48,7 +48,7 @@ then install the patch from the Eclipse MarketPlace:
     
     <a href="images/ide/eclipse/ide/eclipse01.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse01.png" alt="Add User Library"/></a>
    
-    Name it <kbd>JavaFX11</kbd> and include the jars under the <kbd>lib</kbd> folder from JavaFX <span class="JFX">11</span>.
+    Name it <kbd>JavaFX11</kbd> and include the jars under the <kbd>lib</kbd> folder from JavaFX <span class="JFX_MAJOR">11</span>.
     
     <a href="images/ide/eclipse/ide/eclipse02.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse02.png" alt="Add JavaFX jars"/></a>
    
@@ -59,7 +59,7 @@ then install the patch from the Eclipse MarketPlace:
     
     <a href="images/ide/eclipse/ide/eclipse03.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse03.png" alt="Create a Java project"/></a>
    
-    Provide a name to the project, like <kbd>HelloFX</kbd>, and a location. Make sure JDK <span class="JDK">11</span> is selected.
+    Provide a name to the project, like <kbd>HelloFX</kbd>, and a location. Make sure JDK <span class="JDK_MAJOR">11</span> is selected.
     You don't need to add a <kbd>module-info.java</kbd> file. You can include the <kbd>JavaFX11</kbd> library.
     
     <a href="images/ide/eclipse/ide/eclipse04.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse04.png" alt="Add JavaFX11 library"/></a>
@@ -84,7 +84,7 @@ then install the patch from the Eclipse MarketPlace:
 Error: JavaFX runtime components are missing, and are required to run this application
 </code></pre>
 
-    This error is shown since the Java <span class="JDK">11</span> launcher checks if the main class extends 
+    This error is shown since the Java <span class="JDK_MAJOR">11</span> launcher checks if the main class extends 
     <kbd>javafx.application.Application</kbd>. If that is the case, it is required to 
     have the <kbd>javafx.graphics</kbd> module on the module-path.
 </div>
@@ -98,7 +98,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 </p>
 
 <pre><code>
---module-path /path/to/javafx-sdk-<span class="JFX">11</span>/lib --add-modules=javafx.controls,javafx.fxml
+--module-path /path/to/javafx-sdk-<span class="JFX_MAJOR">11</span>/lib --add-modules=javafx.controls,javafx.fxml
 </code></pre>
     
 <div class="alert alert-warning">
@@ -173,7 +173,7 @@ is not selected.
    
     Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>. 
     
-    When the project opens, select the JDK <span class="JDK">11</span> for the project (<kbd>File -> Properties -> Java Build Path -> Libraries</kbd>).
+    When the project opens, select the JDK <span class="JDK_MAJOR">11</span> for the project (<kbd>File -> Properties -> Java Build Path -> Libraries</kbd>).
     
     <a href="images/ide/eclipse/maven/eclipse02.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse02.png" alt="Missing JavaFX classes"/></a>
 </p>
@@ -244,7 +244,7 @@ Exception in thread "JavaFX Application Thread" java.lang.NullPointerException
     
 This is happening running on Windows when Eclipse VM is set to Oracle JDK 1.8 using Maven or Gradle projects.
 
-A workaround for this is to edit <kbd>eclipse.ini</kbd> and change the <kbd>-vm</kbd> option to JDK <span class="JDK">11</span>.
+A workaround for this is to edit <kbd>eclipse.ini</kbd> and change the <kbd>-vm</kbd> option to JDK <span class="JDK_MAJOR">11</span>.
 
 If that is not possible, another workaround is to add this VM argument to 
 <kbd>Run -> Run Configurations... -> Maven -> JRE -> VM Arguments</kbd>:
@@ -313,9 +313,9 @@ If that is not possible, another workaround is to add this VM argument to
 
 <div class="alert alert-warning">
     <strong>Note: </strong>
-    If you run Eclipse with a VM setting lower than JDK <span class="JDK">11</span>, you need to add 
+    If you run Eclipse with a VM setting lower than JDK <span class="JDK_MAJOR">11</span>, you need to add 
     the property <kbd>org.gradle.java.home</kbd> to a <kbd>gradle.properties</kbd> file, 
-    with the correct path to JDK <span class="JDK">11</span>. This file can be part of the project or under 
+    with the correct path to JDK <span class="JDK_MAJOR">11</span>. This file can be part of the project or under 
     the gradle user home under <kbd>USER_HOME/.gradle</kbd>. 
 </div>
 
@@ -350,7 +350,7 @@ Exception in thread "JavaFX Application Thread" java.lang.NullPointerException
     
 This is happening running on Windows when Eclipse VM is set to Oracle JDK 1.8 using Maven or Gradle projects.
 
-A workaround for this is to edit <kbd>eclipse.ini</kbd> and change the <kbd>-vm</kbd> option to JDK <span class="JDK">11</span>.
+A workaround for this is to edit <kbd>eclipse.ini</kbd> and change the <kbd>-vm</kbd> option to JDK <span class="JDK_MAJOR">11</span>.
 
 If that is not possible, another workaround is to add this VM argument to the build file:
 

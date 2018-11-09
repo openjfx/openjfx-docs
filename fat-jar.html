@@ -6,7 +6,7 @@
     non modular application and you want to distribute a single jar, you can do a fat jar.
 </div>
 <p>
-    You can create a runnable fat jar for your JavaFX 11 project on
+    You can create a runnable fat jar for your JavaFX <span class="JFX_MAJOR">11</span> project on
     <a href="#Maven">Maven</a>, <a href="#Gradle">Gradle</a> or even 
     <a href="#command-line">command line</a>.
 </p>
@@ -165,15 +165,15 @@ java -jar build\libs\hellofx.jar
 </p>
 
 <pre><code>
-compile "org.openjfx:javafx-graphics:11:win"
-compile "org.openjfx:javafx-graphics:11:linux"
-compile "org.openjfx:javafx-graphics:11:mac"
+compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:win"
+compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:linux"
+compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:mac"
 </code></pre>
 
 <a name="command-line"></a><h3>Command Line</h3>
 
 <p>
-    Finally, you can also create a runnable fat jar for your JavaFX 11 project on
+    Finally, you can also create a runnable fat jar for your JavaFX <span class="JFX_MAJOR">11</span> project on
     command line.
 </p>
 
@@ -209,12 +209,12 @@ compile "org.openjfx:javafx-graphics:11:mac"
 <div class="tab-content">
     <div class="tab-pane active" id="nix-fxpath">
 <pre class="no-border-radius"><code>
-export PATH_TO_FX=/path/to/javafx-sdk-11/lib
+export PATH_TO_FX=/path/to/javafx-sdk-<span class="JFX_VERSION">11</span>/lib
 </code></pre>
     </div>
     <div class="tab-pane" id="win-fxpath">
 <pre><code>
-set PATH_TO_FX="path\to\javafx-sdk-11\lib"
+set PATH_TO_FX="path\to\javafx-sdk-<span class="JFX_VERSION">11</span>\lib"
 </code></pre>
     </div>
 </div>

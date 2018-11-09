@@ -1,7 +1,7 @@
 <h2>Creating modular projects</h2>
 
 <p>
-    If you have a modular JavaFX 11 project then you need to follow these instructions.
+    If you have a modular JavaFX <span class="JFX_MAJOR">11</span> project then you need to follow these instructions.
 </p>
 
 <p>
@@ -26,12 +26,12 @@
 <div class="tab-content">
     <div class="tab-pane active" id="nix-mods">
 <pre class="no-border-radius"><code>
-export PATH_TO_FX_MODS=path/to/javafx-jmods-11
+export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
 </code></pre>
     </div>
     <div class="tab-pane" id="win-mods">
 <pre><code>
-set PATH_TO_FX_MODS="path\to\javafx-jmods-11"
+set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
 </code></pre>
     </div>
 </div>
@@ -39,7 +39,7 @@ set PATH_TO_FX_MODS="path\to\javafx-jmods-11"
 <h3>Command Line</h3>
 
 <p>
-    You can run or create a runtime of your JavaFX 11 project from command line. A simple example can be found in this 
+    You can run or create a runtime of your JavaFX <span class="JFX_MAJOR">11</span> project from command line. A simple example can be found in this 
     <a href="https://github.com/openjfx/samples/tree/master/CommandLine/Modular/CLI" target="_blank">project</a>.
 </p>
 
@@ -188,7 +188,7 @@ hellofx\bin\java -m hellofx/hellofx.HelloFX
 <h3>Maven</h3>
 
 <p>
-    You can run or create a runtime of your JavaFX 11 Maven project. A simple example can be found in this  
+    You can run or create a runtime of your JavaFX <span class="JFX_MAJOR">11</span> Maven project. A simple example can be found in this  
     <a href="https://github.com/openjfx/samples/tree/master/CommandLine/Modular/Maven" target="_blank">project</a>.
 </p>
 
@@ -214,7 +214,7 @@ mvn clean compile package exec:java
 <h3>Gradle</h3>
 
 <p>
-    You can run or create a runtime of your JavaFX 11 Gradle project. A simple example can be found in this 
+    You can run or create a runtime of your JavaFX <span class="JFX_MAJOR">11</span> Gradle project. A simple example can be found in this 
     <a href="https://github.com/openjfx/samples/tree/master/CommandLine/Modular/Gradle" target="_blank">project</a>.
 </p>
 
@@ -268,14 +268,14 @@ gradlew run
 <div class="tab-content">
     <div class="tab-pane active" id="nix-cligradlelink">
 <pre class="no-border-radius"><code>
-export PATH_TO_FX_MODS=path/to/javafx-jmods-11
+export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
 ./gradlew jlink
 build/hellofx/bin/java -m hellofx/hellofx.HelloFX
 </code></pre>
     </div>
     <div class="tab-pane" id="win-cligradlelink">
 <pre><code>
-export PATH_TO_FX_MODS=path/to/javafx-jmods-11
+export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
 gradlew jlink
 build\hellofx\bin\java -m hellofx/hellofx.HelloFX 
 </code></pre>
@@ -285,6 +285,6 @@ build\hellofx\bin\java -m hellofx/hellofx.HelloFX
 <h3>Non-modular application</h3>
 
 <p>
-    If you have a non-modular JavaFX 11 project and you can't use <kbd>jlink</kbd>, you can still do a <a href="index.html#fat-jar">fat-jar</a>.
+    If you have a non-modular JavaFX <span class="JFX_MAJOR">11</span> project and you can't use <kbd>jlink</kbd>, you can still do a <a href="index.html#fat-jar">fat-jar</a>.
 </p>
 

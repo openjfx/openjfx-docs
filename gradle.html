@@ -29,9 +29,9 @@ ext.platform = osdetector.os == 'osx' ? 'mac' : osdetector.os == 'windows' ? 'wi
 
 <pre><code>
 dependencies {
-    compile "org.openjfx:javafx-base:11:$platform"
-    compile "org.openjfx:javafx-graphics:11:$platform"
-    compile "org.openjfx:javafx-controls:11:$platform"
+    compile "org.openjfx:javafx-base:<span class="JFX_VERSION">11</span>:$platform"
+    compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:$platform"
+    compile "org.openjfx:javafx-controls:<span class="JFX_VERSION">11</span>:$platform"
 }
 </code></pre>
 
@@ -102,5 +102,5 @@ gradlew run
 
 <div class="alert alert-warning">
     <strong>Note: </strong>
-    Make sure to use gradle version 4.10+ and set the JAVA_HOME environment variable to JDK 11.
+    Make sure to use gradle version 4.10+ and set the JAVA_HOME environment variable to JDK <span class="JDK_MAJOR">11</span>.
 </div>

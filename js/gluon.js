@@ -1,7 +1,10 @@
 $(function() {
     // constants
-    var JDK = "11.0.1";
-    var JFX = "11";
+    var JDK_MAJOR = "11";
+    var JFX_MAJOR = "11";
+    
+    var JDK_VERSION = "11.0.1";
+    var JFX_VERSION = "11.0.1";
     
     // Hide all non-active div
     $('.hidden').hide();
@@ -67,8 +70,10 @@ $(function() {
     // Replace all constants
     // Replace all $ with non-selectable span
     setTimeout(function() {
-        $('.JDK').each(function() { $(this).text(JDK) });
-        $('.JFX').each(function() { $(this).text(JFX) });
+        $('.JDK_MAJOR').each(function() { $(this).text(JDK_MAJOR) });
+        $('.JFX_MAJOR').each(function() { $(this).text(JFX_MAJOR) });
+        $('.JDK_VERSION').each(function() { $(this).text(JDK_VERSION) });
+        $('.JFX_VERSION').each(function() { $(this).text(JFX_VERSION) });
     
         $('code').each(function () {
             var content = $(this).html();
