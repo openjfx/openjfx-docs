@@ -54,9 +54,9 @@ then install the patch from the Eclipse MarketPlace:
    
 </p>
 
-<p>
-    <strong>1. Create a Java project</strong>
+<h5>1. Create a Java project</h5>
     
+<p>
     <a href="images/ide/eclipse/ide/eclipse03.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse03.png" alt="Create a Java project"/></a>
    
     Provide a name to the project, like <kbd>HelloFX</kbd>, and a location. Make sure JDK <span class="JDK_MAJOR">11</span> is selected.
@@ -67,9 +67,8 @@ then install the patch from the Eclipse MarketPlace:
     An empty project will be opened.
 </p>
 
-<p>
-    <strong>2. Add JavaFX classes</strong>
-</p>
+<h5>2. Add JavaFX classes</h5>
+
 <p>    
     You can add a package named <kbd>hellofx</kbd>, a main class <kbd>Main</kbd>, with an FXML file and a controller.
     
@@ -89,10 +88,9 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     have the <kbd>javafx.graphics</kbd> module on the module-path.
 </div>
     
-<p>
-    <strong>3. Add VM arguments</strong>
-</p>
-<p>
+<h5>3. Add VM arguments</h5>
+
+    <p>
     To solve this issue, click on <kbd>Run -> Run Configurations... -> Java Application</kbd>, 
     create a new launch configuration for your project named `hellofx` and add these VM arguments:
 </p>
@@ -118,9 +116,8 @@ is not selected.
     Click apply and close the dialog.
 </p>
 
-<p>
-    <strong>4. Run the project</strong>
-</p>
+<h5>4. Run the project</h5>
+
 <p>
     Click <kbd>Run -> Run As -> Java Application -> Main - hellofx</kbd> to run the project.
 </p>
@@ -162,10 +159,9 @@ is not selected.
     from the Eclipse Marketplace otherwise.
 </p>
 
-<p>
-    <strong>1. Create a Maven project</strong>
-</p>
-<p>
+<h5>1. Create a Maven project</h5>
+
+    <p>
     Create a Maven project. Provide the location. You can skip the archetype, or select for instance the 
     <kbd>maven-archetype-quickstart</kbd> one.
     
@@ -178,9 +174,8 @@ is not selected.
     <a href="images/ide/eclipse/maven/eclipse02.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse02.png" alt="Missing JavaFX classes"/></a>
 </p>
 
-<p>
-    <strong>2. Modify the pom</strong>
-</p>
+<h5>2. Modify the pom</h5>
+
 <p>
     Before adding the JavaFX classes, edit the pom file and add the JavaFX dependencies and plugins, replacing the existing ones,
     based on this <a href="pom.xml">pom</a> file, and set the 
@@ -198,18 +193,16 @@ is not selected.
     As for any other maven dependencies, these jars can be found in the local <kbd>.m2</kbd> repository.
 </p>
 
-<p>
-    <strong>3. Add the code</strong>
-</p>
+<h5>3. Add the code</h5>
+
 <p>    
     You can add a main class <kbd>MainApp</kbd>, and an <kbd>FXMLController</kbd> class, and add to resources the <kbd>FXML</kbd> file.
     
     <a href="images/ide/eclipse/maven/eclipse04.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse04.png" alt="Add JavaFX project"/></a>
 </p>
 
-<p>
-    <strong>3. Run the project</strong>
-</p>
+<h5>3. Run the project</h5>
+
 <p>
     Click <kbd>Run -> Run As -> Maven Build -> New launch configuration</kbd> to create a new configuration.
     Name it <kbd>hellofx</kbd>, and add the required goals:
@@ -266,9 +259,8 @@ If that is not possible, another workaround is to add this VM argument to
     Update to 2.2.3 version from this <a href="http://download.eclipse.org/buildship/updates/e48/snapshots/2.x/">URL</a>.
 </p>
 
-<p>
-    <strong>1. Create a Gradle project</strong>
-</p>
+<h5>1. Create a Gradle project</h5>
+
 <p>
     Create a Gradle project with Java.
     <a href="images/ide/eclipse/gradle/eclipse01.png" target="_blank"><img src="images/ide/eclipse/gradle/eclipse01.png" alt="Create a Gradle project"/></a>
@@ -278,9 +270,8 @@ If that is not possible, another workaround is to add this VM argument to
     <a href="images/ide/eclipse/gradle/eclipse02.png" target="_blank"><img src="images/ide/eclipse/gradle/eclipse02.png" alt="Open project"/></a>
 </p>
 
-<p>
-    <strong>2. Modify the build</strong>
-</p>
+<h5>2. Modify the build</h5>
+
 <p>
     Edit the <kbd>build.gradle</kbd> file and replace it with this <a href="build.gradle">build</a> file, setting the 
     <kbd>mainClassName</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
@@ -296,9 +287,8 @@ If that is not possible, another workaround is to add this VM argument to
     You can download the resulting build file from <a href="images/ide/intellij/gradle/build.gradle">here</a>.
 </p>
 
-<p>
-    <strong>3. Add the source code</strong>
-</p>
+<h5>3. Add the source code</h5>
+
 <p>
     You can add a main class <kbd>MainApp</kbd>, and an <kbd>FXMLController</kbd> class, and add to resources the <kbd>FXML</kbd> file.
     
@@ -307,9 +297,7 @@ If that is not possible, another workaround is to add this VM argument to
     You can download the resulting class from <a href="images/ide/intellij/gradle/HelloFX.java">here</a>.
 </p>
 
-<p>
-    <strong>4. Run the project</strong>
-</p>
+<h5>4. Run the project</h5>
 
 <div class="alert alert-warning">
     <strong>Note: </strong>

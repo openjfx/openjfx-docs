@@ -27,9 +27,9 @@
     <kbd>/Users/your-user/Downloads/javafx-sdk-<span class="JFX_MAJOR">11</span></kbd>.
 </p>
 
-<p>
-    <strong>1. Create a JavaFX project</strong>
+<h5>1. Create a JavaFX project</h5>
     
+<p>
     <a href="images/ide/intellij/ide/idea01.png" target="_blank"><img src="images/ide/intellij/ide/idea01.png" alt="Create a JavaFX project"/></a>
    
     Provide a name to the project, like <kbd>HelloFX</kbd>, and a location.
@@ -39,17 +39,15 @@
     <a href="images/ide/intellij/ide/idea02.png" target="_blank"><img src="images/ide/intellij/ide/idea02.png" alt="Missing JavaFX classes"/></a>
 </p>
 
-<p>
-    <strong>2. Set JDK <span class="JDK_MAJOR">11</span></strong>
-</p>
+<h5>2. Set JDK <span class="JDK_MAJOR">11</span></h5>
+
 <p>    
     Go to <kbd>File -> Project Structure -> Project</kbd>, and set the project SDK to <span class="JDK_MAJOR">11</span>. You can also set the language level to 11.
     <a href="images/ide/intellij/ide/idea03.png" target="_blank"><img src="images/ide/intellij/ide/idea03.png" alt="Set JDK 11"/></a>
 </p>
 
-<p>
-    <strong>3. Create a library</strong>
-</p>
+<h5>3. Create a library</h5>
+
 <p>    
     Go to <kbd>File -> Project Structure -> Libraries</kbd> and add the JavaFX <span class="JFX_MAJOR">11</span> SDK as a library to the project. 
     Point to the <kbd>lib</kbd> folder of the JavaFX SDK.
@@ -72,9 +70,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 
 </div>
     
-<p>
-    <strong>4. Add VM options</strong>
-</p>
+<h5>4. Add VM options</h5>
+
 <p>
     To solve the issue, click on <kbd>Run -> Edit Configurations...</kbd> and add these VM options:
 </p>
@@ -93,9 +90,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     Click apply and close the dialog.
 </p>
 
-<p>
-    <strong>5. Run the project</strong>
-</p>
+<h5>5. Run the project</h5>
+
 <p>
     Click <kbd>Run -> Run...</kbd> to run the project, now it should work fine.
 </p>
@@ -106,9 +102,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     Follow these steps to create a JavaFX project and use the Maven tools to build it and run it.
 </p>
 
-<p>
-    <strong>1. Create a Maven project</strong>
-</p>
+<h5>1. Create a Maven project</h5>
+
 <p>
     If you select the <kbd>org.codehous.mojo.archetypes:javafx</kbd> archetype, the latest version is from 2015, 
     so it will rely on the old <kbd>jfxrt.jar</kbd>. But you can modify later on the pom based on this <a href="pom.xml">one</a>.
@@ -122,9 +117,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     <a href="images/ide/intellij/maven/idea02.png" target="_blank"><img src="images/ide/intellij/maven/idea02.png" alt="Missing JavaFX classes"/></a>
 </p>
 
-<p>
-    <strong>2. Modify the pom</strong>
-</p>
+<h5>2. Modify the pom</h5>
+
 <p>
     Replace the existing plugins based on this <a href="pom.xml">pom</a> file, and set the 
     <kbd>mainClass</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
@@ -147,9 +141,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     As for any other maven dependencies, these jars can be found in the local <kbd>.m2</kbd> repository.
 </p>
 
-<p>
-    <strong>3. Run the project</strong>
-</p>
+<h5>3. Run the project</h5>
+
 <p>
     You can open the Maven Projects window and click on <kbd>HelloFX->Plugins->compiler->compiler:compile</kbd> to 
     compile the project, and on <kbd>HelloFX->Plugins->exec->exec:java</kbd> to execute the project.
@@ -165,9 +158,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     Follow these steps to create a JavaFX project and use the Gradle tools to build it and run it.
 </p>
 
-<p>
-    <strong>1. Create a Gradle project</strong>
-</p>
+<h5>1. Create a Gradle project</h5>
+
 <p>
     Create a Gradle project with Java.
     <a href="images/ide/intellij/gradle/idea01.png" target="_blank"><img src="images/ide/intellij/gradle/idea01.png" alt="Create a Gradle project"/></a>
@@ -181,9 +173,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     <a href="images/ide/intellij/gradle/idea02.png" target="_blank"><img src="images/ide/intellij/gradle/idea02.png" alt="Open project"/></a>
 </p>
 
-<p>
-    <strong>2. Modify the build</strong>
-</p>
+<h5>2. Modify the build</h5>
+
 <p>
     Edit the <kbd>build.gradle</kbd> file and replace it with this <a href="build.gradle">build</a> file, setting the 
     <kbd>mainClassName</kbd> accordingly to <kbd>hellofx.HelloFX</kbd>.
@@ -199,9 +190,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     You can download the resulting build file from <a href="images/ide/intellij/gradle/build.gradle">here</a>.
 </p>
 
-<p>
-    <strong>3. Add the source code</strong>
-</p>
+<h5>3. Add the source code</h5>
+
 <p>
     Based on this <a href="HelloFX.java">HelloFX</a> class, add its content to the project main class. Note that the 
     JavaFX classes are recognized by the IDE.
@@ -209,9 +199,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     You can download the resulting class from <a href="images/ide/intellij/gradle/HelloFX.java">here</a>.
 </p>
 
-<p>
-    <strong>4. Run the project</strong>
-</p>
+<h5>4. Run the project</h5>
+
 <p>
     You can open the Gradle window and click on <kbd>hellofx->Tasks->build->build</kbd> to 
     build the project, and on <kbd>hellofx->Tasks->application->run</kbd> to execute the project.

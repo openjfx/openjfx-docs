@@ -52,9 +52,9 @@ netbeans_jdkhome=/path/to/jdk-<span class="JDK_MAJOR">11</span>
     Make sure you don't add the <kbd>src.zip</kbd> file.   
 </p>
 
-<p>
-    <strong>1. Create a Java project</strong>
+<h5>1. Create a Java project</h5>
     
+<p>
     <a href="images/ide/netbeans/ide/netbeans01.png" target="_blank"><img src="images/ide/netbeans/ide/netbeans01.png" alt="Create a Java project"/></a>
    
     Provide a name to the project, like <kbd>HelloFX</kbd>, and a location.
@@ -69,18 +69,16 @@ netbeans_jdkhome=/path/to/jdk-<span class="JDK_MAJOR">11</span>
     You can try to switch the Java project to a JavaFX project instead, from <kbd>Properties -> Build -> Deployment -> Switch Project to JavaFX Deployment Model</kbd>
 </div>
 
-<p>
-    <strong>2. Set JDK <span class="JDK_MAJOR">11</span></strong>
-</p>
+<h5>2. Set JDK <span class="JDK_MAJOR">11</span></h5>
+
 <p>    
     Make sure your project is configured to run with JDK <span class="JDK_MAJOR">11</span>.
     Go to <kbd>Properties -> Libraries -> Java Platform</kbd>, and set it to JDK <span class="JDK_MAJOR">11</span>. 
     <a href="images/ide/netbeans/ide/netbeans02.png" target="_blank"><img src="images/ide/netbeans/ide/netbeans02.png" alt="Set JDK 11"/></a>
 </p>
 
-<p>
-    <strong>3. Add library</strong>
-</p>
+<h5>3. Add library</h5>
+
 <p> 
     Go to <kbd>Properties -> Libraries -> Compile -> Module-path -> + -> Add Library </kbd> and 
     add the <kbd>JavaFX11</kbd> library.
@@ -95,9 +93,8 @@ netbeans_jdkhome=/path/to/jdk-<span class="JDK_MAJOR">11</span>
     <a href="images/ide/netbeans/ide/netbeans04.png" target="_blank"><img src="images/ide/netbeans/ide/netbeans04.png" alt="JavaFX jars as library"/></a>
 </p>
 
-<p>
-    <strong>4. Add JavaFX classes</strong>
-</p>
+<h5>4. Add JavaFX classes</h5>
+
 <p>    
     You can add a main class <kbd>Main</kbd>, with an FXML file and a controller.
     
@@ -118,9 +115,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 
 </div>
     
-<p>
-    <strong>5. Add VM options</strong>
-</p>
+<h5>5. Add VM options</h5>
+
 <p>
     To solve the issue, click on <kbd>Properties -> Run</kbd> and add these VM options:
 </p>
@@ -150,9 +146,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     won't run, since NetBeans overrides the module-path with an empty path.
 </div>
 
-<p>
-    <strong>6. Run the project</strong>
-</p>
+<h5>6. Run the project</h5>
+
 <p>
     Click <kbd>Run -> Run Project</kbd> to run the project, now it should work fine.
 </p>
@@ -163,9 +158,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     Follow these steps to create a JavaFX project and use the Maven tools to build it and run it.
 </p>
 
-<p>
-    <strong>1. Create a Maven project</strong>
-</p>
+<h5>1. Create a Maven project</h5>
+
 <p>
     You can select the <kbd>JavaFX Application</kbd> project.
     
@@ -179,9 +173,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     <a href="images/ide/netbeans/maven/netbeans02.png" target="_blank"><img src="images/ide/netbeans/maven/netbeans02.png" alt="Missing JavaFX classes"/></a>
 </p>
 
-<p>
-    <strong>2. Modify the pom</strong>
-</p>
+<h5>2. Modify the pom</h5>
+
 <p>
     Replace the existing plugins based on this <a href="pom.xml">pom</a> file, and set the 
     <kbd>mainClass</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
@@ -214,9 +207,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     As for any other maven dependencies, these jars can be found in the local <kbd>.m2</kbd> repository.
 </p>
 
-<p>
-    <strong>3. Run the project</strong>
-</p>
+<h5>3. Run the project</h5>
 
 <p>
     Click <kbd>Run -> Run Project</kbd> to run the project.
@@ -241,9 +232,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
    
 </p>
 
-<p>
-    <strong>1. Create a Gradle project</strong>
-</p>
+<h5>1. Create a Gradle project</h5>
+
 <p>
     Create a Gradle project with Java.
     <a href="images/ide/netbeans/gradle/netbeans01.png" target="_blank"><img src="images/ide/netbeans/gradle/netbeans01.png" alt="Create a Gradle project"/></a>
@@ -255,9 +245,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     <a href="images/ide/netbeans/gradle/netbeans02.png" target="_blank"><img src="images/ide/netbeans/gradle/netbeans02.png" alt="Open project"/></a>
 </p>
 
-<p>
-    <strong>2. Modify the build</strong>
-</p>
+<h5>2. Modify the build</h5>
+
 <p>
     Edit the <kbd>build.gradle</kbd> file and replace it with this <a href="build.gradle">build</a> file, setting the 
     <kbd>mainClassName</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
@@ -275,9 +264,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     You can download the resulting build file from <a href="images/ide/intellij/gradle/build.gradle">here</a>.
 </p>
 
-<p>
-    <strong>3. Add the source code</strong>
-</p>
+<h5>3. Add the source code</h5>
+
 <p>
     You can add a main class <kbd>MainApp</kbd>, and an <kbd>FXMLController</kbd> class, and add to resources the <kbd>FXML</kbd> file.
     
@@ -286,9 +274,8 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     You can download the resulting class from <a href="images/ide/intellij/gradle/HelloFX.java">here</a>.
 </p>
 
-<p>
-    <strong>4. Run the project</strong>
-</p>
+<h5>4. Run the project</h5>
+
 <p>
     Right click on the project window, select <kbd>Tasks->build->build</kbd> to 
     build the project, and on <kbd>Tasks->run->run</kbd> to execute the project.
