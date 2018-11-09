@@ -20,7 +20,7 @@ body {
     color: rgba(0,0,0,.8);
 }
 
-h1, h2, h3 {
+h1, h2, h3, h4 {
     font-family: "Open Sans","DejaVu Sans",sans-serif;
     font-weight: 300;
     font-style: normal;
@@ -47,6 +47,16 @@ pre {
 
 pre.no-border-radius {
     border-radius: 0 5px 5px 5px;
+}
+
+textarea {
+    white-space: pre-wrap;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: var(--terminal-color);
+    border-radius: 5px;
+    color: var(--code-color) !important;
+    resize: none;
 }
 
 code {
