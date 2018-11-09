@@ -1,8 +1,8 @@
 <h2>Creating a fat Jar</h2>
 
-<div class="alert alert-warning">
+<div class="alert alert-danger">
     <strong>Warning</strong>: Since Java 9, applications should be modular, and distributed
-    with tools like <a href="index.html#modular">jlink</a>. However, if you still need to have a 
+    with tools like <a href="index.html#modular" class="alert-link">jlink</a>. However, if you still need to have a 
     non modular application and you want to distribute a single jar, you can do a fat jar.
 </div>
 <p>
@@ -177,10 +177,10 @@ compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:mac"
     command line.
 </p>
 
-<div class="alert alert-warning">
+<div class="alert alert-danger">
     <strong>Warning</strong>: This is a discouraged tedious error-prone manual process 
-    that should be avoided by using the <a href="#Maven">Maven</a>'s shade plugin or 
-    the <a href="#Gradle">Gradle</a>'s jar task, in case <a href="index.html#modular">jlink</a>
+    that should be avoided by using the <a href="#Maven" class="alert-link">Maven</a>'s shade plugin or 
+    the <a href="#Gradle" class="alert-link">Gradle</a>'s jar task, in case <a href="index.html#modular" class="alert-link">jlink</a>
     is not applicable.
 </div>
 

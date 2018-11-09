@@ -17,7 +17,7 @@
     <strong>Note: </strong>
     If you get this message when you add JDK <span class="JDK_MAJOR">11</span>
 
-<pre><code>
+<pre class="alert"><code class="alert big">
 You selected a JRE that this version of Eclipse JDT does not yet support fully. Some of the features may not work as expected.
 </code></pre>
     
@@ -80,7 +80,7 @@ then install the patch from the Eclipse MarketPlace:
     <strong>Warning: </strong>
     If you now run the project it will compile but you will get this error:
 
-<pre><code>
+<pre class="alert"><code class="alert">
 Error: JavaFX runtime components are missing, and are required to run this application
 </code></pre>
 
@@ -105,7 +105,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     <strong>Warning: </strong>
     Make sure the option:
 
-<pre><code>
+<pre class="alert"><code class="alert">
 Use the -XstartOnFirstThread argument when launching with SWT
 </code></pre>
     
@@ -230,7 +230,7 @@ clean compile exec:java
     <strong>Warning: </strong>
     You might find this exception when running your project:
 
-<pre><code>
+    <pre class="alert"><code class="alert big">
 Exception in thread "WindowsNativeRunloopThread" java.lang.NoSuchMethodError: &lt;init&gt;
     at javafx.graphics/com.sun.glass.ui.win.WinApplication.staticScreen_getScreens(Native Method)
     at javafx.graphics/com.sun.glass.ui.Screen.initScreens(Screen.java:412)
@@ -249,7 +249,7 @@ A workaround for this is to edit <kbd>eclipse.ini</kbd> and change the <kbd>-vm<
 If that is not possible, another workaround is to add this VM argument to 
 <kbd>Run -> Run Configurations... -> Maven -> JRE -> VM Arguments</kbd>:
 
-<pre><code>
+<pre class="alert"><code class="alert">
 -Djava.library.path=C:\tmp
 </code></pre>
 
@@ -336,7 +336,7 @@ If that is not possible, another workaround is to add this VM argument to
     <strong>Warning: </strong>
     You might find this exception when running your project:
 
-<pre><code>
+<pre class="alert"><code class="alert big">
 Exception in thread "WindowsNativeRunloopThread" java.lang.NoSuchMethodError: &lt;init&gt;
     at javafx.graphics/com.sun.glass.ui.win.WinApplication.staticScreen_getScreens(Native Method)
     at javafx.graphics/com.sun.glass.ui.Screen.initScreens(Screen.java:412)
@@ -354,7 +354,7 @@ A workaround for this is to edit <kbd>eclipse.ini</kbd> and change the <kbd>-vm<
 
 If that is not possible, another workaround is to add this VM argument to the build file:
 
-<pre><code>
+<pre class="alert"><code class="alert">
 run {
     ...
     if (platform == 'win') {

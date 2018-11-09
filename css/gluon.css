@@ -49,6 +49,10 @@ pre.no-border-radius {
     border-radius: 0 5px 5px 5px;
 }
 
+pre.alert {
+    background: transparent;
+}
+
 textarea {
     white-space: pre-wrap;
     padding-left: 20px;
@@ -61,6 +65,14 @@ textarea {
 
 code {
     color: var(--code-color) !important;
+}
+
+code.alert {
+    color: var(--terminal-color) !important;
+}
+
+code.alert.big {
+    font-size: 0.9em;
 }
 
 kbd {
