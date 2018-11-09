@@ -56,7 +56,7 @@
     <a href="images/ide/intellij/ide/idea05.png" target="_blank"><img src="images/ide/intellij/ide/idea05.png" alt="JavaFX classes are recognized"/></a>
 </p>
 
-<div class="alert alert-warning">
+<div class="alert alert-danger">
     <strong>Warning: </strong>
     If you run now the project it will compile but you will get this error:
 
@@ -106,7 +106,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 
 <p>
     If you select the <kbd>org.codehous.mojo.archetypes:javafx</kbd> archetype, the latest version is from 2015, 
-    so it will rely on the old <kbd>jfxrt.jar</kbd>. But you can modify later on the pom based on this <a href="pom.xml">one</a>.
+    so it will rely on the old <kbd>jfxrt.jar</kbd>. But you can modify the pom based on this <a href="pom.xml">one</a> later on.
     <a href="images/ide/intellij/maven/idea01.png" target="_blank"><img src="images/ide/intellij/maven/idea01.png" alt="Create a Maven project"/></a>
    
     Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>. 
@@ -180,7 +180,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     <kbd>mainClassName</kbd> accordingly to <kbd>hellofx.HelloFX</kbd>.
 </p>
 <p>
-    Note we have added the required dependencies with the classifier for the platform. 
+    Unlike Maven, the platform needs to be manually determined and added as classifier to the dependencies.
     Since Gradle doesn't resolve transitive dependencies with classifiers, we need to add all 
     the modules (<kbd>javafx.base</kbd>, <kbd>javafx.graphics</kbd> and for <kbd>javafx.controls</kbd>)
     Synchronize the project and you will get the JavaFX dependencies.
