@@ -233,6 +233,11 @@ img.hello-world {
     padding-left: 27px;
 }
 
+ul.list-group-sub { 
+    display: none; 
+    padding-left: 0px;
+}
+
 .dropdown-item.active,
 .dropdown-item:active {
     color: #16181b;

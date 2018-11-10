@@ -6,6 +6,8 @@ $(function() {
     var JDK_VERSION = "11.0.1";
     var JFX_VERSION = "11.0.1";
     
+    var SAMPLES = "https://github.com/openjfx/samples/blob/master";
+    
     // Hide all non-active div
     $('.hidden').hide();
     
@@ -41,6 +43,11 @@ $(function() {
         loadContent(this);
     });
     
+    $(".list-group-item .dd").click(function(e) {
+        e.preventDefault();
+        var $target = $(this).closest('li').find("ul.list-group-sub").slideToggle();
+        $('ul.list-group-sub').not($target).slideUp();
+    });
     // Add href to report a problem buttons
     /*$('a[data-section]').each(function() {
         var emailWithSubject = "https://gluonhq.com/about-us/contact-us/?comment=" + 
@@ -62,6 +69,22 @@ $(function() {
             $(this).tab('show');
         });
     });
+    
+    $(document).on('click', ".scrollto", function(event) {
+            event.preventDefault(); 
+
+            var defaultAnchorOffset = 0;
+
+            var anchor = $(this).attr('data-attr-scroll');
+
+            var anchorOffset = $(anchor).attr('data-scroll-offset');
+            if (!anchorOffset)
+                anchorOffset = defaultAnchorOffset; 
+
+            $('html,body').animate({ 
+                scrollTop: $(anchor).offset().top - anchorOffset
+            }, 500);        
+        });
 
     // TODO: Find a better lib to include local html files
     // Because we are using the csi js lib to include the pages,
@@ -74,7 +97,8 @@ $(function() {
         $('.JFX_MAJOR').each(function() { $(this).text(JFX_MAJOR) });
         $('.JDK_VERSION').each(function() { $(this).text(JDK_VERSION) });
         $('.JFX_VERSION').each(function() { $(this).text(JFX_VERSION) });
-    
+        $('.samples').each(function() { $(this).attr("href", SAMPLES + $(this).attr('href')); });
+        
         $('code').each(function () {
             var content = $(this).html();
             var unselectableContent  = replaceAll(content, "$ ", "<span class=\"no-select\">$ </span>");
