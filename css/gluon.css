@@ -146,6 +146,19 @@ a:visited {
     font-weight: 300;
 }
 
+.sidenav {
+    position:absolute;
+    left:0%;
+    max-width: 25%;
+    margin: 0 0 0 5%;
+    overflow:hidden;
+}
+
+.content {
+    left: 25%;
+    max-width: 75%;
+}
+
 .content img {
     margin-bottom: 10px;
     display: block;
@@ -196,21 +209,42 @@ img.hello-world {
     .sidenav {
         display: none;
     }
+    .content {
+        left: 0%;
+        max-width: 100%;
+    }
 }
 
 .list-group-item,
-.list-group-item:visited {
+.list-group-item:visited,
+.list-group-item.checked .scrollto {
     padding: .25rem 1.25rem;
     border: inherit;
     color: #444;
 }
 
-.list-group-item.active {
+.list-group-item.checked .ref-group {
+    border: none;
+    color: #444;
+}
+
+.list-group-item.checked.active .ref-group {
+    border: none;
+    color: var(--base-color);
+}
+
+.list-group-item.active,
+.list-group-item.checked.active {
     background-color: white;
     color: var(--base-color);
     border-left: 3px solid var(--base-color);
     margin-left: 10px;
     padding-left: 7px;
+}
+
+.list-group-item.checked.active .scrollto {
+    color: var(--base-color);
+    border-left: 0px;
 }
 
 
