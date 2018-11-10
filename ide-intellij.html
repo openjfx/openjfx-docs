@@ -10,8 +10,8 @@
 </p>
 
 <p>
-    You can create a JavaFX <span class="JFX_MAJOR">11</span> project and use the <a href="#IDE">IDE</a> tools,
-    <a href="#Maven">Maven</a> or <a href="#Gradle">Gradle</a> build tools.
+    You can create a JavaFX <span class="JFX_MAJOR">11</span> modular or non-modular project and use the IDE tools,
+    Maven or Gradle build tools.
 </p>
 
 <h3>Non-modular projects</h3>
@@ -234,8 +234,29 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     <a href="images/ide/intellij/gradle/idea05.png" target="_blank"><img src="images/ide/intellij/gradle/idea05.png" alt="Run project"/></a>
 </p>
 <p>
-    You can also open a terminal and run <kbd>./gradlew run</kbd> to run the project.
+    You can also open a terminal and run:
 </p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-idea-non-gradle-1" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-idea-non-gradle-1" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-idea-non-gradle-1">
+<pre class="no-border-radius"><code>
+./gradlew run
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-idea-non-gradle-1">
+<pre><code>
+gradlew run
+</code></pre>
+    </div>
+</div>
 
 <h3>Modular projects</h3>
 
@@ -513,20 +534,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     You can open the Gradle window and click on <kbd>hellofx->Tasks->build->build</kbd> to 
     build the project, and on <kbd>hellofx->Tasks->application->run</kbd> to execute the project.
 
-    You can also open a terminal and run <kbd>./gradlew run</kbd> to run the project.
-</p>
-
-<h5>6. Create a custom runtime image</h5>
-
-<p>
-    To create a runtime image, set the <kbd>org.gradle.java.home</kbd> and <kbd>path.to.fx.mods</kbd> 
-    properties in the local <kbd>gradle.properties file</kbd>.
-    
-<a href="images/ide/intellij/modular/gradle/idea03.png" target="_blank"><img src="images/ide/intellij/modular/gradle/idea03.png" alt="jlink"/></a>
-    
-    Then run <kbd>hellofx->Tasks -> other -> jlink</kbd> task to create the image.
-    
-    To run the image:
+    You can also open a terminal and run:
 </p>
 
 <ul class="nav nav-tabs">
@@ -538,14 +546,48 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     </li>
 </ul>
 <div class="tab-content">
-    <div class="tab-pane active" id="nix-idea-gra-mav-1">
+    <div class="tab-pane active" id="nix-idea-mod-gra-1">
 <pre class="no-border-radius"><code>
-hellofx/bin/java -m hellofx/org.openjfx.MainApp
+./gradlew run
 </code></pre>
     </div>
-    <div class="tab-pane" id="win-idea-gra-mav-1">
+    <div class="tab-pane" id="win-idea-mod-gra-1">
 <pre><code>
-hellofx\bin\java -m hellofx/org.openjfx.MainApp
+gradlew run
+</code></pre>
+    </div>
+</div>
+
+<h5>6. Create a custom runtime image</h5>
+
+<p>
+    To create a runtime image, set the <kbd>org.gradle.java.home</kbd> and <kbd>path.to.fx.mods</kbd> 
+    properties in the local <kbd>gradle.properties file</kbd>.
+    
+    <a href="images/ide/intellij/modular/gradle/idea03.png" target="_blank"><img src="images/ide/intellij/modular/gradle/idea03.png" alt="jlink"/></a>
+    
+    Then run <kbd>hellofx->Tasks -> other -> jlink</kbd> task to create the image.
+    
+    To run the image:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-idea-mod-gra-2" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-idea-mod-gra-2" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-idea-mod-gra-2">
+<pre class="no-border-radius"><code>
+build/hellofx/bin/java -m hellofx/org.openjfx.MainApp
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-idea-mod-gra-2">
+<pre><code>
+build\hellofx\bin\java -m hellofx/org.openjfx.MainApp
 </code></pre>
     </div>
 </div>
