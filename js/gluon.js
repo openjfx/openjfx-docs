@@ -90,12 +90,6 @@ $(function() {
     // Replace all constants
     // sticky sidenav
     $(document).ready(function() {
-        $('.JDK_MAJOR').each(function() { $(this).text(JDK_MAJOR) });
-        $('.JFX_MAJOR').each(function() { $(this).text(JFX_MAJOR) });
-        $('.JDK_VERSION').each(function() { $(this).text(JDK_VERSION) });
-        $('.JFX_VERSION').each(function() { $(this).text(JFX_VERSION) });
-        $('.samples').each(function() { $(this).attr("href", SAMPLES + $(this).attr('href')); });
-        
         var div_top = $('.content').offset().top;
         $(window).scroll(function() {
             var windowTop = $(window).scrollTop();
@@ -113,6 +107,12 @@ $(function() {
     
     // Replace all $ with non-selectable span
     setTimeout(function() {
+        $('.JDK_MAJOR').each(function() { $(this).text(JDK_MAJOR) });
+        $('.JFX_MAJOR').each(function() { $(this).text(JFX_MAJOR) });
+        $('.JDK_VERSION').each(function() { $(this).text(JDK_VERSION) });
+        $('.JFX_VERSION').each(function() { $(this).text(JFX_VERSION) });
+        $('.samples').each(function() { $(this).attr("href", SAMPLES + $(this).attr('href')); });
+        
         $('code').each(function () {
             var content = $(this).html();
             var unselectableContent  = replaceAll(content, "$ ", "<span class=\"no-select\">$ </span>");
