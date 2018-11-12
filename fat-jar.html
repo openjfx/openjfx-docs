@@ -1,12 +1,12 @@
 <h2>Creating a fat Jar</h2>
 
-<div class="alert alert-warning">
+<div class="alert alert-danger">
     <strong>Warning</strong>: Since Java 9, applications should be modular, and distributed
-    with tools like <a href="index.html#modular">jlink</a>. However, if you still need to have a 
+    with tools like <a href="index.html#modular" class="alert-link">jlink</a>. However, if you still need to have a 
     non modular application and you want to distribute a single jar, you can do a fat jar.
 </div>
 <p>
-    You can create a runnable fat jar for your JavaFX 11 project on
+    You can create a runnable fat jar for your JavaFX <span class="JFX_MAJOR">11</span> project on
     <a href="#Maven">Maven</a>, <a href="#Gradle">Gradle</a> or even 
     <a href="#command-line">command line</a>.
 </p>
@@ -27,8 +27,8 @@
 </p>
 <p>
     A simple Maven example can be found in this  
-    <a href="https://github.com/openjfx/samples/tree/master/CommandLine/Non-modular/Maven" target="_blank">project</a>.
-    The <a href="https://github.com/openjfx/samples/blob/master/CommandLine/Non-modular/Maven/hellofx/pom.xml" target="_blank">pom.xml</a> 
+    <a class="samples" href="/CommandLine/Non-modular/Maven" target="_blank">project</a>.
+    The <a class="samples" href="/CommandLine/Non-modular/Maven/hellofx/pom.xml" target="_blank">pom.xml</a> 
     file shows how to create a runnable fat jar for this <kbd>hellofx</kbd> project with the Maven shade plugin.
 </p>
 
@@ -73,7 +73,7 @@ java -jar shade\hellofx.jar
     only the ones from <kbd>javafx.graphics</kbd>:
 </p>
 
-<textarea rows="22" cols="80" style="border:none;" readonly>
+<textarea rows="22" style="border:none;width:100%" readonly>
     <dependencies>
         ...
         <dependency>
@@ -109,9 +109,9 @@ java -jar shade\hellofx.jar
 
 <p>
     A simple Gradle example can be found in this  
-    <a href="https://github.com/openjfx/samples/tree/master/CommandLine/Non-modular/Gradle" target="_blank">project</a>.
+    <a class="samples" href="/CommandLine/Non-modular/Gradle" target="_blank">project</a>.
     In order to create a runnable fat jar for this project with Gradle,
-    modify the <kbd>jar</kbd> task in the <a href="https://github.com/openjfx/samples/blob/master/CommandLine/Non-modular/Gradle/hellofx/build.gradle" target="_blank">build</a> 
+    modify the <kbd>jar</kbd> task in the <a class="samples" href="/CommandLine/Non-modular/Gradle/hellofx/build.gradle" target="_blank">build</a> 
     file to include the launcher class:
 </p>
 
@@ -165,28 +165,28 @@ java -jar build\libs\hellofx.jar
 </p>
 
 <pre><code>
-compile "org.openjfx:javafx-graphics:11:win"
-compile "org.openjfx:javafx-graphics:11:linux"
-compile "org.openjfx:javafx-graphics:11:mac"
+compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:win"
+compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:linux"
+compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:mac"
 </code></pre>
 
 <a name="command-line"></a><h3>Command Line</h3>
 
 <p>
-    Finally, you can also create a runnable fat jar for your JavaFX 11 project on
+    Finally, you can also create a runnable fat jar for your JavaFX <span class="JFX_MAJOR">11</span> project on
     command line.
 </p>
 
-<div class="alert alert-warning">
+<div class="alert alert-danger">
     <strong>Warning</strong>: This is a discouraged tedious error-prone manual process 
-    that should be avoided by using the <a href="#Maven">Maven</a>'s shade plugin or 
-    the <a href="#Gradle">Gradle</a>'s jar task, in case <a href="index.html#modular">jlink</a>
+    that should be avoided by using the <a href="#Maven" class="alert-link">Maven</a>'s shade plugin or 
+    the <a href="#Gradle" class="alert-link">Gradle</a>'s jar task, in case <a href="index.html#modular" class="alert-link">jlink</a>
     is not applicable.
 </div>
 
 <p>
     An example can be found in this  
-    <a href="https://github.com/openjfx/samples/tree/master/CommandLine/Non-modular/CLI" target="_blank">project</a>.
+    <a class="samples" href="/CommandLine/Non-modular/CLI" target="_blank">project</a>.
     
     Download the appropriate
     <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX SDK</a>
@@ -209,12 +209,12 @@ compile "org.openjfx:javafx-graphics:11:mac"
 <div class="tab-content">
     <div class="tab-pane active" id="nix-fxpath">
 <pre class="no-border-radius"><code>
-export PATH_TO_FX=/path/to/javafx-sdk-11/lib
+export PATH_TO_FX=/path/to/javafx-sdk-<span class="JFX_VERSION">11</span>/lib
 </code></pre>
     </div>
     <div class="tab-pane" id="win-fxpath">
 <pre><code>
-set PATH_TO_FX="path\to\javafx-sdk-11\lib"
+set PATH_TO_FX="path\to\javafx-sdk-<span class="JFX_VERSION">11</span>\lib"
 </code></pre>
     </div>
 </div>
