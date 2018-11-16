@@ -479,46 +479,26 @@ The type Stage from module javafx.graphics may not be accessible to clients due 
 
 <div class="alert alert-danger">
     <strong>Warning: </strong>
-    If you run the project without any options, you will get an exception:
+    If you run the project without any options, you might get an exception:
 
 <pre class="alert"><code class="alert big">
 Error occurred during initialization of boot layer
 java.lang.module.FindException: Module javafx.graphics not found, required by hellofx
 </code></pre>
+    
+    This exception happens because the Eclipse ant task doesn't add the User Library <kbd>JavaFX11</kbd> 
+    to the <kbd>module-path</kbd>. 
 </div>
 
 <p>
-    This exception happens because the Eclipse ant task overrides the <kbd>module-path</kbd>.
-    
-    To prevent this issue click on <kbd>Run -> Run Configurations... -> Java Application -> Dependencies</kbd>, 
-    select <kbd>Override Dependencies...</kbd>, and add:
+    This issue has been fixed starting with Eclipse <a href="https://www.eclipse.org/downloads/packages/release/2018-12/m2">2018-12</a> 
+    (4.10.0M2 Build id: 20181108-1653).
 </p>
+<p> 
+    For older versions, this can be solved by adding the JavaFX required jars directly to the module path in
+    <kbd>Run -> Run Configurations... -> Java Application -> Dependencies</kbd>.
 
-<ul class="nav nav-tabs">
-    <li class="nav-item">
-        <a class="nav-link active" href="#nix-eclipse-mod-ide-1" data-toggle="tab">Linux/Mac</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#win-eclipse-mod-ide-1" data-toggle="tab">Windows</a>
-    </li>
-</ul>
-<div class="tab-content">
-    <div class="tab-pane active" id="nix-eclipse-mod-ide-1">
-<pre class="no-border-radius"><code>
---module-path /path/to/javafx-sdk-11/lib:bin/hellofx
-</code></pre>
-    </div>
-    <div class="tab-pane" id="win-eclipse-mod-ide-1">
-<pre><code>
---module-path "\path\to\javafx-sdk-11\lib;bin\hellofx"
-</code></pre>
-    </div>
-</div>
-    
-<p>    
-    <a href="images/ide/eclipse/modular/ide/eclipse02.png" target="_blank"><img src="images/ide/eclipse/modular/ide/eclipse02.png" alt="Override dependencies"/></a>
-
-    and press <kbd>Override</kbd>. Note also that environment variables are not permitted.    
+    <a href="images/ide/eclipse/modular/ide/eclipse02.png" target="_blank"><img src="images/ide/eclipse/modular/ide/eclipse02.png" alt="Add required dependencies"/></a>
 </p>
 
 <h5>5. Run the project</h5>
