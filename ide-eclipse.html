@@ -664,6 +664,8 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     Note the use of the <kbd>org.javamodularity.moduleplugin</kbd> plugin, that removes the necessity of setting the module-path
     for the compile and run task.
     
+    Note also that the use of the <kbd>eclipse</kbd> plugin is required to include the modules to the module path.
+    
     <a href="images/ide/eclipse/modular/gradle/eclipse01.png" target="_blank"><img src="images/ide/eclipse/modular/gradle/eclipse01.png" alt="Update the build"/></a>
 </p>
 
@@ -678,12 +680,6 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     
     <a href="images/ide/eclipse/modular/gradle/eclipse02.png" target="_blank"><img src="images/ide/eclipse/modular/gradle/eclipse02.png" alt="module-info"/></a>
 </p>
-
-<div class="alert alert-danger">
-    <strong>Warning: </strong>
-    After adding the <kbd>module-info</kbd> class, Eclipse fails to resolve the JavaFX classpath, so the <kbd>JavaFX11</kbd> 
-    library has to be included in <kbd>Properties -> Java Build Path -> Libraries -> Modulepath</kbd>.
-</div>
 
 <h5>3. Add the source code</h5>
 
