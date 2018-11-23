@@ -91,12 +91,12 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 <div class="tab-content">
     <div class="tab-pane active" id="nix-idea-non-ide-1">
 <pre class="no-border-radius"><code>
---module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml
+--module-path /path/to/javafx-sdk-<span class="JFX_VERSION">11</span>/lib --add-modules=javafx.controls,javafx.fxml
 </code></pre>
     </div>
     <div class="tab-pane" id="win-idea-non-ide-1">
 <pre><code>
---module-path %PATH_TO_FX% --add-modules=javafx.controls,javafx.fxml
+--module-path "\path\to/javafx-sdk-<span class="JFX_VERSION">11</span>\lib" --add-modules=javafx.controls,javafx.fxml
 </code></pre>
     </div>
 </div>
@@ -110,6 +110,21 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     
     Click apply and close the dialog.
 </p>
+
+<p>
+    Alternatively, you can define a global variable that can be used in future projects. Go to
+    <kbd>Preferences (File -> Settings) -> Appearance & Behavior -> Path Variables</kbd>, and define the name 
+    of the variable as <kbd>PATH_TO_FX</kbd>, and browse to the lib folder of the JavaFX SDK to set its value, 
+    and click apply.
+    <a href="images/ide/intellij/ide/idea07.png" target="_blank"><img src="images/ide/intellij/ide/idea07.png" alt="Path Variable"/></a>
+</p>
+<p>
+    Then you can refer this global variable when setting the VM options as:
+</p>
+
+<pre><code>
+--module-path ${PATH_TO_FX} --add-modules=javafx.controls,javafx.fxml
+</code></pre>
 
 <h5>5. Run the project</h5>
 
