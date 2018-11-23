@@ -1,7 +1,7 @@
-<h2>Creating modular projects</h2>
+<h2>Runtime images</h2>
 
 <p>
-    If you have a modular JavaFX <span class="JFX_MAJOR">11</span> project then you need to follow these instructions.
+    If you want to create a runtime image of your JavaFX <span class="JFX_MAJOR">11</span> project follow these instructions.
 </p>
 
 <p>
@@ -36,10 +36,10 @@ set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
     </div>
 </div>
 
-<h3>Command Line</h3>
+<div id="MOD-CLI"></div><h3>Command Line</h3>
 
 <p>
-    You can run or create a runtime of your JavaFX <span class="JFX_MAJOR">11</span> project from command line. A simple example can be found in this 
+    You can run or create a runtime image of your JavaFX <span class="JFX_MAJOR">11</span> project from command line. A simple example can be found in this 
     <a class="samples" href="/CommandLine/Modular/CLI" target="_blank">project</a>.
 </p>
 
@@ -63,12 +63,12 @@ set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
 <div class="tab-content">
     <div class="tab-pane active" id="nix-javacd">
 <pre class="no-border-radius"><code>
-javac --module-path $PATH_TO_FX -d mods/hellofx $(find src/main/java -name "*.java")
+javac --module-path $PATH_TO_FX -d mods/hellofx $(find src/ -name "*.java")
 </code></pre>
     </div>
     <div class="tab-pane" id="win-javacd">
 <pre><code>
-dir /s /b src\main\java\*.java > sources.txt & javac --module-path %PATH_TO_FX% -d mods/hellofx @sources.txt & del sources.txt
+dir /s /b src\*.java > sources.txt & javac --module-path %PATH_TO_FX% -d mods/hellofx @sources.txt & del sources.txt
 </code></pre>
     </div>
 </div>
@@ -89,12 +89,12 @@ dir /s /b src\main\java\*.java > sources.txt & javac --module-path %PATH_TO_FX% 
 <div class="tab-content">
     <div class="tab-pane active" id="nix-javacdmod">
 <pre class="no-border-radius"><code>
-javac --module-path $PATH_TO_FX_MODS -d mods/hellofx $(find src/main/java -name "*.java")
+javac --module-path $PATH_TO_FX_MODS -d mods/hellofx $(find src/ -name "*.java")
 </code></pre>
     </div>
     <div class="tab-pane" id="win-javacdmod">
 <pre><code>
-dir /s /b src\main\java\*.java > sources.txt & javac --module-path %PATH_TO_FX_MODS% -d mods/hellofx @sources.txt & del sources.txt
+dir /s /b src\*.java > sources.txt & javac --module-path %PATH_TO_FX_MODS% -d mods/hellofx @sources.txt & del sources.txt
 </code></pre>
     </div>
 </div>
@@ -185,7 +185,7 @@ hellofx\bin\java -m hellofx/hellofx.HelloFX
     This JRE is platform-specific.
 </div>
 
-<h3>Maven</h3>
+<div id="MOD-Maven"></div><h3>Maven</h3>
 
 <p>
     You can run or create a runtime of your JavaFX <span class="JFX_MAJOR">11</span> Maven project. A simple example can be found in this  
@@ -211,7 +211,7 @@ mvn clean compile package exec:java
     However, to create a custom runtime, the same steps referred <a href="#jlink">above</a> are required.
 </p>
 
-<h3>Gradle</h3>
+<div id="MOD-Gradle"></div><h3>Gradle</h3>
 
 <p>
     You can run or create a runtime of your JavaFX <span class="JFX_MAJOR">11</span> Gradle project. A simple example can be found in this 
@@ -253,7 +253,7 @@ gradlew run
 
 <p>
     To create a custom runtime the referred <a href="#jlink">steps</a> have been added to the <kbd>jlink</kbd> task 
-    included in the build file. To create the image and run it do:
+    included in the build file. 
 </p>
 
 <ul class="nav nav-tabs">
@@ -275,16 +275,448 @@ build/hellofx/bin/java -m hellofx/hellofx.HelloFX
     </div>
     <div class="tab-pane" id="win-cligradlelink">
 <pre><code>
-export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
+set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
 gradlew jlink
 build\hellofx\bin\java -m hellofx/hellofx.HelloFX 
 </code></pre>
     </div>
 </div>
 
-<h3>Non-modular application</h3>
+<div id="JDK-FX"></div><h3>Custom JDK+JavaFX image</h3>
 
 <p>
-    If you have a non-modular JavaFX <span class="JFX_MAJOR">11</span> project and you can't use <kbd>jlink</kbd>, you can still do a <a href="index.html#fat-jar">fat-jar</a>.
+    You can use <kbd>jlink</kbd> to create a runtime image that includes some or all the JavaFX modules, 
+    without being attached to a given project. 
 </p>
+
+<p>
+    With this image you will be able to run JavaFX modular or not modular projects, use it as a new JRE from your
+    IDE to create regular JavaFX projects, or even use its <kbd>jlink</kbd> command to create a new 
+    custom image for your project.
+</p>
+
+<p>
+    For instance, you can create an image that contains the <kbd>java.se</kbd> 
+    <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.se/module-summary.html" target="_blank">module</a> and the JavaFX modules, 
+    by running:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-jdkfx" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-jdkfx" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-jdkfx">
+<pre class="no-border-radius"><code>
+export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
+$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS --add-modules=java.se,javafx.fxml,javafx.web,javafx.swing --bind-services --output /path/to/jdkfx-<span class="JFX_VERSION">11</span>.jdk
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-jdkfx">
+<pre><code>
+set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
+%JAVA_HOME%\bin\jlink --module-path %PATH_TO_FX_MODS% --add-modules=java.se,javafx.controls,javafx.fxml --bind-services --output \path\to\jdkfx-<span class="JFX_VERSION">11</span>
+</code></pre>
+    </div>
+</div>
+
+<h4>Use custom image</h4>
+
+<p>
+    With this custom image, you can set a new <kbd>JAVA_HOME</kbd>:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-jdkfx-home" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-jdkfx-home" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-jdkfx-home">
+<pre class="no-border-radius"><code>
+export JAVA_HOME=/path/to/jdkfx-<span class="JFX_VERSION">11</span>.jdk
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-jdkfx-home">
+<pre><code>
+set JAVA_HOME="path\to\jdkfx-<span class="JFX_VERSION">11</span>"
+</code></pre>
+    </div>
+</div>
+
+<p>
+    Since the JavaFX modules are already part of the runtime, now you can run the HelloFX <a href="" target="_blank">sample</a> 
+    without the need of adding <kbd>PATH_TO_FX</kbd> anymore, like:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-jdkfx-run" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-jdkfx-run" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-jdkfx-run">
+<pre class="no-border-radius"><code>
+javac -d mods/hellofx $(find src/ -name "*.java")
+java --module-path mods -m hellofx/hellofx.HelloFX
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-jdkfx-run">
+<pre><code>
+dir /s /b src\*.java > sources.txt & javac -d mods/hellofx @sources.txt & del sources.txt
+java --module-path mods -m hellofx/hellofx.HelloFX
+</code></pre>
+    </div>
+</div>
+
+<p>
+    Or add the image to your IDE:
+
+    <a href="images/modular/netbeans01.png" target="_blank"><img src="images/modular/netbeans01.png" alt="Adding JDK+FX platform"/></a>
+    
+    And start creating JavaFX projects.
+    
+    <a href="images/modular/netbeans02.png" target="_blank"><img src="images/modular/netbeans02.png" alt="Create JavaFX project"/></a>
+    
+    And run them
+    
+    <a href="images/modular/netbeans03.png" target="_blank"><img src="images/modular/netbeans03.png" alt="Run JavaFX project"/></a>
+</p>
+
+<div class="alert alert-warning">
+    <strong>Note: </strong>
+    This custom JRE is platform-specific and it is not intended for distribution, and if there is a new JDK or a new 
+    JavaFX SDK, it has to be created all over again. 
+    For distribution, the (soon to be released) <kbd>jpackager</kbd> tool should be used.
+</div>
+
+<div id="Non-Mod"></div><h3>Non-modular application</h3>
+
+<p>
+    Since Java 9, applications should be modular, and distributed with tools like <a href="index.html#modular">jlink</a>.
+    However, if you have a non-modular JavaFX <span class="JFX_MAJOR">11</span> project or you can't use <kbd>jlink</kbd> because you
+    have non-modular dependencies, you can still do a fat jar.
+</p>
+
+<p>
+    As explained <a href="http://mail.openjdk.java.net/pipermail/openjfx-dev/2018-June/021977.html" target="_blank">here</a>,
+    in order to create a runnable jar with all the required JavaFX dependencies, 
+    you will need to use a launcher class that doesn't extend from <kbd>Application</kbd>.
+</p>
+
+<h4>Maven</h4>
+
+<p>
+    If you develop your JavaFX applications using Maven, you don't have to download
+    the JavaFX SDK. Just specify the modules and the versions you want in the <kbd>pom.xml</kbd> file,
+    and the build system will download the required modules, including the native libraries 
+    for your platform.
+</p>
+<p>
+    A simple Maven example can be found in this  
+    <a class="samples" href="/CommandLine/Non-modular/Maven" target="_blank">project</a>.
+    The <a class="samples" href="/CommandLine/Non-modular/Maven/hellofx/pom.xml" target="_blank">pom.xml</a> 
+    file shows how to create a runnable fat jar for this <kbd>hellofx</kbd> project with the Maven shade plugin.
+</p>
+
+<p>
+    Run the plugin to create the fat jar:
+</p>
+
+<pre><code>
+mvn compile package
+</code></pre>
+
+<p>
+    Run the application using:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-maven" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-maven" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-maven">
+<pre class="no-border-radius"><code>
+java -jar shade/hellofx.jar
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-maven">
+<pre><code>
+java -jar shade\hellofx.jar
+</code></pre>
+    </div>
+</div>
+
+<h5>Cross-platform jar</h5>
+
+<p>
+    You can create a cross-platform fat jar by adding the dependencies from the 
+    three platforms that require native libraries to your pom file, in this sample 
+    only the ones from <kbd>javafx.graphics</kbd>:
+</p>
+
+<textarea rows="22" style="border:none;width:100%" readonly>
+    <dependencies>
+        ...
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>11</version>
+            <classifier>win</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>11</version>
+            <classifier>linux</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-graphics</artifactId>
+            <version>11</version>
+            <classifier>mac</classifier>
+        </dependency>
+    </dependencies>
+</textarea>
+
+<h4>Gradle</h4>
+
+<p>
+    If you develop your JavaFX applications using Gradle, you don't have to download
+    the JavaFX SDK. Just specify the modules and the versions you want in the <kbd>build.gradle</kbd> file,
+    and the build system will download the required modules, 
+    including the native libraries for your platform. However, for Gradle we need to 
+    find and specify the platform/OS as classifier.
+</p>
+
+<p>
+    A simple Gradle example can be found in this  
+    <a class="samples" href="/CommandLine/Non-modular/Gradle" target="_blank">project</a>.
+    In order to create a runnable fat jar for this project with Gradle,
+    modify the <kbd>jar</kbd> task in the <a class="samples" href="/CommandLine/Non-modular/Gradle/hellofx/build.gradle" target="_blank">build</a> 
+    file to include the launcher class:
+</p>
+
+<pre><code>
+mainClassName = 'hellofx.Launcher'
+jar {
+    manifest {
+        attributes 'Main-Class': 'hellofx.Launcher'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+</code></pre>
+
+<p>
+    Now run the task to create the fat jar and run it:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-gradle" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-gradle" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-gradle">
+<pre class="no-border-radius"><code>
+./gradlew jar
+
+java -jar build/libs/hellofx.jar
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-gradle">
+<pre><code>
+gradlew.bat jar
+
+java -jar build\libs\hellofx.jar
+</code></pre>
+    </div>
+</div>
+
+<h5>Cross-platform jar</h5>
+
+<p>
+    You can create a cross-platform fat jar by adding the dependencies from the 
+    three platforms that require native libraries to the build file, in this sample 
+    only the ones from <kbd>javafx.graphics</kbd>:
+</p>
+
+<pre><code>
+compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:win"
+compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:linux"
+compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:mac"
+</code></pre>
+
+<a name="command-line"></a><h3>Command Line</h3>
+
+<p>
+    Finally, you can also create a runnable fat jar for your JavaFX <span class="JFX_MAJOR">11</span> project on
+    command line.
+</p>
+
+<div class="alert alert-danger">
+    <strong>Warning</strong>: This is a discouraged tedious error-prone manual process 
+    that should be avoided by using the <a href="#Maven" class="alert-link">Maven</a>'s shade plugin or 
+    the <a href="#Gradle" class="alert-link">Gradle</a>'s jar task, in case <a href="index.html#modular" class="alert-link">jlink</a>
+    is not applicable.
+</div>
+
+<p>
+    An example can be found in this  
+    <a class="samples" href="/CommandLine/Non-modular/CLI" target="_blank">project</a>.
+    
+    Download the appropriate
+    <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX SDK</a>
+    for your operating system and unzip it to a desired location.
+</p>
+
+<p>
+    Add an environment variable pointing to the lib directory of the runtime:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-fxpath" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-fxpath" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-fxpath">
+<pre class="no-border-radius"><code>
+export PATH_TO_FX=/path/to/javafx-sdk-<span class="JFX_VERSION">11</span>/lib
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-fxpath">
+<pre><code>
+set PATH_TO_FX="path\to\javafx-sdk-<span class="JFX_VERSION">11</span>\lib"
+</code></pre>
+    </div>
+</div>
+
+<p>
+    Compile the project:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-javacout" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-javacout" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-javacout">
+<pre class="no-border-radius"><code>
+javac --module-path $PATH_TO_FX --add-modules=javafx.controls -d out $(find src/main/java -name "*.java")
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-javacout">
+<pre><code>
+dir /s /b src\main\java\*.java > sources.txt & javac --module-path %PATH_TO_FX% --add-modules=javafx.controls -d out @sources.txt & del sources.txt
+</code></pre>
+    </div>
+</div>
+
+<p>
+    And create the fat jar, adding the JavaFX required jars and the platform-specific native libraries. For 
+    the <kbd>hellofx</kbd> project:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-jar" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-jar" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-jar">
+<pre class="no-border-radius"><code>
+find $PATH_TO_FX/{javafx.base.jar,javafx.graphics.jar,javafx.controls.jar} -exec unzip -nq {} -d out \;
+
+#uncomment for Linux:
+#cp $PATH_TO_FX/{libprism*.so,libjavafx*.so,libglass*.so,libdecora_sse.so} out
+
+#uncomment for Mac:
+#cp $PATH_TO_FX/{libprism*.dylib,libjavafx*.dylib,libglass.dylib,libdecora_sse.dylib} out
+
+rm out/META-INF/MANIFEST.MF out/module-info.class
+mkdir libs
+jar --create --file=libs/hellofx.jar --main-class=hellofx.Launcher -C out .
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-jar">
+<pre><code>
+cd out & jar xf "%PATH_TO_FX%\javafx.base.jar" & jar xf "%PATH_TO_FX%\javafx.graphics.jar" & jar xf "%PATH_TO_FX%\javafx.controls.jar" & cd ..
+copy "%PATH_TO_FX%\..\bin\prism*.dll" out & copy "%PATH_TO_FX%\..\bin\javafx*.dll" out & copy "%PATH_TO_FX%\..\bin\glass.dll" out && copy "%PATH_TO_FX%\..\bin\decora_sse.dll" out
+del out\META-INF\MANIFEST.MF & del out\module-info.class
+mkdir libs
+jar --create --file=libs/hellofx.jar --main-class=hellofx.Launcher -C out .
+</code></pre>
+    </div>
+</div>
+
+<p>
+    And after the jar is built, you can run it:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-jarrun" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-jarrun" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-jarrun">
+<pre class="no-border-radius"><code>
+java -jar libs/hellofx.jar
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-jarrun">
+<pre><code>
+java -jar libs\hellofx.jar
+</code></pre>
+    </div>
+</div>
+
+<div class="alert alert-warning">
+    <strong>Note: </strong>
+    This JRE is platform-specific. However it can be easily a multi-platform jar if the
+    different native libraries from each platform were included. This requires downloading the JavaFX SDKs
+    for all the platforms, extracting all the necessary jars (for instance, <kbd>javafx.graphics</kbd> is 
+    different for each platform), and copying all the native libraries as shown above. As it was mentioned 
+    above, this process shouldn't be done manually.
+</div>
 

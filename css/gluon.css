@@ -36,6 +36,14 @@ h1 {
     margin-bottom: 40px;
 }
 
+h2 {
+    margin-bottom: 30px;
+}
+
+h3 {
+    margin-bottom: 20px;
+}
+
 pre {
     white-space: pre-wrap;
     padding-bottom: 20px;
