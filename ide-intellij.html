@@ -205,10 +205,16 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     <kbd>mainClassName</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
 </p>
 <p>
-    Unlike Maven, the platform needs to be manually determined and added as classifier to the dependencies.
-    Since Gradle doesn't resolve transitive dependencies with classifiers, we need to add all 
-    the modules (<kbd>javafx.base</kbd>, <kbd>javafx.graphics</kbd> and for <kbd>javafx.controls</kbd>).
-    
+    Similar to Maven, we can declare the required JavaFX modules in the <kbd>build.gradle</kbd> file.
+    However, for Gradle we need to specify the JavaFX gradle plugin:
+</p>
+<pre><code>
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+</code></pre>
+
+<p>   
     Synchronize the project and you will get the JavaFX dependencies.
     <a href="images/ide/intellij/gradle/idea03.png" target="_blank"><img src="images/ide/intellij/gradle/idea03.png" alt="Update the build"/></a>
     As for any other Gradle dependencies, these jars can be found in the local <kbd>.gradle</kbd> repository.
@@ -333,12 +339,12 @@ gradlew run
 <div class="tab-content">
     <div class="tab-pane active" id="nix-idea-mod-ide-1">
 <pre class="no-border-radius"><code>
---module-path $PATH_TO_FX:mods/production --add-modules=javafx.controls,javafx.fxml
+--module-path $PATH_TO_FX:mods/production
 </code></pre>
     </div>
     <div class="tab-pane" id="win-idea-mod-ide-1">
 <pre><code>
---module-path "%PATH_TO_FX%;mods\production" --add-modules=javafx.controls,javafx.fxml
+--module-path "%PATH_TO_FX%;out\production"
 </code></pre>
     </div>
 </div>
@@ -503,8 +509,8 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     <kbd>mainClassName</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
 </p>
 <p>
-    Note the use of the <kbd>org.javamodularity.moduleplugin</kbd> plugin, that removes the necessity of setting the module-path
-    for the compile and run task.
+    Note the use of the <kbd>org.openjfx.javafxplugin</kbd> plugin, that removes the necessity of adding the 
+    JavaFX dependencies and setting the module-path for the compile and run task for them.
     
     <a href="images/ide/intellij/modular/gradle/idea01.png" target="_blank"><img src="images/ide/intellij/modular/gradle/idea01.png" alt="Update the build"/></a>
 </p>

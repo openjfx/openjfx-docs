@@ -79,6 +79,12 @@ $(function() {
         });
     });
     
+    $(document).on('click', '.modular-jlink-action', function(event) {
+        event.preventDefault(); 
+        var anchor = $('.jlink');
+        $('html,body').scrollTop($(anchor).offset().top);
+    });
+    
     // Scroll to anchor from list-group-sub links
     $(document).on('click', ".scrollto", function(event) {
         event.preventDefault(); 

@@ -307,10 +307,15 @@ If that is not possible, another workaround is to add this VM argument to
     <kbd>mainClassName</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
 </p>
 <p>
-    Note we have added the required dependencies with the classifier for the platform. 
-    Since Gradle doesn't resolve transitive dependencies with classifiers, we need to add all 
-    the modules (<kbd>javafx.base</kbd>, <kbd>javafx.graphics</kbd> and for <kbd>javafx.controls</kbd>).
-    
+    Similar to Maven, we can declare the required JavaFX modules in the <kbd>build.gradle</kbd> file.
+    However, for Gradle we need to specify the JavaFX gradle plugin:
+</p>
+<pre><code>
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+</code></pre>
+<p>
     Refresh the gradle project and you will get the JavaFX dependencies.
     <a href="images/ide/eclipse/gradle/eclipse03.png" target="_blank"><img src="images/ide/eclipse/gradle/eclipse03.png" alt="Update the build"/></a>
     As for any other Gradle dependencies, these jars can be found in the local <kbd>.gradle</kbd> repository.
@@ -324,7 +329,8 @@ If that is not possible, another workaround is to add this VM argument to
     and the <a class="samples" href="/IDE/Eclipse/Non-Modular/Gradle/hellofx/src/main/resources/org/openjfx/scene.fxml" target="_blank">FXML</a> and 
     and the <a class="samples" href="/IDE/Eclipse/Non-Modular/Gradle/hellofx/src/main/resources/org/openjfx/styles.css" target="_blank">css</a>  
     files.
-    
+</p>
+<p>    
     You can add a main class <kbd>MainApp</kbd>, and an <kbd>FXMLController</kbd> class, and add to resources the <kbd>FXML</kbd> file.
     
     <a href="images/ide/eclipse/maven/eclipse04.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse04.png" alt="Add JavaFX project"/></a>
@@ -398,8 +404,7 @@ If that is not possible, another workaround is to add this VM argument to the bu
 
 <pre class="alert"><code class="alert">
 run {
-    ...
-    if (platform == 'win') {
+    if (System.getProperty("os.name").startsWith("Windows")) {
         systemProperty "java.library.path", "C:\tmp"
     }
 }
@@ -661,9 +666,10 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
 </p>
 
 <p>
-    Note the use of the <kbd>org.javamodularity.moduleplugin</kbd> plugin, that removes the necessity of setting the module-path
-    for the compile and run task.
-    
+    Note the use of the <kbd>org.openjfx.javafxplugin</kbd> plugin, that removes the necessity of adding the 
+    JavaFX dependencies and setting the module-path for the compile and run task for them.
+</p>
+<p>   
     Note also that the use of the <kbd>eclipse</kbd> plugin is required to include the modules to the module path.
     
     <a href="images/ide/eclipse/modular/gradle/eclipse01.png" target="_blank"><img src="images/ide/eclipse/modular/gradle/eclipse01.png" alt="Update the build"/></a>
