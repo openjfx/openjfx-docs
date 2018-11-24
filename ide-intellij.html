@@ -294,8 +294,12 @@ gradlew run
 
 <p>    
     Go to <kbd>File -> Project Structure -> Project</kbd>, and set the project SDK to <span class="JDK_MAJOR">11</span>. 
-    You can also set the language level to 11.
-
+    You can also set the language level to 11 and change the default compiler output directory 
+    <kbd>out</kbd> to <kbd>mods</kbd>.
+    
+    <a href="images/ide/intellij/modular/ide/idea00.png" target="_blank"><img src="images/ide/intellij/modular/ide/idea00.png" alt="mods output"/></a>
+</p>
+<p>
     Go to <kbd>File -> Project Structure -> Libraries</kbd> and add the JavaFX <span class="JFX_MAJOR">11</span> SDK as a library to the project. 
     Point to the <kbd>lib</kbd> folder of the JavaFX SDK.
 </p>
@@ -344,7 +348,7 @@ gradlew run
     </div>
     <div class="tab-pane" id="win-idea-mod-ide-1">
 <pre><code>
---module-path "%PATH_TO_FX%;out\production"
+--module-path "%PATH_TO_FX%;mods\production"
 </code></pre>
     </div>
 </div>
