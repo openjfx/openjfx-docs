@@ -125,10 +125,10 @@ java --module-path "%PATH_TO_FX%;mods" -m hellofx/hellofx.HelloFX
     </div>
 </div>
 
-<a name="jlink"></a><h4>jlink</h4>
+<a class="jlink"></a><h4>jlink</h4>
 
 <p>
-    With a modular project, <a href="https://docs.oracle.com/en/java/javase/11/tools/jlink.html">jlink</a>
+    With a modular project, <a href="https://docs.oracle.com/en/java/javase/11/tools/jlink.html" target="_blank">jlink</a>
     can be used to create a custom runtime image using the JavaFX jmods:
 </p>
 
@@ -252,7 +252,7 @@ gradlew run
 </div>
 
 <p>
-    To create a custom runtime the referred <a href="#jlink">steps</a> have been added to the <kbd>jlink</kbd> task 
+    To create a custom runtime the referred <a class="modular-jlink-action" href="#">steps</a> have been added to the <kbd>jlink</kbd> task 
     included in the build file. 
 </p>
 
@@ -516,7 +516,7 @@ java -jar shade\hellofx.jar
 </p>
 
 <pre><code>
-mainClassName = 'hellofx.Launcher'
+mainClassName = 'hellofx.HelloFX'
 jar {
     manifest {
         attributes 'Main-Class': 'hellofx.Launcher'
@@ -569,6 +569,10 @@ compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:win"
 compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:linux"
 compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:mac"
 </code></pre>
+
+<p>
+    Now run the jar task again to create the cross-platform fat jar.
+</p>
 
 <a name="command-line"></a><h3>Command Line</h3>
 

@@ -1,70 +1,25 @@
 <h2>Run HelloWorld using Gradle</h2>
 
 <p>
-    Similar to Maven, we can declare JavaFX jars as dependency in the <kbd>build.gradle</kbd> file.
-    However, for Gradle we need to find and specify the platform/OS as classifier. This requires a
-    small script:
+    Similar to Maven, we can declare the required JavaFX modules in the <kbd>build.gradle</kbd> file.
+    However, for Gradle we need to apply the JavaFX gradle plugin:
 </p>
 
 <pre><code>
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.google.gradle:osdetector-gradle-plugin:1.6.0'
-    }
+plugins {
+  id 'application'
+  id 'org.openjfx.javafxplugin' version '0.0.5'
 }
-
-apply plugin: 'application'
-apply plugin: 'com.google.osdetector'
-
-ext.platform = osdetector.os == 'osx' ? 'mac' : osdetector.os == 'windows' ? 'win' : osdetector.os
 </code></pre>
 
 <p>
-    Next, we add all the dependencies using the platform. For instance, if we only need the <kbd>javafx.controls</kbd> 
+    Next, we add the required modules. For instance, if we only need the <kbd>javafx.controls</kbd> 
     module, we will include:
 </p>
 
 <pre><code>
-dependencies {
-    compile "org.openjfx:javafx-base:<span class="JFX_VERSION">11</span>:$platform"
-    compile "org.openjfx:javafx-graphics:<span class="JFX_VERSION">11</span>:$platform"
-    compile "org.openjfx:javafx-controls:<span class="JFX_VERSION">11</span>:$platform"
-}
-</code></pre>
-
-<div class="alert alert-warning">
-    <strong>Note: </strong>
-    The classifiers are not taken into account when resolving
-    transitive dependencies in Gradle. Therefore, we need to specify all this three JavaFX modules
-    with <kbd>platform</kbd> as classifier.
-</div>
-
-<p>
-    Next, we set <kbd>--module-path</kbd> to the value that would have been the classpath
-    and add <kbd>javafx.controls</kbd> as a module to both <kbd>javac</kbd> and <kbd>java</kbd> commands.
-    This makes sense because all the dependencies are currently on the classpath.
-</p>
-
-<pre><code>
-compileJava {
-    doFirst {
-        options.compilerArgs = [
-                '--module-path', classpath.asPath,
-                '--add-modules', 'javafx.controls'
-        ]
-    }
-}
-
-run {
-    doFirst {
-        jvmArgs = [
-                '--module-path', classpath.asPath,
-                '--add-modules', 'javafx.controls'
-        ]
-    }
+javafx {
+    modules = [ 'javafx.controls' ]
 }
 </code></pre>
 

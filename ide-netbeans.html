@@ -284,10 +284,14 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     <kbd>mainClassName</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
 </p>
 <p>
-    Note we have added the required dependencies with the classifier for the platform. 
-    Since Gradle doesn't resolve transitive dependencies with classifiers, we need to add all 
-    the modules (<kbd>javafx.base</kbd>, <kbd>javafx.graphics</kbd> and for <kbd>javafx.controls</kbd>).
-    
+    We can declare the required JavaFX modules in the <kbd>build.gradle</kbd> file using the JavaFX gradle plugin:
+</p>
+<pre><code>
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+</code></pre>
+<p>   
     Reload the project and you will get the JavaFX dependencies.
     
     <a href="images/ide/netbeans/gradle/netbeans03.png" target="_blank"><img src="images/ide/netbeans/gradle/netbeans03.png" alt="Update the build"/></a>
@@ -303,9 +307,10 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     and the <a class="samples" href="/IDE/NetBeans/Non-Modular/Gradle/hellofx/src/main/resources/org/openjfx/scene.fxml" target="_blank">FXML</a> and 
     and the <a class="samples" href="/IDE/NetBeans/Non-Modular/Gradle/hellofx/src/main/resources/org/openjfx/styles.css" target="_blank">css</a>  
     files.
-    
-    Note that the JavaFX classes are recognized by the IDE.
+
     <a href="images/ide/netbeans/gradle/netbeans04.png" target="_blank"><img src="images/ide/netbeans/gradle/netbeans04.png" alt="Add JavaFX project"/></a>
+
+    Note that the JavaFX classes are recognized by the IDE.
 </p>
 
 <h5>4. Run the project</h5>
@@ -566,8 +571,8 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     <kbd>mainClassName</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
 </p>
 <p>
-    Note the use of the <kbd>org.javamodularity.moduleplugin</kbd> plugin, that removes the necessity of setting the module-path
-    for the compile and run task.
+    Note the use of the <kbd>org.openjfx.javafxplugin</kbd> plugin, that removes the necessity of adding the 
+    JavaFX dependencies and setting the module-path for the compile and run task for them.
     
     <a href="images/ide/netbeans/modular/gradle/netbeans01.png" target="_blank"><img src="images/ide/netbeans/modular/gradle/netbeans01.png" alt="Update the build"/></a>
 </p>
