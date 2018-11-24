@@ -222,7 +222,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 </p>
 
 <pre><code>    
-    &lt;goal&gt;org.codehaus.mojo:exec-maven-plugin:1.6.0:java&lg;/goal&gt;
+    &lt;goal&gt;org.codehaus.mojo:exec-maven-plugin:1.6.0:java&lt;/goal&gt;
 </code></pre>
 
 <p>
@@ -478,9 +478,16 @@ dist\jlink\HelloFX\bin\java -m hellofx/org.openjfx.MainApp
 <p>
     Replace the existing plugins based on this <a class="samples" href="/IDE/IntelliJ/Modular/Maven/hellofx/pom.xml" target="_blank">pom</a> file, and set the 
     <kbd>mainClass</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
-
+</p>
+<p>
     Add the required dependencies for <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>. 
 </p>
+<p>
+    Update the <kbd>nbactions.xml</kbd> file, with this goal for <kbd>run</kbd> and <kbd>debug</kbd>:
+</p>
+<pre><code>    
+    &lt;goal&gt;org.codehaus.mojo:exec-maven-plugin:1.6.0:java&lt;/goal&gt;
+</code></pre>
 
 <h5>3. Add the module-info class</h5>
 
