@@ -8,6 +8,8 @@ $(function() {
     
     var SAMPLES = "https://github.com/openjfx/samples/blob/master";
     
+    var nav_top = 70;
+        
     // Hide all non-active div
     $('.hidden').hide();
     
@@ -89,16 +91,32 @@ $(function() {
     $(document).on('click', ".scrollto", function(event) {
         event.preventDefault(); 
         var anchor = $(this).attr('data-scroll');
-//        $('html,body').animate({ scrollTop: $(anchor).offset().top }, 500); 
-        $('html,body').scrollTop($(anchor).offset().top);
+        $('html,body').scrollTop($(anchor).offset().top - nav_top);
+    });
+    
+    // Scroll to anchor from navbar-nav links
+    $(document).on('click', ".nav-link", function(event) {
+        event.preventDefault(); 
+        var href = $(this).attr('href');
+        var anchor = $(this).attr('data-scroll');
+        if (anchor != null) {
+            $('html,body').scrollTop($(anchor).offset().top - nav_top);
+        } else {
+            $('html,body').scrollTop($(href).offset().top - nav_top);
+        }
     });
     
     // Replace all constants
     // sticky sidenav
     $(document).ready(function() {
+        nav_top = $('.navbar').height();
         var div_top = $('.content').offset().top;
         $(window).scroll(function() {
-            var windowTop = $(window).scrollTop();
+            if ($('.navbar-toggler').attr('aria-expanded') === "true") {
+                // collapse navbar
+                $('.navbar-toggler').click();
+            }  
+            var windowTop = $(window).scrollTop() + nav_top;
             if (windowTop > div_top) {
                 $('.sidenav').css('top', windowTop);  
             } else {
@@ -118,6 +136,8 @@ $(function() {
         $('.JDK_VERSION').each(function() { $(this).text(JDK_VERSION) });
         $('.JFX_VERSION').each(function() { $(this).text(JFX_VERSION) });
         $('.samples').each(function() { $(this).attr("href", SAMPLES + $(this).attr('href')); });
+        
+        nav_top = $('.navbar').height();
         
         $('code').each(function () {
             var content = $(this).html();
@@ -139,11 +159,9 @@ $(function() {
                 $(target).show().siblings(".content div").hide();
 
                 // Remove active from all links in nav-bar
-                $('a[class*="list-group-item"]').removeClass("active");
-                // Remove active from all links in nav-bar
-                $('li[class*="list-group-item"]').removeClass("active");
+                $('a[class*="nav-link"],a[class*="list-group-item"],li[class*="list-group-item"]').removeClass("active");
                 
-                if ($(hyperlink).hasClass('list-group-item')) {
+                if ($(hyperlink).hasClass('list-group-item') || $(hyperlink).hasClass('nav-link')) {
                     $(hyperlink).addClass("active");
                 } else if ($(hyperlink).parent(".checked").hasClass('list-group-item')) {
                     $(hyperlink).parent(".checked").addClass("active");

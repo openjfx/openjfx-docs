@@ -22,11 +22,56 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="../index.html">JavaFX</a>
+            <button id="nav-btn" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDiv" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarDiv">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#introduction">Introduction</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#install-java">Install Java</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#install-javafx">Run HelloWorld using JavaFX <span class="JFX_MAJOR">11</span></a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#maven">Run HelloWorld via Maven</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#gradle">Run HelloWorld via Gradle</a></li>
+                    <li class="nav-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#modular">Runtime images</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#modular" data-scroll="#MOD-CLI">Modular from CLI</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#modular" data-scroll="#MOD-Maven">Modular with Maven</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#modular" data-scroll="#MOD-Gradle">Modular with Gradle</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#modular" data-scroll="#JDK-FX">Custom JDK+JavaFX image</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#modular" data-scroll="#Non-Mod">Non-Modular project</a></li>
+
+                    <li class="nav-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Intellij">JavaFX and IntelliJ</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Intellij" data-scroll="#IDEA-IDE">Non-modular from IDE</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Intellij" data-scroll="#IDEA-Maven">Non-modular with Maven</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Intellij" data-scroll="#IDEA-Gradle">Non-modular with Gradle</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Intellij" data-scroll="#IDEA-Mod-IDE">Modular from IDE</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Intellij" data-scroll="#IDEA-Mod-Maven">Modular with Maven</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Intellij" data-scroll="#IDEA-Mod-Gradle">Modular with Gradle</a></li>
+                                
+                    <li class="nav-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-NetBeans">JavaFX and NetBeans</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-NetBeans" data-scroll="#NB-IDE">Non-modular from IDE</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-NetBeans" data-scroll="#NB-Maven">Non-modular with Maven</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-NetBeans" data-scroll="#NB-Gradle">Non-modular with Gradle</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-NetBeans" data-scroll="#NB-Mod-IDE">Modular from IDE</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-NetBeans" data-scroll="#NB-Mod-Maven">Modular with Maven</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-NetBeans" data-scroll="#NB-Mod-Gradle">Modular with Gradle</a></li>
+
+                    <li class="nav-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Eclipse">JavaFX and Eclipse</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Eclipse" data-scroll="#ECLIPSE-IDE">Non-modular from IDE</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Eclipse" data-scroll="#ECLIPSE-Maven">Non-modular with Maven</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Eclipse" data-scroll="#ECLIPSE-Gradle">Non-modular with Gradle</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Eclipse" data-scroll="#ECLIPSE-Mod-IDE">Modular from IDE</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Eclipse" data-scroll="#ECLIPSE-Mod-Maven">Modular with Maven</a></li>
+                    <li class="nav-item sub-item"><a class="nav-link" data-toggle="collapse" data-target=".navbar-collapse.show" href="#IDE-Eclipse" data-scroll="#ECLIPSE-Mod-Gradle">Modular with Gradle</a></li>
+
+                </ul>
+            </div>
         </div>
     </nav>
+    
     <div class="page-wrapper container-fluid">
         <div class="container">
             <h1>Getting Started with JavaFX <span class="JFX_MAJOR">11</span></h1>
@@ -80,7 +125,6 @@
                             </li>
                         </ul>
                         <a class="list-group-item" href="#next-steps">Next Steps</a>
-                        <a class="list-group-item" href="#fat-jar" style="visibility: hidden">Creating a fat Jar</a>
                     </div>
                 </div>
                 <div class="content col-md-9">
@@ -122,7 +166,7 @@
 
                         <div class="btn-toolbar bottom" role="toolbar">
                             <a class="btn btn-outline-secondary mr-2 mb-2" role="button" target="_blank" data-section="Gradle">Report a problem</a>
-                            <a class="btn btn-primary mb-2" href="#modular" role="button">JavaFX projects</a>
+                            <a class="btn btn-primary mb-2" href="#modular" role="button">Runtime images</a>
                         </div>
                     </div>
                     <div id="modular" class="hidden">
@@ -160,14 +204,6 @@
                     <div id="next-steps" class="hidden">
                         <div data-include="next-steps.html"></div>
                     </div>
-                    <div id="fat-jar" class="hidden">
-                        <div data-include="fat-jar.html"></div>
-                        
-                        <div class="btn-toolbar bottom" role="toolbar">
-                            <a class="btn btn-outline-secondary mr-2 mb-2" role="button" target="_blank" data-section="Fat-Jar">Report a problem</a>
-                            <a class="btn btn-primary mb-2" href="#modular" role="button">Go back</a>
-                        </div>
-                    </div>    
                 </div>
             </div>
         </div>

@@ -85,7 +85,7 @@ code.alert.big {
 
 kbd {
     background-color: var(--terminal-color);
-    white-space:nowrap;
+    white-space: pre-wrap;
     color: var(--code-color);
 }
 
@@ -144,7 +144,37 @@ a:visited {
 
 .navbar {
     background-image: repeating-linear-gradient(to bottom right, #3f95ea 0%, #52d3aa 100%) !important;
-    height: 70px;
+    padding-top:0px !important; 
+    padding-bottom:0px !important;
+}
+
+.navbar .navbar-nav {
+}
+
+.navbar .navbar-nav > .nav-item {
+    float: none;
+    margin-left: .1rem;
+}
+
+.navbar .navbar-nav > .nav-item.sub-item {
+    float: none;
+    margin-left: 2rem;
+}
+
+.navbar .navbar-nav > .nav-item > .nav-link {
+    padding-top: 5px; 
+    padding-bottom: 5px;
+}
+
+.navbar .navbar-nav > .nav-item.sub-item > .nav-link {
+    padding-top: 3px; 
+    padding-bottom: 3px;
+}
+
+.navbar .navbar-nav {
+    float:none !important;
+    max-height: 240px;
+    overflow: auto;
 }
 
 .navbar-brand {
@@ -190,7 +220,7 @@ img.hello-world {
 }
 
 .container-fluid > .container {
-    margin-top: 40px;
+    margin-top: 100px;
     margin-bottom: 20px;
 }
 
@@ -211,6 +241,13 @@ img.hello-world {
     background-color: var(--button-background-color) !important;
     border-color: var(--button-background-color) !important;
     color: #ffffff;
+}
+
+/* No visible navbar items when width is over 768px */
+@media (min-width: 769px) {
+    .navbar-nav, .navbar-toggler {
+        display: none;
+    }
 }
 
 /*No side nav when width is below 768px*/
