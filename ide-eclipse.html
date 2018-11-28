@@ -32,7 +32,7 @@ You selected a JRE that this version of Eclipse JDT does not yet support fully. 
 
 <h3>Non-modular projects</h3>
 
-<div id="ECLIPSE-IDE"></div><h4>IDE</h4>
+<div id="ECLIPSE-IDE"></div><h3>IDE</h3>
 
 <p>
     Follow these steps to create a JavaFX non-modular project and use the IDE tools to build it and run it.
@@ -58,7 +58,7 @@ You selected a JRE that this version of Eclipse JDT does not yet support fully. 
    
 </p>
 
-<h5>1. Create a Java project</h5>
+<h4>1. Create a Java project</h4>
     
 <p>
     <a href="images/ide/eclipse/ide/eclipse03.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse03.png" alt="Create a Java project"/></a>
@@ -71,7 +71,7 @@ You selected a JRE that this version of Eclipse JDT does not yet support fully. 
     An empty project will be opened.
 </p>
 
-<h5>2. Add JavaFX classes</h5>
+<h4>2. Add JavaFX classes</h4>
 
 <p>    
     You can add a main class <kbd>Main</kbd>, based on this <a class="samples" href="/IDE/Eclipse/Non-Modular/Java/hellofx/src/hellofx/Main.java" target="_blank">one</a>, 
@@ -94,7 +94,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     have the <kbd>javafx.graphics</kbd> module on the module-path.
 </div>
     
-<h5>3. Add VM arguments</h5>
+<h4>3. Add VM arguments</h4>
 
 <p>
     To solve the issue, click on <kbd>Run -> Run Configurations...  -> Java Application</kbd>, 
@@ -155,13 +155,13 @@ is not selected.
 --module-path ${PATH_TO_FX} --add-modules=javafx.controls,javafx.fxml
 </code></pre>
 
-<h5>4. Run the project</h5>
+<h4>4. Run the project</h4>
 
 <p>
     Click <kbd>Run -> Run As -> Java Application -> Main - hellofx</kbd> to run the project.
 </p>
 
-<h5>Environment variable</h5>
+<h4>Environment variable</h4>
 
 <p>
     You can replace the module path with the environment variable <kbd>PATH_TO_FX</kbd> if you add the path to 
@@ -176,7 +176,7 @@ is not selected.
     And you can distribute the project or reuse it in other projects too.
 </p>
 
-<h5>E(fx)clipse</h5>
+<h4>E(fx)clipse</h4>
 
 <p>
     If you use the <a href="http://www.eclipse.org/efxclipse/index.html">e(fx)clipse</a> plugin, 
@@ -189,7 +189,7 @@ is not selected.
     and adding the necessary VM arguments.
 </p>
 
-<div id="ECLIPSE-Maven"></div><h4>Maven</h4>
+<div id="ECLIPSE-Maven"></div><h3>Maven</h3>
 
 <p>
     Follow these steps to create a JavaFX non-modular project and use the Maven tools to build it and run it.
@@ -200,7 +200,7 @@ is not selected.
     from the Eclipse Marketplace otherwise.
 </p>
 
-<h5>1. Create a Maven project</h5>
+<h4>1. Create a Maven project</h4>
 
 <p>
     Create a Maven project. Provide the location. You can skip the archetype, or select for instance the 
@@ -215,7 +215,7 @@ is not selected.
     <a href="images/ide/eclipse/maven/eclipse02.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse02.png" alt="Missing JavaFX classes"/></a>
 </p>
 
-<h5>2. Modify the pom</h5>
+<h4>2. Modify the pom</h4>
 
 <p>
     Before adding the JavaFX classes, edit the pom file and use the dependencies and plugins from
@@ -233,7 +233,7 @@ is not selected.
     As for any other maven dependencies, these jars can be found in the local <kbd>.m2</kbd> repository.
 </p>
 
-<h5>3. Add the code</h5>
+<h4>3. Add the code</h4>
 
 <p>    
     Based on this <a class="samples" href="/IDE/Eclipse/Non-Modular/Maven/hellofx/src/main/java/org/openjfx/hellofx/MainApp.java" target="_blank">MainApp</a> class, 
@@ -245,7 +245,7 @@ is not selected.
     <a href="images/ide/eclipse/maven/eclipse04.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse04.png" alt="Add JavaFX project"/></a>
 </p>
 
-<h5>4. Run the project</h5>
+<h4>4. Run the project</h4>
 
 <p>
     Click <kbd>Run -> Run As -> Maven Build -> New launch configuration</kbd> to create a new configuration.
@@ -291,7 +291,7 @@ If that is not possible, another workaround is to add this VM argument to
 
 </div>
 
-<div id="ECLIPSE-Gradle"></div><h4>Gradle</h4>
+<div id="ECLIPSE-Gradle"></div><h3>Gradle</h3>
 
 <p>
     Follow these steps to create a JavaFX project and use the Gradle tools to build it and run it.
@@ -304,7 +304,7 @@ If that is not possible, another workaround is to add this VM argument to
     Update to 2.2.3 version from this <a href="http://download.eclipse.org/buildship/updates/e48/snapshots/2.x/">URL</a>.
 </p>
 
-<h5>1. Create a Gradle project</h5>
+<h4>1. Create a Gradle project</h4>
 
 <p>
     Create a Gradle project with Java.
@@ -315,7 +315,7 @@ If that is not possible, another workaround is to add this VM argument to
     <a href="images/ide/eclipse/gradle/eclipse02.png" target="_blank"><img src="images/ide/eclipse/gradle/eclipse02.png" alt="Open project"/></a>
 </p>
 
-<h5>2. Modify the build</h5>
+<h4>2. Modify the build</h4>
 
 <p>
     Edit the <kbd>build.gradle</kbd> file and replace it with this
@@ -337,7 +337,7 @@ javafx {
     As for any other Gradle dependencies, these jars can be found in the local <kbd>.gradle</kbd> repository.
 </p>
 
-<h5>3. Add the source code</h5>
+<h4>3. Add the source code</h4>
 
 <p>
     Based on this <a class="samples" href="/IDE/Eclipse/Non-Modular/Gradle/hellofx/src/main/java/org/openjfx/MainApp.java" target="_blank">MainApp</a> class, 
@@ -352,7 +352,7 @@ javafx {
     <a href="images/ide/eclipse/maven/eclipse04.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse04.png" alt="Add JavaFX project"/></a>
 </p>
 
-<h5>4. Run the project</h5>
+<h4>4. Run the project</h4>
 
 <div class="alert alert-warning">
     <strong>Note: </strong>
@@ -437,7 +437,7 @@ run {
     <kbd>/Users/your-user/Downloads/javafx-jmods-<span class="JFX_MAJOR">11</span></kbd>.
 </p>
 
-<div id="ECLIPSE-Mod-IDE"></div><h4>IDE</h4>
+<div id="ECLIPSE-Mod-IDE"></div><h3>IDE</h3>
 
 <p>
     Follow these steps to create a JavaFX modular project and use the IDE tools to build it and run it. 
@@ -445,7 +445,7 @@ run {
     Alternatively, you can download a similar project from <a class="samples" href="/IDE/Eclipse/Modular/Java" target="_blank">here</a>.
 </p>
 
-<h5>1. Create a Java project</h5>
+<h4>1. Create a Java project</h4>
     
 <p>
     Provide a name to the project, like <kbd>HelloFX</kbd>, and a location. Make sure JDK <span class="JDK_MAJOR">11</span> is selected.
@@ -458,7 +458,7 @@ run {
     An empty project will be opened.
 </p>
 
-<h5>2. Edit the module-info class</h5>
+<h4>2. Edit the module-info class</h4>
 
 <p>
     Edit the <kbd>module-info</kbd> class, and including the required modules <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>. 
@@ -481,7 +481,7 @@ The type Stage from module javafx.graphics may not be accessible to clients due 
     <a href="images/ide/eclipse/modular/ide/eclipse01.png" target="_blank"><img src="images/ide/eclipse/modular/ide/eclipse01.png" alt="module-info"/></a>
 </p>
 
-<h5>3. Add JavaFX classes</h5>
+<h4>3. Add JavaFX classes</h4>
 
 <p>    
     Based on this <a class="samples" href="/IDE/Eclipse/Modular/Java/HelloFX/src/org/openjfx/MainApp.java" target="_blank">MainApp</a> class, 
@@ -491,7 +491,7 @@ The type Stage from module javafx.graphics may not be accessible to clients due 
     files.
 </p>
 
-<h5>4. Add VM options</h5>
+<h4>4. Add VM options</h4>
 
 <p>
     Being a modular project, and since we already added the <kbd>JavaFX11</kbd> library to the module-path,
@@ -522,13 +522,13 @@ java.lang.module.FindException: Module javafx.graphics not found, required by he
     <a href="images/ide/eclipse/modular/ide/eclipse02.png" target="_blank"><img src="images/ide/eclipse/modular/ide/eclipse02.png" alt="Add required dependencies"/></a>
 </p>
 
-<h5>5. Run the project</h5>
+<h4>5. Run the project</h4>
 
 <p>
     Click <kbd>Run -> Run Configurations... -> Java Application</kbd> to run the project.
 </p>
 
-<h5>6. Create a custom runtime image</h5>
+<h4>6. Create a custom runtime image</h4>
 
 <p>
     To create a runtime image, run the following commands:
@@ -559,7 +559,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     </div>
 </div>
 
-<div id="ECLIPSE-Mod-Maven"></div><h4>Maven</h4>
+<div id="ECLIPSE-Mod-Maven"></div><h3>Maven</h3>
 
 <p>
     Follow these steps to create a JavaFX modular project and use the Maven tools to build it and run it.
@@ -567,7 +567,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     Alternatively, you can download a similar project from <a class="samples" href="/IDE/Eclipse/Modular/Maven" target="_blank">here</a>.
 </p>
 
-<h5>1. Create a Maven project</h5>
+<h4>1. Create a Maven project</h4>
 
 <p>
     Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>. 
@@ -576,7 +576,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     (<kbd>File -> Properties -> Java Build Path -> Libraries</kbd>).
 </p>
 
-<h5>2. Modify the pom</h5>
+<h4>2. Modify the pom</h4>
 
 <p>
     Before adding the JavaFX classes, edit the pom file and use the dependencies and plugins from
@@ -586,7 +586,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     Refresh the POM. The JavaFX jars will be downloaded. 
 </p>
     
-<h5>3. Add the module-info class</h5>
+<h4>3. Add the module-info class</h4>
 
 <p>
     Add the <kbd>module-info</kbd> class, including the required modules <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>. 
@@ -598,7 +598,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     <a href="images/ide/eclipse/modular/maven/eclipse01.png" target="_blank"><img src="images/ide/eclipse/modular/maven/eclipse01.png" alt="module-info"/></a>
 </p>
 
-<h5>4. Add the source code</h5>
+<h4>4. Add the source code</h4>
 
 <p>
     Based on this <a class="samples" href="/IDE/Eclipse/Modular/Maven/hellofx/src/main/java/org/openjfx/MainApp.java" target="_blank">MainApp</a> class, 
@@ -610,7 +610,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     <a href="images/ide/eclipse/modular/maven/eclipse02.png" target="_blank"><img src="images/ide/eclipse/modular/maven/eclipse02.png" alt="Source code"/></a>
 </p>
 
-<h5>5. Run the project</h5>
+<h4>5. Run the project</h4>
 
 <p>
     Click <kbd>Run -> Run As -> Maven Build -> New launch configuration</kbd> to create a new configuration.
@@ -626,7 +626,7 @@ clean compile package exec:java
     You can also open a terminal and run <kbd>mvn clean compile package exec:java</kbd> to run the project.
 </p>
 
-<h5>6. Create a custom runtime image</h5>
+<h4>6. Create a custom runtime image</h4>
 
 <p>
     To create a runtime image, run the following commands:
@@ -657,7 +657,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     </div>
 </div>
 
-<div id="ECLIPSE-Mod-Gradle"></div><h4>Gradle</h4>
+<div id="ECLIPSE-Mod-Gradle"></div><h3>Gradle</h3>
 
 <p>
     Follow these steps to create a JavaFX modular project and use the Gradle tools to build it and run it.
@@ -665,7 +665,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     Alternatively, you can download a similar project from <a class="samples" href="/IDE/Eclipse/Modular/Gradle" target="_blank">here</a>.
 </p>
 
-<h5>1. Create a Gradle project</h5>
+<h4>1. Create a Gradle project</h4>
 
 <p>
     Create a Gradle project with Java.
@@ -673,7 +673,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     Provide a name to the project, like <kbd>HelloFX</kbd> and a location for the project.
 </p>
 
-<h5>2. Modify the build</h5>
+<h4>2. Modify the build</h4>
 
 <p>
     Edit the <kbd>build.gradle</kbd> file and replace it with this
@@ -691,7 +691,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     <a href="images/ide/eclipse/modular/gradle/eclipse01.png" target="_blank"><img src="images/ide/eclipse/modular/gradle/eclipse01.png" alt="Update the build"/></a>
 </p>
 
-<h5>3. Add the module-info class</h5>
+<h4>3. Add the module-info class</h4>
 
 <p>
     Add the <kbd>module-info</kbd> class, including the required modules <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>. 
@@ -703,7 +703,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     <a href="images/ide/eclipse/modular/gradle/eclipse02.png" target="_blank"><img src="images/ide/eclipse/modular/gradle/eclipse02.png" alt="module-info"/></a>
 </p>
 
-<h5>3. Add the source code</h5>
+<h4>3. Add the source code</h4>
 
 <p>
     Based on this <a class="samples" href="/IDE/Eclipse/Modular/Gradle/hellofx/src/main/java/org/openjfx/MainApp.java" target="_blank">MainApp</a> class, 
@@ -713,7 +713,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     files.
 </p>
 
-<h5>4. Run the project</h5>
+<h4>4. Run the project</h4>
 
 <p>
     You can open the Gradle Task window and click on <kbd>build -> build</kbd> to 
@@ -747,7 +747,7 @@ gradlew run
     </div>
 </div>
 
-<h5>5. Create a custom runtime image</h5>
+<h4>5. Create a custom runtime image</h4>
 
 <p>
     To create a runtime image, set the <kbd>org.gradle.java.home</kbd> and <kbd>path.to.fx.mods</kbd> 
