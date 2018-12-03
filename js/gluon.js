@@ -95,7 +95,7 @@ $(function() {
     });
     
     // Scroll to anchor from navbar-nav links
-    $(document).on('click', ".nav-link", function(event) {
+    $(document).on('click', 'a[class*="nav-link"][data-toggle="collapse"]', function(event) {
         event.preventDefault(); 
         var href = $(this).attr('href');
         var anchor = $(this).attr('data-scroll');
@@ -159,8 +159,8 @@ $(function() {
                 $(target).show().siblings(".content div").hide();
 
                 // Remove active from all links in nav-bar
-                $('a[class*="nav-link"],a[class*="list-group-item"],li[class*="list-group-item"]').removeClass("active");
-                
+                $('a[class*="nav-link"][data-toggle="collapse"],a[class*="list-group-item"],li[class*="list-group-item"]').removeClass("active");
+
                 if ($(hyperlink).hasClass('list-group-item') || $(hyperlink).hasClass('nav-link')) {
                     $(hyperlink).addClass("active");
                 } else if ($(hyperlink).parent(".checked").hasClass('list-group-item')) {
