@@ -63,12 +63,11 @@ javac --module-path %PATH_TO_FX% --add-modules=javafx.controls HelloFX.java
     </div>
 </div>
 
-<div class="alert alert-warning">
+<div class="alert">
     <strong>Note:</strong>
     Additional modules are required for extended functionality.
     For example, if your application is using <kbd>FXML</kbd>, you will need to
     add the <kbd>javafx.fxml</kbd> module, as shown below:
-</div>
 
 <ul class="nav nav-tabs">
     <li class="nav-item">
@@ -81,15 +80,16 @@ javac --module-path %PATH_TO_FX% --add-modules=javafx.controls HelloFX.java
 
 <div class="tab-content">
     <div class="tab-pane active" id="nix-fxml">
-<pre class="no-border-radius"><code>
+<pre class="alert"><code class="alert">
 javac --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml HelloFX.java
 </code></pre>
     </div>
     <div class="tab-pane" id="win-fxml">
-<pre><code>
+<pre class="alert"><code class="alert">
 javac --module-path %PATH_TO_FX% --add-modules=javafx.controls,javafx.fxml HelloFX.java
 </code></pre>
     </div>
+</div>
 </div>
 
 <p>
