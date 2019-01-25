@@ -3,8 +3,9 @@ $(function() {
     var JDK_MAJOR = "11";
     var JFX_MAJOR = "11";
     
-    var JDK_VERSION = "11.0.1";
-    var JFX_VERSION = "11.0.1";
+    var JDK_VERSION = "11.0.2";
+    var JFX_VERSION = "11.0.2";
+    var JFX_PLUGIN_VERSION = "0.0.7";
     
     var SAMPLES = "https://github.com/openjfx/samples/blob/master";
     
@@ -135,6 +136,7 @@ $(function() {
         $('.JFX_MAJOR').each(function() { $(this).text(JFX_MAJOR) });
         $('.JDK_VERSION').each(function() { $(this).text(JDK_VERSION) });
         $('.JFX_VERSION').each(function() { $(this).text(JFX_VERSION) });
+        $('.JFX_PLUGIN_VERSION').each(function() { $(this).text(JFX_PLUGIN_VERSION) });
         $('.samples').each(function() { $(this).attr("href", SAMPLES + $(this).attr('href')); });
         
         nav_top = $('.navbar').height();
