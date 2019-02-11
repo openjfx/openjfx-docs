@@ -7,8 +7,6 @@ $(function() {
     var JFX_VERSION = "11.0.2";
     var JFX_PLUGIN_VERSION = "0.0.7";
     
-    var SAMPLES = "https://github.com/openjfx/samples/blob/master";
-    
     var nav_top = 70;
         
     // Hide all non-active div
@@ -137,7 +135,6 @@ $(function() {
         $('.JDK_VERSION').each(function() { $(this).text(JDK_VERSION) });
         $('.JFX_VERSION').each(function() { $(this).text(JFX_VERSION) });
         $('.JFX_PLUGIN_VERSION').each(function() { $(this).text(JFX_PLUGIN_VERSION) });
-        $('.samples').each(function() { $(this).attr("href", SAMPLES + $(this).attr('href')); });
         
         nav_top = $('.navbar').height();
         
