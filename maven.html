@@ -9,13 +9,31 @@
     Here is a <a class="samples" href="https://github.com/openjfx/samples/blob/master/HelloFX/Maven/hellofx/pom.xml" target="_blank">pom.xml</a> 
     file which shows how to achieve this, included in this <a class="samples" href="https://github.com/openjfx/samples/blob/master/HelloFX/Maven" target="_blank">sample</a>.
 </p>
+
+<p>
+    The pom uses the <a href="https://github.com/openjfx/javafx-maven-plugin" target="_blank">JavaFX Maven plugin</a>:
+</p>
+
+<pre><code>
+&lt;plugins&gt;
+    &lt;plugin&gt;
+        &lt;groupId&gt;org.openjfx&lt;/groupId&gt;
+        &lt;artifactId&gt;javafx-maven-plugin&lt;/artifactId&gt;
+        &lt;version&gt;0.0.1&lt;/version&gt;
+        &lt;configuration&gt;
+            &lt;mainClass&gt;HelloFX&lt;/mainClass&gt;
+        &lt;/configuration&gt;
+    &lt;/plugin&gt;
+&lt;/plugins&gt;
+</code></pre>
+
 <p>
     Run the application (e.g. based on the <a class="samples" href="https://github.com/openjfx/samples/blob/master/HelloFX/Maven/hellofx/src/main/java/HelloFX.java" target="_blank">HelloFX.java</a> 
     from the referred sample):
 </p>
 
 <pre><code>
-mvn compile exec:java
+mvn clean javafx:run
 </code></pre>
 
 <div class="alert alert-warning">

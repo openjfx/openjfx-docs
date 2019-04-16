@@ -1,11 +1,11 @@
 <h2>JavaFX <span class="JFX_MAJOR">11</span> and IntelliJ</h2>
 
 <p>This section explains how to use Java <span class="JDK_MAJOR">11</span> and JavaFX <span class="JFX_MAJOR">11</span> from IntelliJ. 
-    Version IntelliJ IDEA 2018.2.5 was used for the following screenshots.
+    Version IntelliJ IDEA 2019.1 was used for the following screenshots.
 </p>
 
 <p>
-    Download an appropriate <a href="https://jdk.java.net/11/">JDK <span class="JDK_MAJOR">11</span></a> for your operating system. 
+    Download an appropriate <a href="https://jdk.java.net/12/">JDK <span class="JDK_MAJOR">11</span></a> for your operating system.
     Make sure <kbd>JAVA_HOME</kbd> is properly set to the Java <span class="JDK_MAJOR">11</span> installation directory. 
 </p>
 
@@ -46,7 +46,7 @@
 <h5>2. Set JDK <span class="JDK_MAJOR">11</span></h5>
 
 <p>    
-    Go to <kbd>File -> Project Structure -> Project</kbd>, and set the project SDK to <span class="JDK_MAJOR">11</span>. You can also set the language level to 11.
+    Go to <kbd>File -> Project Structure -> Project</kbd>, and set the project SDK to <span class="JDK_MAJOR">11</span>. You can also set the language level to <span class="JDK_MAJOR">11</span>.
     <a href="images/ide/intellij/ide/idea03.png" target="_blank"><img src="images/ide/intellij/ide/idea03.png" alt="Set JDK 11"/></a>
 </p>
 
@@ -91,12 +91,12 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 <div class="tab-content">
     <div class="tab-pane active" id="nix-idea-non-ide-1">
 <pre class="no-border-radius"><code>
---module-path /path/to/javafx-sdk-<span class="JFX_VERSION">11</span>/lib --add-modules=javafx.controls,javafx.fxml
+--module-path /path/to/javafx-sdk-<span class="JFX_VERSION">11</span>/lib --add-modules javafx.controls,javafx.fxml
 </code></pre>
     </div>
     <div class="tab-pane" id="win-idea-non-ide-1">
 <pre><code>
---module-path "\path\to\javafx-sdk-<span class="JFX_VERSION">11</span>\lib" --add-modules=javafx.controls,javafx.fxml
+--module-path "\path\to\javafx-sdk-<span class="JFX_VERSION">11</span>\lib" --add-modules javafx.controls,javafx.fxml
 </code></pre>
     </div>
 </div>
@@ -123,8 +123,10 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 </p>
 
 <pre><code>
---module-path ${PATH_TO_FX} --add-modules=javafx.controls,javafx.fxml
+--module-path ${PATH_TO_FX} --add-modules javafx.controls,javafx.fxml
 </code></pre>
+
+<a href="images/ide/intellij/ide/idea08.png" target="_blank"><img src="images/ide/intellij/ide/idea08.png" alt="Path Variable in VM options"/></a>
 
 <h5>5. Run the project</h5>
 
@@ -143,36 +145,56 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 <h5>1. Create a Maven project</h5>
 
 <p>
-    If you select the <kbd>org.codehous.mojo.archetypes:javafx</kbd> archetype, the latest version is from 2015, 
-    so it will rely on the old <kbd>jfxrt.jar</kbd>. But you can modify the pom based on this 
-    <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Maven/hellofx/pom.xml" target="_blank">one</a> later on.
+    Select <kbd>File -> New -> Project -> Maven</kbd> and enable <kbd>Create from archetype</kbd>.
+    If the JavaFX <a href="https://github.com/openjfx/javafx-maven-archetypes" target="_blank">archetype</a> is not
+    installed yet, select <kbd>Add archetype...</kbd> and set the groupId (<kbd>org.openjfx</kbd>), the artifactId
+    (<kbd>javafx-maven-archetypes</kbd>), and the version (<kbd>0.0.1</kbd>), and press OK.
+
+    <a href="images/ide/intellij/maven/idea00.png" target="_blank"><img src="images/ide/intellij/maven/idea00.png" alt="JavaFX Archetype"/></a>
+</p>
+
+<p>
+    Once installed, select the artifact.
+
     <a href="images/ide/intellij/maven/idea01.png" target="_blank"><img src="images/ide/intellij/maven/idea01.png" alt="Create a Maven project"/></a>
-   
-    Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>. 
-    Then provide a name to the project, like <kbd>HelloFX</kbd> and a location for the project.
-    
-    When the project opens, after you synchronize the project, the JavaFX classes are not recognized.
-    
-    <a href="images/ide/intellij/maven/idea02.png" target="_blank"><img src="images/ide/intellij/maven/idea02.png" alt="Missing JavaFX classes"/></a>
-</p>
 
-<h5>2. Modify the pom</h5>
-
-<p>
-    Replace the existing plugins based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Maven/hellofx/pom.xml" target="_blank">pom</a> file, and set the 
-    <kbd>mainClass</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
-</p>
-<p>
-    Add the required dependencies for <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>. 
-    <a href="images/ide/intellij/maven/idea03.png" target="_blank"><img src="images/ide/intellij/maven/idea03.png" alt="Update the pom"/></a>
+    Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>.
 </p>
 
 <p>
-    Import the changes. The JavaFX classes will be recognized. Notice also that Maven manages 
+    Select the archetype artifactId, between <kbd>javafx-archetype-fxml</kbd> or <kbd>javafx-archetype-simple</kbd>, based on the use
+    of FXML or not in your project.
+
+    <a href="images/ide/intellij/maven/idea02.png" target="_blank"><img src="images/ide/intellij/maven/idea02.png" alt="Select archetype"/></a>
+
+    You can create a property for the <kbd>javafx-version</kbd> as well, and set it to <span class="JDK_MAJOR">11</span>.
+</p>
+
+<p>
+    Finally, provide a name to the project, like <kbd>HelloFX</kbd> and a location for the project.
+</p>
+
+<h5>2. Verify the project</h5>
+
+<p>
+    You can find the generated pom file <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Maven/hellofx/pom.xml" target="_blank">here</a>.
+</p>
+
+<p>
+    Verify it includes the <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd> dependencies, and includes the <kbd>javafx-maven-plugin</kbd>.
+
+    <a href="images/ide/intellij/maven/idea03.png" target="_blank"><img src="images/ide/intellij/maven/idea03.png" alt="Generated pom"/></a>
+
+    For a non-modular project, you can remove the <kbd>module-info.java</kbd> file.
+</p>
+
+<p>
+    Import the Maven changes. The JavaFX classes will be recognized. Notice also that Maven manages
     the required dependencies: it will add <kbd>javafx.base</kbd> and 
     <kbd>javafx.graphics</kbd> that are required by <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>, 
     but most important, it will add the required classifier based on your platform, downloading 
     the specific platform jars.
+
     <a href="images/ide/intellij/maven/idea04.png" target="_blank"><img src="images/ide/intellij/maven/idea04.png" alt="Platform dependencies"/></a>
    
     As for any other maven dependencies, these jars can be found in the local <kbd>.m2</kbd> repository.
@@ -181,12 +203,21 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 <h5>3. Run the project</h5>
 
 <p>
-    You can open the Maven Projects window and click on <kbd>HelloFX->Plugins->compiler->compiler:compile</kbd> to 
-    compile the project, and on <kbd>HelloFX->Plugins->exec->exec:java</kbd> to execute the project.
+    You can open the Maven Projects window and click on <kbd>HelloFX -> Plugins -> compiler -> compiler:compile</kbd> to
+    compile the project, and click on <kbd>HelloFX -> Plugins -> javafx -> javafx:run</kbd> to execute the project.
     <a href="images/ide/intellij/maven/idea05.png" target="_blank"><img src="images/ide/intellij/maven/idea05.png" alt="Run project"/></a>
 </p>
+
+<div class="alert alert-warning">
+    <strong>Note: </strong>
+    In case <kbd>JAVA_HOME</kbd> is not set to <span class="JDK_MAJOR">11</span>, running from the Maven Projects window might
+    fail. To avoid it, you can add the correct <kbd>java</kbd> command to the javafx-maven-plugin:
+    <kbd>&lt;configuration&gt;&lt;executable&gt;/path/to/jdk-12/bin/java&lt;/executable&gt;&lt;/configuration&gt;</kbd>.
+</div>
+
 <p>
-    You can also open a terminal and run <kbd>mvn compile exec:java</kbd> to run the project.
+    The project can be also run from a terminal. Make sure <kbd>JAVA_HOME</kbd> is set to <span class="JDK_MAJOR">11</span>,
+    and run <kbd>mvn clean javafx:run</kbd>.
 </p>
 
 <div id="IDEA-Gradle"></div><h4>Gradle</h4>
@@ -225,6 +256,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 </p>
 <pre><code>
 javafx {
+    version = "12"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 </code></pre>
@@ -251,8 +283,8 @@ javafx {
 <h5>4. Run the project</h5>
 
 <p>
-    You can open the Gradle window and click on <kbd>hellofx->Tasks->build->build</kbd> to 
-    build the project, and on <kbd>hellofx->Tasks->application->run</kbd> to execute the project.
+    You can open the Gradle window and click on <kbd>hellofx -> Tasks -> build -> build</kbd> to
+    build the project, and on <kbd>hellofx -> Tasks -> application -> run</kbd> to execute the project.
     <a href="images/ide/intellij/gradle/idea05.png" target="_blank"><img src="images/ide/intellij/gradle/idea05.png" alt="Run project"/></a>
 </p>
 <p>
@@ -305,11 +337,11 @@ gradlew run
     When the project opens, rename the <kbd>hellofx</kbd> package to <kbd>org.openjfx</kbd>.
 </p>
 
-<h5>2. Set JDK <span class="JDK_MAJOR">11</span> and add JavaFX11</h5>
+<h5>2. Set JDK <span class="JDK_MAJOR">11</span> and add JavaFX <span class="JFX_MAJOR">11</span></h5>
 
 <p>    
     Go to <kbd>File -> Project Structure -> Project</kbd>, and set the project SDK to <span class="JDK_MAJOR">11</span>. 
-    You can also set the language level to 11 and change the default compiler output directory 
+    You can also set the language level to <span class="JDK_MAJOR">11</span> and change the default compiler output directory
     <kbd>out</kbd> to <kbd>mods</kbd>.
     
     <a href="images/ide/intellij/modular/ide/idea00.png" target="_blank"><img src="images/ide/intellij/modular/ide/idea00.png" alt="mods output"/></a>
@@ -332,10 +364,10 @@ gradlew run
 <h5>4. Add the source code</h5>
 
 <p>
-    Based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Java/hellofx/hellofx/src/org/openjfx/MainApp.java" target="_blank">MainApp</a> class, 
-    add its content to the project main class. Then add the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Java/hellofx/hellofx/src/org/openjfx/FXMLController.java" target="_blank">controller</a> 
-    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Java/hellofx/hellofx/src/org/openjfx/scene.fxml" target="_blank">FXML</a> and 
-    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Java/hellofx/hellofx/src/org/openjfx/styles.css" target="_blank">css</a>  
+    Based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Java/hellofx/src/org/openjfx/MainApp.java" target="_blank">MainApp</a> class,
+    add its content to the project main class. Then add the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Java/hellofx/src/org/openjfx/FXMLController.java" target="_blank">controller</a>
+    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Java/hellofx/src/org/openjfx/scene.fxml" target="_blank">FXML</a> and
+    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Java/hellofx/src/org/openjfx/styles.css" target="_blank">css</a>
     files.
     
     <a href="images/ide/intellij/modular/ide/idea02.png" target="_blank"><img src="images/ide/intellij/modular/ide/idea02.png" alt="Source code"/></a>
@@ -398,14 +430,14 @@ gradlew run
     <div class="tab-pane active" id="nix-idea-mod-ide-2">
 <pre class="no-border-radius"><code>
 export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
-$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS:mods/production --add-modules=hellofx --output jre
+$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS:mods/production --add-modules hellofx --output jre
 jre/bin/java -m hellofx/org.openjfx.MainApp
 </code></pre>
     </div>
     <div class="tab-pane" id="win-idea-mod-ide-2">
 <pre><code>
 set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
-jlink --module-path "%PATH_TO_FX_MODS%;mods\production" --add-modules=hellofx --output jre
+jlink --module-path "%PATH_TO_FX_MODS%;mods\production" --add-modules hellofx --output jre
 jre\bin\java -m hellofx/org.openjfx.MainApp
 </code></pre>
     </div>
@@ -415,64 +447,82 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
 
 <p>
     Follow these steps to create a JavaFX modular project and use the Maven tools to build it and run it.
-    
+
     Alternatively, you can download a similar project from <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Maven" target="_blank">here</a>.
 </p>
 
-<h5>1. Create a Maven project</h5>
-
 <p>
-    Select the <kbd>org.codehous.mojo.archetypes:javafx</kbd> archetype, and modify the pom based on this 
-    <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Maven/hellofx/pom.xml" target="_blank">one</a> later on.
-   
-    Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>. 
-    Then provide a name to the project, like <kbd>HelloFX</kbd> and a location for the project.
+    Select <kbd>File -> New -> Project -> Maven</kbd> and enable <kbd>Create from archetype</kbd>.
+    If the JavaFX <a href="https://github.com/openjfx/javafx-maven-archetypes" target="_blank">archetype</a> is not
+    installed yet, select <kbd>Add archetype...</kbd> and set the groupId (<kbd>org.openjfx</kbd>), the artifactId
+    (<kbd>javafx-maven-archetypes</kbd>), and the version (<kbd>0.0.1</kbd>), and press OK.
+
+    <a href="images/ide/intellij/maven/idea00.png" target="_blank"><img src="images/ide/intellij/maven/idea00.png" alt="JavaFX Archetype"/></a>
 </p>
 
-<h5>2. Modify the pom</h5>
-
 <p>
-    Replace the existing plugins based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Maven/hellofx/pom.xml" target="_blank">pom</a> file, and set the 
-    <kbd>mainClass</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
+    Once installed, select the artifact.
 
-    Add the required dependencies for <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>. 
+    <a href="images/ide/intellij/maven/idea01.png" target="_blank"><img src="images/ide/intellij/maven/idea01.png" alt="Create a Maven project"/></a>
+
+    Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>.
 </p>
 
-<h5>3. Add the module-info class</h5>
+<p>
+    Select the archetype artifactId, between <kbd>javafx-archetype-fxml</kbd> or <kbd>javafx-archetype-simple</kbd>, based on the use
+    of FXML or not in your project.
+
+    <a href="images/ide/intellij/maven/idea02.png" target="_blank"><img src="images/ide/intellij/maven/idea02.png" alt="Select archetype"/></a>
+
+    You can create a property for the <kbd>javafx-version</kbd> as well, and set it to <span class="JDK_MAJOR">11</span>.
+</p>
 
 <p>
-    Add the <kbd>module-info</kbd> class, including the required modules <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>. 
-    Since FXML uses reflection to access the controller in the module, this has to be opened to <kbd>javafx.fxml</kbd>. Finally,
-    export the package <kbd>org.openjfx</kbd>.
+    Finally, provide a name to the project, like <kbd>HelloFX</kbd> and a location for the project.
+</p>
+
+<h5>2. Verify the project</h5>
+
+<p>
+    You can find the generated pom file <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Maven/hellofx/pom.xml" target="_blank">here</a>.
+</p>
+
+<p>
+    Verify it includes the <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd> dependencies, and includes the <kbd>javafx-maven-plugin</kbd>.
+
+    <a href="images/ide/intellij/maven/idea03.png" target="_blank"><img src="images/ide/intellij/maven/idea03.png" alt="Generated pom"/></a>
+</p>
+
+<p>
+    Open the <kbd>module-info</kbd> class, that includes the required modules <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>.
+    Since FXML uses reflection to access the controller in the module, it has been opened to <kbd>javafx.fxml</kbd>.
     
-    <a href="images/ide/intellij/modular/maven/idea01.png" target="_blank"><img src="images/ide/intellij/modular/maven/idea01.png" alt="module-info"/></a>
+    <a href="images/ide/intellij/modular/maven/idea04.png" target="_blank"><img src="images/ide/intellij/modular/maven/idea04.png" alt="module-info"/></a>
 </p>
 
-<h5>4. Add the source code</h5>
+<h5>3. Run the project</h5>
 
 <p>
-    Based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Maven/hellofx/src/main/java/org/openjfx/MainApp.java" target="_blank">MainApp</a> class, 
-    add its content to the project main class. Then add the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Maven/hellofx/src/main/java/org/openjfx/FXMLController.java" target="_blank">controller</a> 
-    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Maven/hellofx/src/main/resources/org/openjfx/scene.fxml" target="_blank">FXML</a> and 
-    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Maven/hellofx/src/main/resources/org/openjfx/styles.css" target="_blank">css</a>  
-    files.
-    
-    <a href="images/ide/intellij/modular/maven/idea02.png" target="_blank"><img src="images/ide/intellij/modular/maven/idea02.png" alt="Source code"/></a>
+    You can open the Maven Projects window and click on <kbd>HelloFX -> Plugins -> compiler -> compiler:compile</kbd> to
+    compile the project, and click on <kbd>HelloFX -> Plugins -> javafx -> javafx:run</kbd> to execute the project.
 </p>
 
-<h5>5. Run the project</h5>
+<div class="alert alert-warning">
+    <strong>Note: </strong>
+    In case <kbd>JAVA_HOME</kbd> is not set to <span class="JDK_MAJOR">11</span>, running from the Maven Projects window might
+    fail. To avoid it, you can add the correct <kbd>java</kbd> command to the javafx-maven-plugin:
+    <kbd>&lt;configuration&gt;&lt;executable&gt;/path/to/jdk-12/bin/java&lt;/executable&gt;&lt;/configuration&gt;</kbd>.
+</div>
 
 <p>
-    You can open the Maven Projects window and click on <kbd>HelloFX->Plugins->compiler->compiler:compile</kbd> to 
-    compile the project, and on <kbd>HelloFX->Plugins->exec->exec:java</kbd> to execute the project.
-
-    You can also open a terminal and run <kbd>mvn clean compile package exec:java</kbd> to run the project.
+    The project can be also run from a terminal. Make sure <kbd>JAVA_HOME</kbd> is set to <span class="JDK_MAJOR">11</span>,
+    and run <kbd>mvn clean compile package javafx:run</kbd>.
 </p>
 
 <h5>6. Create a custom runtime image</h5>
 
 <p>
-    To create a runtime image, run the following commands:
+    To create a runtime image, run the following commands from a terminal:
 </p>
 
 <ul class="nav nav-tabs">
@@ -487,15 +537,15 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     <div class="tab-pane active" id="nix-idea-mod-mav-1">
 <pre class="no-border-radius"><code>
 export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
-$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS:target/hellofx-1.0-SNAPSHOT.jar --add-modules=hellofx --output jre
-jre/bin/java -m hellofx/org.openjfx.MainApp
+$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS:target/hellofx-1.0-SNAPSHOT.jar --add-modules hellofx --output jre
+jre/bin/java -m hellofx/org.openjfx.App
 </code></pre>
     </div>
     <div class="tab-pane" id="win-idea-mod-mav-1">
 <pre><code>
 set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
-jlink --module-path "%PATH_TO_FX_MODS%;target\hellofx-1.0-SNAPSHOT.jar" --add-modules=hellofx --output jre
-jre\bin\java -m hellofx/org.openjfx.MainApp
+jlink --module-path "%PATH_TO_FX_MODS%;target\hellofx-1.0-SNAPSHOT.jar" --add-modules hellofx --output jre
+jre\bin\java -m hellofx/org.openjfx.App
 </code></pre>
     </div>
 </div>
@@ -587,14 +637,35 @@ gradlew run
 <h5>6. Create a custom runtime image</h5>
 
 <p>
-    To create a runtime image, set the <kbd>org.gradle.java.home</kbd> and <kbd>path.to.fx.mods</kbd> 
-    properties in the local <kbd>gradle.properties file</kbd>.
-    
-    <a href="images/ide/intellij/modular/gradle/idea03.png" target="_blank"><img src="images/ide/intellij/modular/gradle/idea03.png" alt="jlink"/></a>
-    
-    Then run <kbd>hellofx->Tasks -> other -> jlink</kbd> task to create the image.
-    
-    To run the image:
+    To create a custom runtime, you can use the <a href="https://badass-jlink-plugin.beryx.org/releases/latest/" target="_blank">org.beryx.jlink</a> plugin.
+    It can be easily combined with the JavaFX Gradle plugin:
+</p>
+
+<pre><code>
+plugins {
+  id 'application'
+  id 'org.openjfx.javafxplugin' version '0.0.7'
+  id 'org.beryx.jlink' version '2.9.4'
+}
+
+javafx {
+    version = "12"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+jlink {
+    launcher {
+        name = 'hellofx'
+    }
+}
+</code></pre>
+
+<p>
+    to generate the custom image. Run <kbd>hellofx -> Tasks -> build -> jlink</kbd> task to create the image.
+</p>
+
+<p>
+    To run the image, type on a terminal:
 </p>
 
 <ul class="nav nav-tabs">
@@ -608,12 +679,12 @@ gradlew run
 <div class="tab-content">
     <div class="tab-pane active" id="nix-idea-mod-gra-2">
 <pre class="no-border-radius"><code>
-build/hellofx/bin/java -m hellofx/org.openjfx.MainApp
+build/image/bin/hellofx
 </code></pre>
     </div>
     <div class="tab-pane" id="win-idea-mod-gra-2">
 <pre><code>
-build\hellofx\bin\java -m hellofx/org.openjfx.MainApp
+build\image\bin\hellofx
 </code></pre>
     </div>
 </div>

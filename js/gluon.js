@@ -1,10 +1,10 @@
 $(function() {
     // constants
-    var JDK_MAJOR = "11";
-    var JFX_MAJOR = "11";
+    var JDK_MAJOR = "12";
+    var JFX_MAJOR = "12";
     
-    var JDK_VERSION = "11.0.2";
-    var JFX_VERSION = "11.0.2";
+    var JDK_VERSION = "12";
+    var JFX_VERSION = "12";
     var JFX_PLUGIN_VERSION = "0.0.7";
     
     var nav_top = 70;
