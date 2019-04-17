@@ -53,12 +53,12 @@ set PATH_TO_FX="path\to\javafx-sdk-<span class="JFX_VERSION">11</span>\lib"
 <div class="tab-content">
     <div class="tab-pane active" id="nix-javac">
 <pre class="no-border-radius"><code>
-javac --module-path $PATH_TO_FX --add-modules=javafx.controls HelloFX.java
+javac --module-path $PATH_TO_FX --add-modules javafx.controls HelloFX.java
 </code></pre>
     </div>
     <div class="tab-pane" id="win-javac">
 <pre><code>
-javac --module-path %PATH_TO_FX% --add-modules=javafx.controls HelloFX.java
+javac --module-path %PATH_TO_FX% --add-modules javafx.controls HelloFX.java
 </code></pre>
     </div>
 </div>
@@ -81,19 +81,20 @@ javac --module-path %PATH_TO_FX% --add-modules=javafx.controls HelloFX.java
 <div class="tab-content">
     <div class="tab-pane active" id="nix-fxml">
 <pre class="no-border-radius"><code>
-javac --module-path $PATH_TO_FX --add-modules=javafx.controls,javafx.fxml HelloFX.java
+javac --module-path $PATH_TO_FX --add-modules javafx.controls,javafx.fxml HelloFX.java
 </code></pre>
     </div>
     <div class="tab-pane" id="win-fxml">
 <pre><code>
-javac --module-path %PATH_TO_FX% --add-modules=javafx.controls,javafx.fxml HelloFX.java
+javac --module-path %PATH_TO_FX% --add-modules javafx.controls,javafx.fxml HelloFX.java
 </code></pre>
     </div>
 </div>
 
 <p>
     Make sure to add the required modules, keeping into account transitive dependencies are automatically resolved
-    (for instance, there is no need to add <kbd>javafx.graphics</kbd> module, since it is transitively required by the 
+    (for instance, there is no need to add <kbd>javafx.graphics</kbd> module, since it is
+    <a href="https://openjfx.io/javadoc/12/javafx.controls/module-summary.html" target="_blank">transitively</a> required by the
     <kbd>javafx.controls</kbd> module).
 </p>
 
@@ -113,12 +114,12 @@ Next, run the application using:
 <div class="tab-content">
     <div class="tab-pane active" id="nix-java">
 <pre class="no-border-radius"><code>
-java --module-path $PATH_TO_FX --add-modules=javafx.controls HelloFX
+java --module-path $PATH_TO_FX --add-modules javafx.controls HelloFX
 </code></pre>
     </div>
     <div class="tab-pane" id="win-java">
 <pre><code>
-java --module-path %PATH_TO_FX% --add-modules=javafx.controls HelloFX
+java --module-path %PATH_TO_FX% --add-modules javafx.controls HelloFX
 </code></pre>
     </div>
 </div>

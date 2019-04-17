@@ -5,13 +5,12 @@
 </p>
 
 <p>
-    Download the appropriate
-    <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX jmods</a>
+    Download an appropriate <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX runtime and JavaFX jmods</a>
     for your operating system and unzip them to a desired location.
 </p>
 
 <p>
-    Add an environment variable pointing to the lib directory of the runtime:
+    Add these environment variables pointing to the lib directory of the runtime and to the jmods directory:
 </p>
 
 <ul class="nav nav-tabs">
@@ -26,11 +25,13 @@
 <div class="tab-content">
     <div class="tab-pane active" id="nix-mods">
 <pre class="no-border-radius"><code>
+export PATH_TO_FX=path/to/javafx-sdk-12/lib
 export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
 </code></pre>
     </div>
     <div class="tab-pane" id="win-mods">
 <pre><code>
+set PATH_TO_FX="path\to\javafx-sdk-12\lib"
 set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
 </code></pre>
     </div>
@@ -48,7 +49,7 @@ set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
     <a class="samples" href="https://github.com/openjfx/samples/blob/master/CommandLine/Modular/CLI/hellofx/src/module-info.java" target="_blank">module-info</a> 
     file that defines the <kbd>hellofx</kbd> module.
     
-    Compile it either using the JavaFX SDK (see <a href="index.html#install-javafx">PATH_TO_FX</a>):
+    Compile it either using the JavaFX SDK:
 </p>
     
 <ul class="nav nav-tabs">
@@ -99,8 +100,14 @@ dir /s /b src\*.java > sources.txt & javac --module-path %PATH_TO_FX_MODS% -d mo
     </div>
 </div>
 
+<div class="alert alert-warning">
+    <strong>Note: </strong>
+    Note that the output is placed under <kbd>mods/hellofx</kbd> for convenience, but it could use any other name.
+</div>
+
 <p>
-    However if you want to run the modular application with the <kbd>java</kbd> command you need the JavaFX SDK:
+    To run the modular application with the <kbd>java</kbd> command you need the JavaFX SDK modules and your module
+    added to the module path:
 </p>
 
 <ul class="nav nav-tabs">
@@ -128,7 +135,7 @@ java --module-path "%PATH_TO_FX%;mods" -m hellofx/hellofx.HelloFX
 <a class="jlink"></a><h4>jlink</h4>
 
 <p>
-    With a modular project, <a href="https://docs.oracle.com/en/java/javase/11/tools/jlink.html" target="_blank">jlink</a>
+    With a modular project, <a href="https://docs.oracle.com/en/java/javase/12/tools/jlink.html" target="_blank">jlink</a>
     can be used to create a custom runtime image using the JavaFX jmods:
 </p>
 
@@ -144,12 +151,12 @@ java --module-path "%PATH_TO_FX%;mods" -m hellofx/hellofx.HelloFX
 <div class="tab-content">
     <div class="tab-pane active" id="nix-jlink">
 <pre class="no-border-radius"><code>
-$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS:mods --add-modules=hellofx --output hellofx
+$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS:mods --add-modules hellofx --output hellofx
 </code></pre>
     </div>
     <div class="tab-pane" id="win-jlink">
 <pre><code>
-jlink --module-path "%PATH_TO_FX_MODS%;mods" --add-modules=hellofx --output hellofx
+jlink --module-path "%PATH_TO_FX_MODS%;mods" --add-modules hellofx --output hellofx
 </code></pre>
     </div>
 </div>
@@ -182,7 +189,7 @@ hellofx\bin\java -m hellofx/hellofx.HelloFX
 
 <div class="alert alert-warning">
     <strong>Note: </strong>
-    This JRE is platform-specific.
+    This custom JRE is platform-specific.
 </div>
 
 <div id="MOD-Maven"></div><h3>Maven</h3>
@@ -204,7 +211,7 @@ hellofx\bin\java -m hellofx/hellofx.HelloFX
 </p>
 
 <pre><code>
-mvn clean compile package exec:java
+mvn clean package javafx:run
 </code></pre>
 
 <p>
@@ -252,10 +259,33 @@ gradlew run
 </div>
 
 <p>
-    To create a custom runtime the referred <a class="modular-jlink-action" href="#">steps</a> have been added to the <kbd>jlink</kbd> task 
-    included in the build file. 
+    To create a custom runtime the referred <a class="modular-jlink-action" href="#">steps</a> can be used to generate a gradle task.
+    Alternatively, there is a plugin that does it for us: the <a href="https://badass-jlink-plugin.beryx.org/releases/latest/" target="_blank">org.beryx.jlink</a>.
+    It can be combined with the JavaFX Gradle plugin:
 </p>
 
+<pre><code>
+plugins {
+  id 'application'
+  id 'org.openjfx.javafxplugin' version '0.0.7'
+  id 'org.beryx.jlink' version '2.9.4'
+}
+
+javafx {
+    version = "12"
+    modules = [ 'javafx.controls' ]
+}
+
+jlink {
+    launcher {
+        name = 'hellofx'
+    }
+}
+</code></pre>
+
+<p>
+    to generate and run the custom image:
+</p>
 <ul class="nav nav-tabs">
     <li class="nav-item">
         <a class="nav-link active" href="#nix-cligradlelink" data-toggle="tab">Linux/Mac</a>
@@ -268,16 +298,14 @@ gradlew run
 <div class="tab-content">
     <div class="tab-pane active" id="nix-cligradlelink">
 <pre class="no-border-radius"><code>
-export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
 ./gradlew jlink
-build/hellofx/bin/java -m hellofx/hellofx.HelloFX
+build/image/bin/hellofx
 </code></pre>
     </div>
     <div class="tab-pane" id="win-cligradlelink">
 <pre><code>
-set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
 gradlew jlink
-build\hellofx\bin\java -m hellofx/hellofx.HelloFX 
+build\image\bin\hellofx
 </code></pre>
     </div>
 </div>
@@ -290,14 +318,14 @@ build\hellofx\bin\java -m hellofx/hellofx.HelloFX
 </p>
 
 <p>
-    With this image you will be able to run JavaFX modular or not modular projects, use it as a new JRE from your
+    With this image you will be able to run JavaFX modular or non-modular projects, use it as a new JRE from your
     IDE to create regular JavaFX projects, or even use its <kbd>jlink</kbd> command to create a new 
     custom image for your project.
 </p>
 
 <p>
     For instance, you can create an image that contains the <kbd>java.se</kbd> 
-    <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.se/module-summary.html" target="_blank">module</a> and the JavaFX modules, 
+    <a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.se/module-summary.html" target="_blank">module</a> and the JavaFX modules,
     by running:
 </p>
 
@@ -314,13 +342,13 @@ build\hellofx\bin\java -m hellofx/hellofx.HelloFX
     <div class="tab-pane active" id="nix-jdkfx">
 <pre class="no-border-radius"><code>
 export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
-$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS --add-modules=java.se,javafx.fxml,javafx.web,javafx.swing --bind-services --output /path/to/jdkfx-<span class="JFX_VERSION">11</span>.jdk
+$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS --add-modules java.se,javafx.fxml,javafx.web,javafx.media,javafx.swing --bind-services --output /path/to/jdkfx-<span class="JFX_VERSION">11</span>.jdk
 </code></pre>
     </div>
     <div class="tab-pane" id="win-jdkfx">
 <pre><code>
 set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
-%JAVA_HOME%\bin\jlink --module-path %PATH_TO_FX_MODS% --add-modules=java.se,javafx.controls,javafx.fxml --bind-services --output \path\to\jdkfx-<span class="JFX_VERSION">11</span>
+%JAVA_HOME%\bin\jlink --module-path %PATH_TO_FX_MODS% --add-modules java.se,javafx.fxml,javafx.web,javafx.media,javafx.swing --bind-services --output \path\to\jdkfx-<span class="JFX_VERSION">11</span>
 </code></pre>
     </div>
 </div>
@@ -387,11 +415,11 @@ java --module-path mods -m hellofx/hellofx.HelloFX
 
     <a href="images/modular/netbeans01.png" target="_blank"><img src="images/modular/netbeans01.png" alt="Adding JDK+FX platform"/></a>
     
-    And start creating JavaFX projects.
+    And start creating Java projects with JavaFX classes.
     
     <a href="images/modular/netbeans02.png" target="_blank"><img src="images/modular/netbeans02.png" alt="Create JavaFX project"/></a>
     
-    And run them
+    And run them without any additional option:
     
     <a href="images/modular/netbeans03.png" target="_blank"><img src="images/modular/netbeans03.png" alt="Run JavaFX project"/></a>
 </p>
@@ -399,8 +427,10 @@ java --module-path mods -m hellofx/hellofx.HelloFX
 <div class="alert alert-warning">
     <strong>Note: </strong>
     This custom JRE is platform-specific and it is not intended for distribution, and if there is a new JDK or a new 
-    JavaFX SDK, it has to be created all over again. 
-    For distribution, the (soon to be released) <kbd>jpackager</kbd> tool should be used.
+    JavaFX SDK, it has to be created all over again. However, its <kbd>jlink</kbd> tool can be used to create a custom
+    image with the project that can be distributed.
+    And the (soon to be released) <kbd>jpackage</kbd> <a href="http://jdk.java.net/jpackage/" target="_blank">tool</a> can
+    be used for distributing installers with the jlinked project.
 </div>
 
 <div id="Non-Mod"></div><h3>Non-modular application</h3>
@@ -408,7 +438,7 @@ java --module-path mods -m hellofx/hellofx.HelloFX
 <p>
     Since Java 9, applications should be modular, and distributed with tools like <a href="index.html#modular">jlink</a>.
     However, if you have a non-modular JavaFX <span class="JFX_MAJOR">11</span> project or you can't use <kbd>jlink</kbd> because you
-    have non-modular dependencies, you can still do a fat jar.
+    have non-modular dependencies where the automatic module naming convention doesn't apply, you can still do a fat jar.
 </p>
 
 <p>
@@ -479,19 +509,19 @@ java -jar shade\hellofx.jar
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>11.0.2</version>
+            <version>12</version>
             <classifier>win</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>11.0.2</version>
+            <version>12</version>
             <classifier>linux</classifier>
         </dependency>
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-graphics</artifactId>
-            <version>11.0.2</version>
+            <version>12</version>
             <classifier>mac</classifier>
         </dependency>
     </dependencies>
@@ -522,7 +552,7 @@ jar {
         attributes 'Main-Class': 'hellofx.Launcher'
     }
     from {
-        configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 </code></pre>
@@ -565,9 +595,9 @@ java -jar build\libs\hellofx.jar
 </p>
 
 <pre><code>
-compileOnly "org.openjfx:javafx-graphics:$javafx.version:win"
-compileOnly "org.openjfx:javafx-graphics:$javafx.version:linux"
-compileOnly "org.openjfx:javafx-graphics:$javafx.version:mac"
+runtimeOnly "org.openjfx:javafx-graphics:$javafx.version:win"
+runtimeOnly "org.openjfx:javafx-graphics:$javafx.version:linux"
+runtimeOnly "org.openjfx:javafx-graphics:$javafx.version:mac"
 </code></pre>
 
 <p>
