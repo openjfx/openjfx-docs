@@ -148,7 +148,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     Select <kbd>File -> New -> Project -> Maven</kbd> and enable <kbd>Create from archetype</kbd>.
     If the JavaFX <a href="https://github.com/openjfx/javafx-maven-archetypes" target="_blank">archetype</a> is not
     installed yet, select <kbd>Add archetype...</kbd> and set the groupId (<kbd>org.openjfx</kbd>), the artifactId
-    (<kbd>javafx-maven-archetypes</kbd>), and the version (<kbd>0.0.1</kbd>), and press OK.
+    (<kbd>javafx-maven-archetypes</kbd>), and the version (<kbd><span class="JFX_MVN_PLUGIN_VERSION">0.0.1</span></kbd>), and press OK.
 
     <a href="images/ide/intellij/maven/idea00.png" target="_blank"><img src="images/ide/intellij/maven/idea00.png" alt="JavaFX Archetype"/></a>
 </p>
@@ -167,7 +167,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 
     <a href="images/ide/intellij/maven/idea02.png" target="_blank"><img src="images/ide/intellij/maven/idea02.png" alt="Select archetype"/></a>
 
-    You can create a property for the <kbd>javafx-version</kbd> as well, and set it to <span class="JDK_MAJOR">11</span>.
+    You can create a property for the <kbd>javafx-version</kbd> as well, and set it to <span class="JFX_VERSION">11</span>.
 </p>
 
 <p>
@@ -256,7 +256,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 </p>
 <pre><code>
 javafx {
-    version = "12"
+    version = "<span class="JFX_VERSION">12</span>"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 </code></pre>
@@ -455,7 +455,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     Select <kbd>File -> New -> Project -> Maven</kbd> and enable <kbd>Create from archetype</kbd>.
     If the JavaFX <a href="https://github.com/openjfx/javafx-maven-archetypes" target="_blank">archetype</a> is not
     installed yet, select <kbd>Add archetype...</kbd> and set the groupId (<kbd>org.openjfx</kbd>), the artifactId
-    (<kbd>javafx-maven-archetypes</kbd>), and the version (<kbd>0.0.1</kbd>), and press OK.
+    (<kbd>javafx-maven-archetypes</kbd>), and the version (<kbd><span class="JFX_MVN_PLUGIN_VERSION">0.0.1</span></kbd>), and press OK.
 
     <a href="images/ide/intellij/maven/idea00.png" target="_blank"><img src="images/ide/intellij/maven/idea00.png" alt="JavaFX Archetype"/></a>
 </p>
@@ -474,7 +474,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
 
     <a href="images/ide/intellij/maven/idea02.png" target="_blank"><img src="images/ide/intellij/maven/idea02.png" alt="Select archetype"/></a>
 
-    You can create a property for the <kbd>javafx-version</kbd> as well, and set it to <span class="JDK_MAJOR">11</span>.
+    You can create a property for the <kbd>javafx-version</kbd> as well, and set it to <span class="JFX_VERSION">11</span>.
 </p>
 
 <p>
@@ -644,12 +644,12 @@ gradlew run
 <pre><code>
 plugins {
   id 'application'
-  id 'org.openjfx.javafxplugin' version '0.0.7'
-  id 'org.beryx.jlink' version '2.9.4'
+  id 'org.openjfx.javafxplugin' version '<span class="JFX_PLUGIN_VERSION">0.0.7</span>'
+  id 'org.beryx.jlink' version '<span class="JLINK_PLUGIN_VERSION">2.9.4</span>'
 }
 
 javafx {
-    version = "12"
+    version = "<span class="JFX_VERSION">12</span>"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 

@@ -25,13 +25,13 @@
 <div class="tab-content">
     <div class="tab-pane active" id="nix-mods">
 <pre class="no-border-radius"><code>
-export PATH_TO_FX=path/to/javafx-sdk-12/lib
+export PATH_TO_FX=path/to/javafx-sdk-<span class="JFX_VERSION">12</span>/lib
 export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
 </code></pre>
     </div>
     <div class="tab-pane" id="win-mods">
 <pre><code>
-set PATH_TO_FX="path\to\javafx-sdk-12\lib"
+set PATH_TO_FX="path\to\javafx-sdk-<span class="JFX_VERSION">12</span>\lib"
 set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
 </code></pre>
     </div>
@@ -267,12 +267,12 @@ gradlew run
 <pre><code>
 plugins {
   id 'application'
-  id 'org.openjfx.javafxplugin' version '0.0.7'
-  id 'org.beryx.jlink' version '2.9.4'
+  id 'org.openjfx.javafxplugin' version '<span class="JFX_PLUGIN_VERSION">0.0.7</span>'
+  id 'org.beryx.jlink' version '<span class="JLINK_PLUGIN_VERSION">2.9.4</span>'
 }
 
 javafx {
-    version = "12"
+    version = "<span class="JFX_VERSION">12</span>"
     modules = [ 'javafx.controls' ]
 }
 
@@ -503,29 +503,29 @@ java -jar shade\hellofx.jar
     only the ones from <kbd>javafx.graphics</kbd>:
 </p>
 
-<textarea rows="22" style="border:none;width:100%" readonly>
-    <dependencies>
+<pre><code>
+    &lt;dependencies&gt;
         ...
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-graphics</artifactId>
-            <version>12</version>
-            <classifier>win</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-graphics</artifactId>
-            <version>12</version>
-            <classifier>linux</classifier>
-        </dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-graphics</artifactId>
-            <version>12</version>
-            <classifier>mac</classifier>
-        </dependency>
-    </dependencies>
-</textarea>
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.openjfx&lt;/groupId&gt;
+            &lt;artifactId&gt;javafx-graphics&lt;/artifactId&gt;
+            &lt;version&gt;<span class="JFX_VERSION">12</span>&lt;/version&gt;
+            &lt;classifier&gt;win&lt;/classifier&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.openjfx&lt;/groupId&gt;
+            &lt;artifactId&gt;javafx-graphics&lt;/artifactId&gt;
+            &lt;version&gt;<span class="JFX_VERSION">12</span>&lt;/version&gt;
+            &lt;classifier&gt;linux&lt;/classifier&gt;
+        &lt;/dependency&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.openjfx&lt;/groupId&gt;
+            &lt;artifactId&gt;javafx-graphics&lt;/artifactId&gt;
+            &lt;version&gt;<span class="JFX_VERSION">12</span>&lt;/version&gt;
+            &lt;classifier&gt;mac&lt;/classifier&gt;
+        &lt;/dependency&gt;
+    &lt;/dependencies&gt;
+</code></pre>
 
 <h4>Gradle</h4>
 

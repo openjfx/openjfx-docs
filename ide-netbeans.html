@@ -200,7 +200,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 </p>
 
 <p>
-    Verify it includes the <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd> dependencies, update their version to 12,
+    Verify it includes the <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd> dependencies, update their version to <span class="JFX_VERSION">12</span>,
     and verify it includes the <kbd>javafx-maven-plugin</kbd>. Note that Maven manages
     the required dependencies: it will add <kbd>javafx.base</kbd> and
     <kbd>javafx.graphics</kbd> that are required by <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>,
@@ -287,7 +287,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 </p>
 <pre><code>
 javafx {
-    version = "12"
+    version = "<span class="JFX_VERSION">12</span>"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 </code></pre>
@@ -495,7 +495,7 @@ dist\jlink\HelloFX\bin\HelloFX
 </p>
 
 <p>
-    Verify it includes the <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd> dependencies, update their version to 12,
+    Verify it includes the <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd> dependencies, update their version to <span class="JFX_VERSION">12</span>,
     and verify it includes the <kbd>javafx-maven-plugin</kbd>. Note that Maven manages
     the required dependencies: it will add <kbd>javafx.base</kbd> and
     <kbd>javafx.graphics</kbd> that are required by <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>,
@@ -675,12 +675,12 @@ gradlew run
 <pre><code>
 plugins {
   id 'application'
-  id 'org.openjfx.javafxplugin' version '0.0.7'
-  id 'org.beryx.jlink' version '2.9.4'
+  id 'org.openjfx.javafxplugin' version '<span class="JFX_PLUGIN_VERSION">0.0.7</span>'
+  id 'org.beryx.jlink' version '<span class="JLINK_PLUGIN_VERSION">2.9.4</span>'
 }
 
 javafx {
-    version = "12"
+    version = "<span class="JFX_VERSION">12</span>"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
