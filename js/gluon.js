@@ -3,10 +3,12 @@ $(function() {
     var JDK_MAJOR = "12";
     var JFX_MAJOR = "12";
     
-    var JDK_VERSION = "12";
-    var JFX_VERSION = "12";
+    var JDK_VERSION = "12.0.1";
+    var JFX_VERSION = "12.0.1";
     var JFX_PLUGIN_VERSION = "0.0.7";
-    
+    var JFX_MVN_PLUGIN_VERSION = "0.0.1";
+    var JLINK_PLUGIN_VERSION = "2.10.2";
+
     var nav_top = 70;
         
     // Hide all non-active div
@@ -135,7 +137,9 @@ $(function() {
         $('.JDK_VERSION').each(function() { $(this).text(JDK_VERSION) });
         $('.JFX_VERSION').each(function() { $(this).text(JFX_VERSION) });
         $('.JFX_PLUGIN_VERSION').each(function() { $(this).text(JFX_PLUGIN_VERSION) });
-        
+        $('.JFX_MVN_PLUGIN_VERSION').each(function() { $(this).text(JFX_MVN_PLUGIN_VERSION) });
+        $('.JLINK_PLUGIN_VERSION').each(function() { $(this).text(JLINK_PLUGIN_VERSION) });
+
         nav_top = $('.navbar').height();
         
         $('code').each(function () {

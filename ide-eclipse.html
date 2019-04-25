@@ -36,7 +36,7 @@
     Download the appropriate
     <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX SDK</a>
     for your operating system and unzip it to a desired location, for instance
-    <kbd>/Users/your-user/Downloads/javafx-sdk-12</kbd>.
+    <kbd>/Users/your-user/Downloads/javafx-sdk-<span class="JDK_VERSION">12</span></kbd>.
 </p>
 
 <p>
@@ -187,7 +187,7 @@ is not selected.
     <a href="images/ide/eclipse/maven/eclipse00.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse00.png" alt="Create a Maven project"/></a>
 
     The first time you will need to add the JavaFX archetypes: Select <kbd>Add Archetypes...</kbd> and type: <kbd>org.openjfx</kbd> for the group id,
-    <kbd>javafx-archetype-simple</kbd> or <kbd>javafx-archetype-fxml</kbd> for the artifact id, and <kbd>0.0.1</kbd> for the version.
+    <kbd>javafx-archetype-simple</kbd> or <kbd>javafx-archetype-fxml</kbd> for the artifact id, and <kbd><span class="JFX_MVN_PLUGIN_VERSION">0.0.1</span></kbd> for the version.
 
     <a href="images/ide/eclipse/maven/eclipse01.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse01.png" alt="Add JavaFX archetypes"/></a>
 
@@ -197,7 +197,7 @@ is not selected.
     <a href="images/ide/eclipse/maven/eclipse02.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse02.png" alt="JavaFX Maven archetypes"/></a>
 
     Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>.
-    You can edit the <kbd>javafx-version</kbd> property, and set it to <span class="JDK_MAJOR">11</span>.
+    You can edit the <kbd>javafx-version</kbd> property, and set it to <span class="JFX_VERSION">11</span>.
 
     <a href="images/ide/eclipse/maven/eclipse03.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse03.png" alt="JavaFX FXML archetype"/></a>
 
@@ -338,7 +338,7 @@ If that is not possible, another workaround is to add this VM argument to the ja
 </p>
 <pre><code>
 javafx {
-    version = "12"
+    version = "<span class="JFX_VERSION">12</span>"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 </code></pre>
@@ -569,7 +569,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     Create a <kbd>File -> New -> Project... -> Maven -> Maven project</kbd>.
 
     The first time you will need to add the JavaFX archetypes: Select <kbd>Add Archetypes...</kbd> and type: <kbd>org.openjfx</kbd> for the group id,
-    <kbd>javafx-archetype-simple</kbd> or <kbd>javafx-archetype-fxml</kbd> for the artifact id, and <kbd>0.0.1</kbd> for the version.
+    <kbd>javafx-archetype-simple</kbd> or <kbd>javafx-archetype-fxml</kbd> for the artifact id, and <kbd><span class="JFX_MVN_PLUGIN_VERSION">0.0.1</span></kbd> for the version.
 
     <a href="images/ide/eclipse/modular/maven/eclipse01.png" target="_blank"><img src="images/ide/eclipse/modular/maven/eclipse01.png" alt="Add JavaFX archetypes"/></a>
 
@@ -579,7 +579,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     <a href="images/ide/eclipse/modular/maven/eclipse02.png" target="_blank"><img src="images/ide/eclipse/modular/maven/eclipse02.png" alt="JavaFX Maven archetypes"/></a>
 
     Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>.
-    You can edit the <kbd>javafx-version</kbd> property, and set it to <span class="JDK_MAJOR">11</span>.
+    You can edit the <kbd>javafx-version</kbd> property, and set it to <span class="JFX_VERSION">11</span>.
 
     <a href="images/ide/eclipse/modular/maven/eclipse03.png" target="_blank"><img src="images/ide/eclipse/modular/maven/eclipse03.png" alt="JavaFX FXML archetype"/></a>
 
@@ -823,12 +823,12 @@ gradlew run
 plugins {
   id 'application'
   id 'eclipse'
-  id 'org.openjfx.javafxplugin' version '0.0.7'
-  id 'org.beryx.jlink' version '2.9.4'
+  id 'org.openjfx.javafxplugin' version '<span class="JFX_PLUGIN_VERSION">0.0.7</span>'
+  id 'org.beryx.jlink' version '<span class="JLINK_PLUGIN_VERSION">2.9.4</span>'
 }
 
 javafx {
-    version = "12"
+    version = "<span class="JFX_VERSION">12</span>"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
