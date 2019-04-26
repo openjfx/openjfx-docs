@@ -546,6 +546,24 @@ dist\jlink\HelloFX\bin\HelloFX
     To create a runtime image, run the following commands:
 </p>
 
+<p>
+    To create a custom runtime, run from a terminal with
+    <kbd>JAVA_HOME</kbd> set to <span class="JDK_MAJOR">11</span>:
+</p>
+
+<pre><code>
+mvn clean javafx:jlink
+</code></pre>
+
+<p>
+    Note the plugin allows the usual options as the <kbd>jlink</kbd> command, as well as creating a
+    launcher or a zip with the custom image.
+</p>
+
+<p>
+    And after the image is built, you can run it from command line:
+</p>
+
 <ul class="nav nav-tabs">
     <li class="nav-item">
         <a class="nav-link active" href="#nix-nb-mod-mav-1" data-toggle="tab">Linux/Mac</a>
@@ -554,19 +572,16 @@ dist\jlink\HelloFX\bin\HelloFX
         <a class="nav-link" href="#win-nb-mod-mav-1" data-toggle="tab">Windows</a>
     </li>
 </ul>
+
 <div class="tab-content">
     <div class="tab-pane active" id="nix-nb-mod-mav-1">
 <pre class="no-border-radius"><code>
-export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
-$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS:target/hellofx-1.0-SNAPSHOT.jar --add-modules hellofx --output jre
-jre/bin/java -m hellofx/org.openjfx.hellofx.App
+target/hellofx/bin/launcher
 </code></pre>
     </div>
     <div class="tab-pane" id="win-nb-mod-mav-1">
 <pre><code>
-set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
-jlink --module-path "%PATH_TO_FX_MODS%;target\hellofx-1.0-SNAPSHOT.jar" --add-modules hellofx --output jre
-jre\bin\java -m hellofx/org.openjfx.hellofx.App
+target\hellofx\bin\launcher
 </code></pre>
     </div>
 </div>
