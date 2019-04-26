@@ -6,7 +6,8 @@ $(function() {
     var JDK_VERSION = "12.0.1";
     var JFX_VERSION = "12.0.1";
     var JFX_PLUGIN_VERSION = "0.0.7";
-    var JFX_MVN_PLUGIN_VERSION = "0.0.1";
+    var JFX_MVN_PLUGIN_VERSION = "0.0.2";
+    var JFX_MVN_ARCH_VERSION = "0.0.1";
     var JLINK_PLUGIN_VERSION = "2.10.2";
 
     var nav_top = 70;
@@ -138,6 +139,7 @@ $(function() {
         $('.JFX_VERSION').each(function() { $(this).text(JFX_VERSION) });
         $('.JFX_PLUGIN_VERSION').each(function() { $(this).text(JFX_PLUGIN_VERSION) });
         $('.JFX_MVN_PLUGIN_VERSION').each(function() { $(this).text(JFX_MVN_PLUGIN_VERSION) });
+        $('.JFX_MVN_ARCH_VERSION').each(function() { $(this).text(JFX_MVN_ARCH_VERSION) });
         $('.JLINK_PLUGIN_VERSION').each(function() { $(this).text(JLINK_PLUGIN_VERSION) });
 
         nav_top = $('.navbar').height();

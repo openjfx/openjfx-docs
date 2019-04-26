@@ -148,7 +148,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     Select <kbd>File -> New -> Project -> Maven</kbd> and enable <kbd>Create from archetype</kbd>.
     If the JavaFX <a href="https://github.com/openjfx/javafx-maven-archetypes" target="_blank">archetype</a> is not
     installed yet, select <kbd>Add archetype...</kbd> and set the groupId (<kbd>org.openjfx</kbd>), the artifactId
-    (<kbd>javafx-maven-archetypes</kbd>), and the version (<kbd><span class="JFX_MVN_PLUGIN_VERSION">0.0.1</span></kbd>), and press OK.
+    (<kbd>javafx-maven-archetypes</kbd>), and the version (<kbd><span class="JFX_MVN_ARCH_VERSION">0.0.1</span></kbd>), and press OK.
 
     <a href="images/ide/intellij/maven/idea00.png" target="_blank"><img src="images/ide/intellij/maven/idea00.png" alt="JavaFX Archetype"/></a>
 </p>
@@ -455,7 +455,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     Select <kbd>File -> New -> Project -> Maven</kbd> and enable <kbd>Create from archetype</kbd>.
     If the JavaFX <a href="https://github.com/openjfx/javafx-maven-archetypes" target="_blank">archetype</a> is not
     installed yet, select <kbd>Add archetype...</kbd> and set the groupId (<kbd>org.openjfx</kbd>), the artifactId
-    (<kbd>javafx-maven-archetypes</kbd>), and the version (<kbd><span class="JFX_MVN_PLUGIN_VERSION">0.0.1</span></kbd>), and press OK.
+    (<kbd>javafx-maven-archetypes</kbd>), and the version (<kbd><span class="JFX_MVN_ARCH_VERSION">0.0.1</span></kbd>), and press OK.
 
     <a href="images/ide/intellij/maven/idea00.png" target="_blank"><img src="images/ide/intellij/maven/idea00.png" alt="JavaFX Archetype"/></a>
 </p>
@@ -522,7 +522,22 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
 <h5>6. Create a custom runtime image</h5>
 
 <p>
-    To create a runtime image, run the following commands from a terminal:
+    To create a custom runtime, using the <a href="https://github.com/openjfx/javafx-maven-plugin" target="_blank">JavaFX Maven plugin</a>,
+    you can click on <kbd>HelloFX -> Plugins -> javafx -> javafx:jlink</kbd>, or from a terminal with
+    <kbd>JAVA_HOME</kbd> set to <span class="JDK_MAJOR">11</span> you can run:
+</p>
+
+<pre><code>
+mvn clean javafx:jlink
+</code></pre>
+
+<p>
+    Note the plugin allows the usual options as the <kbd>jlink</kbd> command, as well as creating a
+    launcher or a zip with the custom image.
+</p>
+
+<p>
+    And after the image is built, you can run it from command line:
 </p>
 
 <ul class="nav nav-tabs">
@@ -533,19 +548,16 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
         <a class="nav-link" href="#win-idea-mod-mav-1" data-toggle="tab">Windows</a>
     </li>
 </ul>
+
 <div class="tab-content">
     <div class="tab-pane active" id="nix-idea-mod-mav-1">
 <pre class="no-border-radius"><code>
-export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
-$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS:target/hellofx-1.0-SNAPSHOT.jar --add-modules hellofx --output jre
-jre/bin/java -m hellofx/org.openjfx.App
+target/hellofx/bin/launcher
 </code></pre>
     </div>
     <div class="tab-pane" id="win-idea-mod-mav-1">
 <pre><code>
-set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
-jlink --module-path "%PATH_TO_FX_MODS%;target\hellofx-1.0-SNAPSHOT.jar" --add-modules hellofx --output jre
-jre\bin\java -m hellofx/org.openjfx.App
+target\hellofx\bin\launcher
 </code></pre>
     </div>
 </div>

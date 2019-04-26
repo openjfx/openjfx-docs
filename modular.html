@@ -211,12 +211,47 @@ hellofx\bin\java -m hellofx/hellofx.HelloFX
 </p>
 
 <pre><code>
-mvn clean package javafx:run
+mvn clean javafx:run
 </code></pre>
 
 <p>
-    However, to create a custom runtime, the same steps referred <a href="#jlink">above</a> are required.
+    To create a custom runtime, using the <a href="https://github.com/openjfx/javafx-maven-plugin" target="_blank">JavaFX Maven plugin</a>, you can do:
 </p>
+
+<pre><code>
+mvn clean javafx:jlink
+</code></pre>
+
+<p>
+    Note the plugin allows the usual <a href="https://github.com/openjfx/javafx-maven-plugin#javafxjlink-options" target="_blank">options</a> as the <kbd>jlink</kbd> command, as well as creating a
+    launcher or a zip with the custom image.
+</p>
+
+<p>
+    And after the image is built, you can run it from command line:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-mvn-run" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-mvn-run" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-mvn-run">
+<pre class="no-border-radius"><code>
+target/hellofx/bin/launcher
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-mvn-run">
+<pre><code>
+target\hellofx\bin\launcher
+</code></pre>
+    </div>
+</div>
 
 <div id="MOD-Gradle"></div><h3>Gradle</h3>
 
