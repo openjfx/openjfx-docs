@@ -1,12 +1,12 @@
 <h2>JavaFX <span class="JFX_MAJOR">11</span> and IntelliJ</h2>
 
-<p>This section explains how to use Java <span class="JDK_MAJOR">11</span> and JavaFX <span class="JFX_MAJOR">11</span> from IntelliJ. 
+<p>This section explains how to use Java <span class="JDK_MAJOR">11</span> and JavaFX <span class="JFX_MAJOR">11</span> from IntelliJ.
     Version IntelliJ IDEA 2019.1 was used for the following screenshots.
 </p>
 
 <p>
     Download an appropriate <a href="https://jdk.java.net/12/">JDK <span class="JDK_MAJOR">11</span></a> for your operating system.
-    Make sure <kbd>JAVA_HOME</kbd> is properly set to the Java <span class="JDK_MAJOR">11</span> installation directory. 
+    Make sure <kbd>JAVA_HOME</kbd> is properly set to the Java <span class="JDK_MAJOR">11</span> installation directory.
 </p>
 
 <p>
@@ -19,8 +19,8 @@
 <div id="IDEA-IDE"></div><h4>IDE</h4>
 
 <p>
-    Follow these steps to create a JavaFX non-modular project and use the IDE tools to build it and run it. 
-    
+    Follow these steps to create a JavaFX non-modular project and use the IDE tools to build it and run it.
+
     Alternatively, you can download a similar project from <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Java" target="_blank">here</a>.
 </p>
 
@@ -32,28 +32,28 @@
 </p>
 
 <h5>1. Create a JavaFX project</h5>
-    
+
 <p>
     <a href="images/ide/intellij/ide/idea01.png" target="_blank"><img src="images/ide/intellij/ide/idea01.png" alt="Create a JavaFX project"/></a>
-   
+
     Provide a name to the project, like <kbd>HelloFX</kbd>, and a location.
-    
+
     When the project opens, the JavaFX classes are not recognized.
-    
+
     <a href="images/ide/intellij/ide/idea02.png" target="_blank"><img src="images/ide/intellij/ide/idea02.png" alt="Missing JavaFX classes"/></a>
 </p>
 
 <h5>2. Set JDK <span class="JDK_MAJOR">11</span></h5>
 
-<p>    
+<p>
     Go to <kbd>File -> Project Structure -> Project</kbd>, and set the project SDK to <span class="JDK_MAJOR">11</span>. You can also set the language level to <span class="JDK_MAJOR">11</span>.
     <a href="images/ide/intellij/ide/idea03.png" target="_blank"><img src="images/ide/intellij/ide/idea03.png" alt="Set JDK 11"/></a>
 </p>
 
 <h5>3. Create a library</h5>
 
-<p>    
-    Go to <kbd>File -> Project Structure -> Libraries</kbd> and add the JavaFX <span class="JFX_MAJOR">11</span> SDK as a library to the project. 
+<p>
+    Go to <kbd>File -> Project Structure -> Libraries</kbd> and add the JavaFX <span class="JFX_MAJOR">11</span> SDK as a library to the project.
     Point to the <kbd>lib</kbd> folder of the JavaFX SDK.
     <a href="images/ide/intellij/ide/idea04.png" target="_blank"><img src="images/ide/intellij/ide/idea04.png" alt="Create Library"/></a>
     Once the library is applied, the JavaFX classes will be recognized by the IDE.
@@ -68,12 +68,12 @@
 Error: JavaFX runtime components are missing, and are required to run this application
 </code></pre>
 
-    This error is shown since the Java <span class="JDK_MAJOR">11</span> launcher checks if the main class extends 
-    <kbd>javafx.application.Application</kbd>. If that is the case, it is required to 
+    This error is shown since the Java <span class="JDK_MAJOR">11</span> launcher checks if the main class extends
+    <kbd>javafx.application.Application</kbd>. If that is the case, it is required to
     have the <kbd>javafx.graphics</kbd> module on the module-path.
 
 </div>
-    
+
 <h5>4. Add VM options</h5>
 
 <p>
@@ -101,20 +101,20 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     </div>
 </div>
 
-<p>    
-    Note that the default project created by IntelliJ uses FXML, so <kbd>javafx.fxml</kbd> 
-    is required along with <kbd>javafx.controls</kbd>. If your project uses other modules, 
+<p>
+    Note that the default project created by IntelliJ uses FXML, so <kbd>javafx.fxml</kbd>
+    is required along with <kbd>javafx.controls</kbd>. If your project uses other modules,
     you will need to add them as well.
-    
+
     <a href="images/ide/intellij/ide/idea06.png" target="_blank"><img src="images/ide/intellij/ide/idea06.png" alt="VM options"/></a>
-    
+
     Click apply and close the dialog.
 </p>
 
 <p>
     Alternatively, you can define a global variable that can be used in future projects. Go to
-    <kbd>Preferences (File -> Settings) -> Appearance & Behavior -> Path Variables</kbd>, and define the name 
-    of the variable as <kbd>PATH_TO_FX</kbd>, and browse to the lib folder of the JavaFX SDK to set its value, 
+    <kbd>Preferences (File -> Settings) -> Appearance & Behavior -> Path Variables</kbd>, and define the name
+    of the variable as <kbd>PATH_TO_FX</kbd>, and browse to the lib folder of the JavaFX SDK to set its value,
     and click apply.
     <a href="images/ide/intellij/ide/idea07.png" target="_blank"><img src="images/ide/intellij/ide/idea07.png" alt="Path Variable"/></a>
 </p>
@@ -138,7 +138,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 
 <p>
     Follow these steps to create a JavaFX non-modular project and use the Maven tools to build it and run it.
-    
+
     Alternatively, you can download a similar project from <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Maven" target="_blank">here</a>.
 </p>
 
@@ -190,13 +190,13 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 
 <p>
     Import the Maven changes. The JavaFX classes will be recognized. Notice also that Maven manages
-    the required dependencies: it will add <kbd>javafx.base</kbd> and 
-    <kbd>javafx.graphics</kbd> that are required by <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>, 
-    but most important, it will add the required classifier based on your platform, downloading 
+    the required dependencies: it will add <kbd>javafx.base</kbd> and
+    <kbd>javafx.graphics</kbd> that are required by <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>,
+    but most important, it will add the required classifier based on your platform, downloading
     the specific platform jars.
 
     <a href="images/ide/intellij/maven/idea04.png" target="_blank"><img src="images/ide/intellij/maven/idea04.png" alt="Platform dependencies"/></a>
-   
+
     As for any other maven dependencies, these jars can be found in the local <kbd>.m2</kbd> repository.
 </p>
 
@@ -224,7 +224,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 
 <p>
     Follow these steps to create a JavaFX non-modular project and use the Gradle tools to build it and run it.
-    
+
     Alternatively, you can download a similar project from <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Gradle" target="_blank">here</a>.
 </p>
 
@@ -233,21 +233,21 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 <p>
     Create a Gradle project with Java.
     <a href="images/ide/intellij/gradle/idea01.png" target="_blank"><img src="images/ide/intellij/gradle/idea01.png" alt="Create a Gradle project"/></a>
-   
-    Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>. 
+
+    Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>.
     Select the Gradle JVM based on the project JDK <span class="JDK_MAJOR">11</span>.
     Then provide a name to the project, like <kbd>HelloFX</kbd> and a location for the project.
-    
+
     When the project opens, add a package <kbd>org.openjfx</kbd> and an empty <kbd>MainApp</kbd> class.
-    
+
     <a href="images/ide/intellij/gradle/idea02.png" target="_blank"><img src="images/ide/intellij/gradle/idea02.png" alt="Open project"/></a>
 </p>
 
 <h5>2. Modify the build</h5>
 
 <p>
-    Edit the <kbd>build.gradle</kbd> file and replace it with this 
-    <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Gradle/hellofx/build.gradle" target="_blank">build</a> file, setting the 
+    Edit the <kbd>build.gradle</kbd> file and replace it with this
+    <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Gradle/hellofx/build.gradle" target="_blank">build</a> file, setting the
     <kbd>mainClassName</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
 </p>
 <p>
@@ -261,7 +261,7 @@ javafx {
 }
 </code></pre>
 
-<p>   
+<p>
     Synchronize the project and you will get the JavaFX dependencies.
     <a href="images/ide/intellij/gradle/idea03.png" target="_blank"><img src="images/ide/intellij/gradle/idea03.png" alt="Update the build"/></a>
     As for any other Gradle dependencies, these jars can be found in the local <kbd>.gradle</kbd> repository.
@@ -270,12 +270,12 @@ javafx {
 <h5>3. Add the source code</h5>
 
 <p>
-    Based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Gradle/hellofx/src/main/java/org/openjfx/MainApp.java" target="_blank">MainApp</a> class, 
-    add its content to the project main class. Then add the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Gradle/hellofx/src/main/java/org/openjfx/FXMLController.java" target="_blank">controller</a> 
-    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Gradle/hellofx/src/main/resources/org/openjfx/scene.fxml" target="_blank">FXML</a> and 
-    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Gradle/hellofx/src/main/resources/org/openjfx/styles.css" target="_blank">css</a>  
+    Based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Gradle/hellofx/src/main/java/org/openjfx/MainApp.java" target="_blank">MainApp</a> class,
+    add its content to the project main class. Then add the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Gradle/hellofx/src/main/java/org/openjfx/FXMLController.java" target="_blank">controller</a>
+    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Gradle/hellofx/src/main/resources/org/openjfx/scene.fxml" target="_blank">FXML</a> and
+    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Non-Modular/Gradle/hellofx/src/main/resources/org/openjfx/styles.css" target="_blank">css</a>
     files.
-    
+
     Note that the JavaFX classes are recognized by the IDE.
     <a href="images/ide/intellij/gradle/idea04.png" target="_blank"><img src="images/ide/intellij/gradle/idea04.png" alt="HelloFX"/></a>
 </p>
@@ -324,40 +324,44 @@ gradlew run
 <div id="IDEA-Mod-IDE"></div><h4>IDE</h4>
 
 <p>
-    Follow these steps to create a JavaFX modular project and use the IDE tools to build it and run it. 
-    
+    Follow these steps to create a JavaFX modular project and use the IDE tools to build it and run it.
+
     Alternatively, you can download a similar project from <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Java" target="_blank">here</a>.
 </p>
 
 <h5>1. Create a JavaFX project</h5>
-    
+
 <p>
     Provide a name to the project, like <kbd>HelloFX</kbd>, and a location.
-    
+
     When the project opens, rename the <kbd>hellofx</kbd> package to <kbd>org.openjfx</kbd>.
 </p>
 
 <h5>2. Set JDK <span class="JDK_MAJOR">11</span> and add JavaFX <span class="JFX_MAJOR">11</span></h5>
 
-<p>    
-    Go to <kbd>File -> Project Structure -> Project</kbd>, and set the project SDK to <span class="JDK_MAJOR">11</span>. 
+<p>
+    Go to <kbd>File -> Project Structure -> Project</kbd>, and set the project SDK to <span class="JDK_MAJOR">11</span>.
     You can also set the language level to <span class="JDK_MAJOR">11</span> and change the default compiler output directory
     <kbd>out</kbd> to <kbd>mods</kbd>.
-    
+
     <a href="images/ide/intellij/modular/ide/idea00.png" target="_blank"><img src="images/ide/intellij/modular/ide/idea00.png" alt="mods output"/></a>
 </p>
 <p>
-    Go to <kbd>File -> Project Structure -> Libraries</kbd> and add the JavaFX <span class="JFX_MAJOR">11</span> SDK as a library to the project. 
-    Point to the <kbd>lib</kbd> folder of the JavaFX SDK.
+    Go to <kbd>File -> Project Structure -> Libraries</kbd> and add the JavaFX <span class="JFX_MAJOR">11</span> SDK as a library to the project.
+    Point to the <kbd>lib</kbd> folder of the JavaFX SDK. Move the <kbd>src.jar</kbd> file to its parent directory, to avoid a build error.
+</p>
+<p>
+    Go to <kbd>File -> Project Structure -> Modules</kbd> and add the JavaFX <span class="JFX_MAJOR">11</span> SDK as a dependency to the project.
+    Check its Export checkbox.
 </p>
 
 <h5>3. Add the module-info class</h5>
 
 <p>
-    Add the <kbd>module-info</kbd> class, including the required modules <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>. 
+    Add the <kbd>module-info</kbd> class, including the required modules <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>.
     Since FXML uses reflection to access the controller in the module, this has to be opened to <kbd>javafx.fxml</kbd>. Finally,
     export the package <kbd>org.openjfx</kbd>.
-    
+
     <a href="images/ide/intellij/modular/ide/idea01.png" target="_blank"><img src="images/ide/intellij/modular/ide/idea01.png" alt="module-info"/></a>
 </p>
 
@@ -369,7 +373,7 @@ gradlew run
     and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Java/hellofx/src/org/openjfx/scene.fxml" target="_blank">FXML</a> and
     and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Java/hellofx/src/org/openjfx/styles.css" target="_blank">css</a>
     files.
-    
+
     <a href="images/ide/intellij/modular/ide/idea02.png" target="_blank"><img src="images/ide/intellij/modular/ide/idea02.png" alt="Source code"/></a>
 </p>
 
@@ -390,7 +394,7 @@ gradlew run
 <div class="tab-content">
     <div class="tab-pane active" id="nix-idea-mod-ide-1">
 <pre class="no-border-radius"><code>
---module-path $PATH_TO_FX:mods/production
+--module-path ${PATH_TO_FX}:mods/production
 </code></pre>
     </div>
     <div class="tab-pane" id="win-idea-mod-ide-1">
@@ -399,10 +403,10 @@ gradlew run
 </code></pre>
     </div>
 </div>
-    
-<p>    
+
+<p>
     <a href="images/ide/intellij/modular/ide/idea03.png" target="_blank"><img src="images/ide/intellij/modular/ide/idea03.png" alt="VM options"/></a>
-    
+
     Click apply and close the dialog.
 </p>
 
@@ -496,7 +500,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
 <p>
     Open the <kbd>module-info</kbd> class, that includes the required modules <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>.
     Since FXML uses reflection to access the controller in the module, it has been opened to <kbd>javafx.fxml</kbd>.
-    
+
     <a href="images/ide/intellij/modular/maven/idea04.png" target="_blank"><img src="images/ide/intellij/modular/maven/idea04.png" alt="module-info"/></a>
 </p>
 
@@ -566,7 +570,7 @@ target\hellofx\bin\launcher
 
 <p>
     Follow these steps to create a JavaFX modular project and use the Gradle tools to build it and run it.
-    
+
     Alternatively, you can download a similar project from <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Gradle" target="_blank">here</a>.
 </p>
 
@@ -574,52 +578,52 @@ target\hellofx\bin\launcher
 
 <p>
     Create a Gradle project with Java.
-   
-    Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>. 
+
+    Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>.
     Select the Gradle JVM based on the project JDK <span class="JDK_MAJOR">11</span>.
     Then provide a name to the project, like <kbd>HelloFX</kbd> and a location for the project.
-    
+
     When the project opens, add a package <kbd>org.openjfx</kbd> and an empty <kbd>MainApp</kbd> class.
 </p>
 
 <h5>2. Modify the build</h5>
 
 <p>
-    Edit the <kbd>build.gradle</kbd> file and replace it with this 
-    <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Gradle/hellofx/build.gradle" target="_blank">build</a> file, setting the 
+    Edit the <kbd>build.gradle</kbd> file and replace it with this
+    <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Gradle/hellofx/build.gradle" target="_blank">build</a> file, setting the
     <kbd>mainClassName</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
 </p>
 <p>
-    Note the use of the <kbd>org.openjfx.javafxplugin</kbd> plugin, that removes the necessity of adding the 
+    Note the use of the <kbd>org.openjfx.javafxplugin</kbd> plugin, that removes the necessity of adding the
     JavaFX dependencies and setting the module-path for the compile and run task for them.
-    
+
     <a href="images/ide/intellij/modular/gradle/idea01.png" target="_blank"><img src="images/ide/intellij/modular/gradle/idea01.png" alt="Update the build"/></a>
 </p>
 
 <h5>3. Add the module-info class</h5>
 
 <p>
-    Add the <kbd>module-info</kbd> class, including the required modules <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>. 
+    Add the <kbd>module-info</kbd> class, including the required modules <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>.
     Since FXML uses reflection to access the controller in the module, this has to be opened to <kbd>javafx.fxml</kbd>. Finally,
     export the package <kbd>org.openjfx</kbd>.
-    
+
     <a href="images/ide/intellij/modular/gradle/idea02.png" target="_blank"><img src="images/ide/intellij/modular/gradle/idea02.png" alt="module-info"/></a>
 </p>
 
 <h5>4. Add the source code</h5>
 
 <p>
-    Based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Gradle/hellofx/src/main/java/org/openjfx/MainApp.java" target="_blank">MainApp</a> class, 
-    add its content to the project main class. Then add the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Gradle/hellofx/src/main/java/org/openjfx/FXMLController.java" target="_blank">controller</a> 
-    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Gradle/hellofx/src/main/resources/org/openjfx/scene.fxml" target="_blank">FXML</a> and 
-    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Gradle/hellofx/src/main/resources/org/openjfx/styles.css" target="_blank">css</a>  
+    Based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Gradle/hellofx/src/main/java/org/openjfx/MainApp.java" target="_blank">MainApp</a> class,
+    add its content to the project main class. Then add the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Gradle/hellofx/src/main/java/org/openjfx/FXMLController.java" target="_blank">controller</a>
+    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Gradle/hellofx/src/main/resources/org/openjfx/scene.fxml" target="_blank">FXML</a> and
+    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/IntelliJ/Modular/Gradle/hellofx/src/main/resources/org/openjfx/styles.css" target="_blank">css</a>
     files.
 </p>
 
 <h5>5. Run the project</h5>
 
 <p>
-    You can open the Gradle window and click on <kbd>hellofx->Tasks->build->build</kbd> to 
+    You can open the Gradle window and click on <kbd>hellofx->Tasks->build->build</kbd> to
     build the project, and on <kbd>hellofx->Tasks->application->run</kbd> to execute the project.
 
     You can also open a terminal and run:
