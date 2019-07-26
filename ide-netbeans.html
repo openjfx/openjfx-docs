@@ -1,8 +1,8 @@
 <h2>JavaFX <span class="JFX_MAJOR">11</span> and NetBeans</h2>
 
 <p>This section explains how to use Java <span class="JDK_MAJOR">11</span> and JavaFX <span class="JFX_MAJOR">11</span> from NetBeans. 
-    Apache NetBeans 11.0 was used for the following screenshots. It can be downloaded from
-    <a href="https://netbeans.apache.org/download/nb110/nb110.html" target="_blank">here</a>.
+    Apache NetBeans 11.1 was used for the following screenshots. It can be downloaded from
+    <a href="https://netbeans.apache.org/download/nb111/nb111.html" target="_blank">here</a>.
 </p>
 
 <p>
@@ -123,39 +123,38 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     
 <h5>5. Add VM options</h5>
 
-
 <p>
-    To solve the issue, go to <kbd>Properties -> Libraries -> Run -> Modulepath -> + -> Add Library </kbd> and
-    add the <kbd>JavaFX12</kbd> library.
-
-    <a href="images/ide/netbeans/ide/netbeans06.png" target="_blank"><img src="images/ide/netbeans/ide/netbeans06.png" alt="ModulePath"/></a>
-
-    Click OK.
-
+    To solve the issue, go to <kbd>Properties -> Run</kbd> and add these VM options:
 </p>
 
-<p>
-    Now go to <kbd>Properties -> Run</kbd> and add this VM option:
-</p>
 
-<pre><code>
---add-modules javafx.controls,javafx.fxml
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-nb-non-ide-1" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-nb-non-ide-1" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-nb-non-ide-1">
+<pre class="no-border-radius"><code>
+--module-path /path/to/javafx-sdk-12/lib --add-modules javafx.controls,javafx.fxml
 </code></pre>
+    </div>
+    <div class="tab-pane" id="win-nb-non-ide-1">
+<pre><code>
+--module-path "\path\to\javafx-sdk-12\lib" --add-modules javafx.controls,javafx.fxml
+</code></pre>
+    </div>
+</div>
 
 <p>
-    <a href="images/ide/netbeans/ide/netbeans07.png" target="_blank"><img src="images/ide/netbeans/ide/netbeans07.png" alt="VM options"/></a>
+    <a href="images/ide/netbeans/ide/netbeans06.png" target="_blank"><img src="images/ide/netbeans/ide/netbeans06.png" alt="VM options"/></a>
 
     Click apply and close the dialog.
 
 </p>
-
-<div class="alert alert-danger">
-    <strong>Note: </strong>
-    If the <kbd>JavaFX12</kbd> library path is added to the <kbd>--module-path</kbd> VM option as explained
-    for the rest of the samples in these documents, the project won't run, since NetBeans will override
-    the module-path with an empty path. So that is why it has to be added to the <kbd>Libraries -> Run -> modulepath</kbd>
-    options instead.
-</div>
 
 <h5>6. Run the project</h5>
 
@@ -201,7 +200,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 
 <p>
     Verify it includes the <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd> dependencies, update their version to <span class="JFX_VERSION">12</span>,
-    and verify it includes the <kbd>javafx-maven-plugin</kbd>. Note that Maven manages
+    and verify it includes the <kbd>javafx-maven-plugin</kbd> (update the version to <span class="JFX_MVN_PLUGIN_VERSION">0.0.1</span>). Note that Maven manages
     the required dependencies: it will add <kbd>javafx.base</kbd> and
     <kbd>javafx.graphics</kbd> that are required by <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>,
     but most important, it will add the required classifier based on your platform, downloading
@@ -247,6 +246,10 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     You can also open a terminal and run <kbd>mvn clean javafx:run</kbd> to run the project.
 </p>
 
+<p>Finally, note that you can get a similar built-in sample from <kbd>NetBeans -> File -> New Project... -> Samples -> OpenJFX</kbd></p>
+
+<a href="images/ide/netbeans/maven/netbeans06.png" target="_blank"><img src="images/ide/netbeans/maven/netbeans06.png" alt="NetBeans Maven Sample"/></a>
+
 <div id="NB-Gradle"></div><h4>Gradle</h4>
 
 <p>
@@ -287,7 +290,6 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 </p>
 <pre><code>
 javafx {
-    version = "<span class="JFX_VERSION">12</span>"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 </code></pre>
@@ -381,6 +383,8 @@ gradlew run
 <p>
     Go to <kbd>Properties -> Libraries -> Compile -> Module-path -> + -> Add Library </kbd> and 
     add the <kbd>JavaFX12</kbd> library.
+
+    <a href="images/ide/netbeans/modular/ide/netbeans00.png" target="_blank"><img src="images/ide/netbeans/modular/ide/netbeans00.png" alt="JavaFX12 Library"/></a>
 </p>
 
 <h5>3. Edit the module-info class</h5>
@@ -485,6 +489,7 @@ dist\jlink\HelloFX\bin\HelloFX
 
     <a href="images/ide/netbeans/modular/maven/netbeans03.png" target="_blank"><img src="images/ide/netbeans/modular/maven/netbeans03.png" alt="Archetype options"/></a>
 
+    Update the JavaFX version to <span class="JFX_VERSION">12</span> and the plugin version to <span class="JFX_MVN_PLUGIN_VERSION">0.0.1</span>.
     Click finish and the project will be created and opened.
 </p>
 
@@ -495,7 +500,7 @@ dist\jlink\HelloFX\bin\HelloFX
 </p>
 
 <p>
-    Verify it includes the <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd> dependencies, update their version to <span class="JFX_VERSION">12</span>,
+    Verify it includes the <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd> dependencies,
     and verify it includes the <kbd>javafx-maven-plugin</kbd>. Note that Maven manages
     the required dependencies: it will add <kbd>javafx.base</kbd> and
     <kbd>javafx.graphics</kbd> that are required by <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>,
@@ -586,6 +591,10 @@ target\hellofx\bin\launcher
     </div>
 </div>
 
+<p>Finally, note that you can get a similar built-in sample from <kbd>NetBeans -> File -> New Project... -> Samples -> OpenJFX</kbd></p>
+
+<a href="images/ide/netbeans/maven/netbeans06.png" target="_blank"><img src="images/ide/netbeans/maven/netbeans06.png" alt="NetBeans Maven Sample"/></a>
+
 <div id="NB-Mod-Gradle"></div><h4>Gradle</h4>
 
 <p>
@@ -596,36 +605,39 @@ target\hellofx\bin\launcher
 
 <h5>1. Create a Gradle project</h5>
 
-<div class="alert alert-danger">
-    <strong>Note: </strong>
-    The built-in Gradle plugin doesn't support modular projects with external modular dependencies yet.
-    You can either uninstall it or
-    keep <a href="https://netbeans.apache.org/download/nb100/nb100.html">NetBeans 10</a> installed, and then
-    install the Gradle plugin for NetBeans 2.0.2, from the GitHub
-    <a href="https://github.com/kelemen/netbeans-gradle-project/releases" target="_blank">repository</a>.
-    Since the former requires administrator permissions and doesn't allow switching plugins easily, the latter is the
-    recommended option.
-</div>
-
 <p>
-    Create a <kbd>Gradle -> Single Gradle Project</kbd> with Java.
+    Create a <kbd>Java with Gradle -> Java Application</kbd> project.
+    <a href="images/ide/netbeans/gradle/netbeans01.png" target="_blank"><img src="images/ide/netbeans/gradle/netbeans01.png" alt="Create a Gradle project"/></a>
 
-    <a href="images/ide/netbeans/modular/gradle/netbeans00.png" target="_blank"><img src="images/ide/netbeans/modular/gradle/netbeans00.png" alt="Single Gradle project"/></a>
+    Provide the name of the project, like <kbd>HelloFX</kbd> and a location for the project, provide
+    the package name, like <kbd>org.openjfx</kbd> and the main class, like <kbd>MainApp</kbd>. Finally, select
+    <kbd>Initialize Gradle Wrapper</kbd>.
 
-    Then provide a name to the project, like <kbd>HelloFX</kbd>, a location for the project, and the main class name: <kbd>org.openjfx.MainApp</kbd>.
+    The project is created and opened.
 </p>
 
 <h5>2. Modify the build</h5>
 
 <p>
-    Edit the <kbd>build.gradle</kbd> file and replace it with this 
+    Edit the <kbd>build.gradle</kbd> file and replace it with this
     <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/NetBeans/Modular/Gradle/hellofx/build.gradle" target="_blank">build</a> file.
 </p>
 <p>
-    Note the use of the <kbd>org.openjfx.javafxplugin</kbd> plugin, that removes the necessity of adding the 
-    JavaFX dependencies and setting the module-path for the compile and run task for them.
-    
-    <a href="images/ide/netbeans/modular/gradle/netbeans01.png" target="_blank"><img src="images/ide/netbeans/modular/gradle/netbeans01.png" alt="Update the build"/></a>
+    We can declare the required JavaFX modules in the <kbd>build.gradle</kbd> file using the JavaFX gradle plugin:
+</p>
+
+<pre><code>
+javafx {
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+</code></pre>
+
+<p>
+    Save the project and you will get the JavaFX dependencies.
+
+    <a href="images/ide/netbeans/gradle/netbeans02.png" target="_blank"><img src="images/ide/netbeans/gradle/netbeans02.png" alt="Update the build"/></a>
+
+    As for any other Gradle dependencies, these jars can be found in the local <kbd>.gradle</kbd> repository.
 </p>
 
 <h5>3. Add the module-info class</h5>
@@ -635,7 +647,7 @@ target\hellofx\bin\launcher
     Since FXML uses reflection to access the controller in the module, this has to be opened to <kbd>javafx.fxml</kbd>. Finally,
     export the package <kbd>org.openjfx</kbd>.
     
-    <a href="images/ide/netbeans/modular/gradle/netbeans02.png" target="_blank"><img src="images/ide/netbeans/modular/gradle/netbeans02.png" alt="module-info"/></a>
+    <a href="images/ide/netbeans/modular/gradle/netbeans03.png" target="_blank"><img src="images/ide/netbeans/modular/gradle/netbeans03.png" alt="module-info"/></a>
 
     Reload the project to take into account all the changes in the gradle project.
 </p>
@@ -648,6 +660,9 @@ target\hellofx\bin\launcher
     and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/NetBeans/Modular/Gradle/hellofx/src/main/resources/org/openjfx/scene.fxml" target="_blank">FXML</a> and 
     the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/NetBeans/Modular/Gradle/hellofx/src/main/resources/org/openjfx/styles.css" target="_blank">css</a>
     files.
+
+    <a href="images/ide/netbeans/modular/gradle/netbeans04.png" target="_blank"><img src="images/ide/netbeans/modular/gradle/netbeans04.png" alt="Source files"/></a>
+
 </p>
 
 <h5>5. Run the project</h5>
@@ -695,7 +710,6 @@ plugins {
 }
 
 javafx {
-    version = "<span class="JFX_VERSION">12</span>"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 

@@ -256,7 +256,6 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 </p>
 <pre><code>
 javafx {
-    version = "<span class="JFX_VERSION">12</span>"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 </code></pre>
@@ -519,7 +518,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
     and run <kbd>mvn clean compile package javafx:run</kbd>.
 </p>
 
-<h5>6. Create a custom runtime image</h5>
+<h5>4. Create a custom runtime image</h5>
 
 <p>
     To create a custom runtime, using the <a href="https://github.com/openjfx/javafx-maven-plugin" target="_blank">JavaFX Maven plugin</a>,
@@ -661,7 +660,6 @@ plugins {
 }
 
 javafx {
-    version = "<span class="JFX_VERSION">12</span>"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 

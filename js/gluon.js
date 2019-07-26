@@ -3,12 +3,12 @@ $(function() {
     var JDK_MAJOR = "12";
     var JFX_MAJOR = "12";
     
-    var JDK_VERSION = "12.0.1";
+    var JDK_VERSION = "12.0.2";
     var JFX_VERSION = "12.0.1";
-    var JFX_PLUGIN_VERSION = "0.0.7";
-    var JFX_MVN_PLUGIN_VERSION = "0.0.2";
+    var JFX_PLUGIN_VERSION = "0.0.8";
+    var JFX_MVN_PLUGIN_VERSION = "0.0.3";
     var JFX_MVN_ARCH_VERSION = "0.0.1";
-    var JLINK_PLUGIN_VERSION = "2.10.2";
+    var JLINK_PLUGIN_VERSION = "2.12.0";
 
     var nav_top = 70;
         

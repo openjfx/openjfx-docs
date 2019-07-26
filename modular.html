@@ -307,7 +307,6 @@ plugins {
 }
 
 javafx {
-    version = "<span class="JFX_VERSION">12</span>"
     modules = [ 'javafx.controls' ]
 }
 
@@ -377,13 +376,17 @@ build\image\bin\hellofx
     <div class="tab-pane active" id="nix-jdkfx">
 <pre class="no-border-radius"><code>
 export PATH_TO_FX_MODS=path/to/javafx-jmods-<span class="JFX_VERSION">11</span>
-$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS --add-modules java.se,javafx.fxml,javafx.web,javafx.media,javafx.swing --bind-services --output /path/to/jdkfx-<span class="JFX_VERSION">11</span>.jdk
+$JAVA_HOME/bin/jlink --module-path $PATH_TO_FX_MODS \
+    --add-modules java.se,javafx.fxml,javafx.web,javafx.media,javafx.swing \
+    --bind-services --output /path/to/jdkfx-<span class="JFX_VERSION">11</span>.jdk
 </code></pre>
     </div>
     <div class="tab-pane" id="win-jdkfx">
 <pre><code>
 set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
-%JAVA_HOME%\bin\jlink --module-path %PATH_TO_FX_MODS% --add-modules java.se,javafx.fxml,javafx.web,javafx.media,javafx.swing --bind-services --output \path\to\jdkfx-<span class="JFX_VERSION">11</span>
+%JAVA_HOME%\bin\jlink --module-path %PATH_TO_FX_MODS% \
+    --add-modules java.se,javafx.fxml,javafx.web,javafx.media,javafx.swing \
+    --bind-services --output \path\to\jdkfx-<span class="JFX_VERSION">11</span>
 </code></pre>
     </div>
 </div>
