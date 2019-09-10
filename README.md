@@ -1,6 +1,6 @@
 # OpenJFX Docs
 
-OpenJFX docs contains documentation for "Getting Started with JavaFX 11".
+OpenJFX docs contains documentation for "Getting Started with JavaFX".
 
 The static html files in this repository are hosted at [https://openjfx.io/openjfx-docs](https://openjfx.io/openjfx-docs).
 
