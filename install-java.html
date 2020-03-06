@@ -1,8 +1,8 @@
-<h2>Install Java <span class="JDK_MAJOR">11</span></h2>
+<h2>Install Java</h2>
 
 <p>
-    Download an appropriate JDK for your operating system. We will be using
-    <a target="_blank" href="http://jdk.java.net/12/">OpenJDK</a> for this tutorial.
+    Download an appropriate JDK for your operating system. The latest JDK can be downloaded from the official
+    <a id="jdk-download-link" target="_blank" href="http://jdk.java.net/11/">OpenJDK</a> website.
 </p>
 
 <p>
@@ -10,7 +10,7 @@
     <kbd>java</kbd> command from your command line.
 </p>
 
-<p>Check if the correct java version is installed:</p>
+<p>Check if the correct java version is installed. The following shows the output for OpenJDK 12:</p>
 
 <pre><code>
 $ java -version
@@ -20,12 +20,12 @@ OpenJDK 64-Bit Server VM (build 12.0.2+10, mixed mode, sharing)
 </code></pre>
 
 <p>
-    You need to set the <b>JAVA_HOME</b> environment variable to a JDK <span class="JDK_MAJOR">11</span> installation directory. You can follow 
+    You need to set the <b>JAVA_HOME</b> environment variable to the JDK installation directory. You can follow 
     <a href="http://www.baeldung.com/java-home-on-windows-7-8-10-mac-os-x-linux" target="_blank">this guide</a> to set JAVA_HOME for your platform.
 </p>
 
 <div class="alert alert-warning">
     <strong>Note: </strong>
-    If you have newer or older versions of Java installed along with JDK <span class="JDK_MAJOR">11</span>, you need to make sure that the JAVA_HOME
-    environment variable points to JDK <span class="JDK_MAJOR">11</span>.
+    If your system has multiple versions of JDK installed, you need to make sure that the JAVA_HOME
+    environment variable points to correct JDK. JavaFX <span class="JFX_MAJOR">11</span> needs at least JDK 11.
 </div>

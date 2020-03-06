@@ -1,17 +1,17 @@
-<h2>JavaFX <span class="JFX_MAJOR">11</span> and IntelliJ</h2>
+<h2>JavaFX and IntelliJ IDEA</h2>
 
-<p>This section explains how to use Java <span class="JDK_MAJOR">11</span> and JavaFX <span class="JFX_MAJOR">11</span> from IntelliJ. 
-    Version IntelliJ IDEA 2019.1 was used for the following screenshots.
+<p>
+    This section explains how to create a JavaFX application in IntelliJ IDEA.
+    JavaFX 12.0.2 and Apache NetBeans 2019.1 was used for the IDE screenshots.
 </p>
 
 <p>
-    Download an appropriate <a href="https://jdk.java.net/12/">JDK <span class="JDK_MAJOR">11</span></a> for your operating system.
-    Make sure <kbd>JAVA_HOME</kbd> is properly set to the Java <span class="JDK_MAJOR">11</span> installation directory. 
+    Download an appropriate JDK for your operating system.
+    Refer to <a href="#install-java">Install Java</a> section for more information.
 </p>
 
 <p>
-    You can create a JavaFX <span class="JFX_MAJOR">11</span> modular or non-modular project and use the IDE tools,
-    Maven or Gradle build tools.
+    You can create a JavaFX modular or non-modular project and use the IDE tools, Maven or Gradle build tools.
 </p>
 
 <h3>Non-modular projects</h3>
@@ -32,14 +32,14 @@
 </p>
 
 <h5>1. Create a JavaFX project</h5>
-    
+
 <p>
     <a href="images/ide/intellij/ide/idea01.png" target="_blank"><img src="images/ide/intellij/ide/idea01.png" alt="Create a JavaFX project"/></a>
-   
+
     Provide a name to the project, like <kbd>HelloFX</kbd>, and a location.
-    
+
     When the project opens, the JavaFX classes are not recognized.
-    
+
     <a href="images/ide/intellij/ide/idea02.png" target="_blank"><img src="images/ide/intellij/ide/idea02.png" alt="Missing JavaFX classes"/></a>
 </p>
 
@@ -52,7 +52,7 @@
 
 <h5>3. Create a library</h5>
 
-<p>    
+<p>
     Go to <kbd>File -> Project Structure -> Libraries</kbd> and add the JavaFX <span class="JFX_MAJOR">11</span> SDK as a library to the project. 
     Point to the <kbd>lib</kbd> folder of the JavaFX SDK.
     <a href="images/ide/intellij/ide/idea04.png" target="_blank"><img src="images/ide/intellij/ide/idea04.png" alt="Create Library"/></a>
@@ -64,7 +64,7 @@
     <strong>Warning: </strong>
     If you run now the project it will compile but you will get this error:
 
-<pre class="alert"><code class="alert">
+<pre><code>
 Error: JavaFX runtime components are missing, and are required to run this application
 </code></pre>
 
@@ -101,13 +101,13 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     </div>
 </div>
 
-<p>    
+<p>
     Note that the default project created by IntelliJ uses FXML, so <kbd>javafx.fxml</kbd> 
     is required along with <kbd>javafx.controls</kbd>. If your project uses other modules, 
     you will need to add them as well.
-    
+
     <a href="images/ide/intellij/ide/idea06.png" target="_blank"><img src="images/ide/intellij/ide/idea06.png" alt="VM options"/></a>
-    
+
     Click apply and close the dialog.
 </p>
 
@@ -116,7 +116,9 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     <kbd>Preferences (File -> Settings) -> Appearance & Behavior -> Path Variables</kbd>, and define the name 
     of the variable as <kbd>PATH_TO_FX</kbd>, and browse to the lib folder of the JavaFX SDK to set its value, 
     and click apply.
-    <a href="images/ide/intellij/ide/idea07.png" target="_blank"><img src="images/ide/intellij/ide/idea07.png" alt="Path Variable"/></a>
+    <a href="images/ide/intellij/ide/idea07.png" target="_blank">
+        <img src="images/ide/intellij/ide/idea07.png" alt="Path Variable"/>
+    </a>
 </p>
 <p>
     Then you can refer to this global variable when setting the VM options as:
@@ -196,7 +198,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     the specific platform jars.
 
     <a href="images/ide/intellij/maven/idea04.png" target="_blank"><img src="images/ide/intellij/maven/idea04.png" alt="Platform dependencies"/></a>
-   
+
     As for any other maven dependencies, these jars can be found in the local <kbd>.m2</kbd> repository.
 </p>
 
@@ -237,9 +239,9 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     Provide the groupId, like <kbd>org.openjfx</kbd>, the artifactId, like <kbd>hellofx</kbd>. 
     Select the Gradle JVM based on the project JDK <span class="JDK_MAJOR">11</span>.
     Then provide a name to the project, like <kbd>HelloFX</kbd> and a location for the project.
-    
+
     When the project opens, add a package <kbd>org.openjfx</kbd> and an empty <kbd>MainApp</kbd> class.
-    
+
     <a href="images/ide/intellij/gradle/idea02.png" target="_blank"><img src="images/ide/intellij/gradle/idea02.png" alt="Open project"/></a>
 </p>
 
