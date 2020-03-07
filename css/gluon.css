@@ -381,3 +381,25 @@ img {
     color: var(--code-color);
     background-color: var(--terminal-color);
 }
+
+/* Table */
+table.jdk-gradle-version {
+    margin-top: 1em;
+    /* Center align */
+    margin-left:auto;
+    margin-right:auto;
+}
+table.jdk-gradle-version, th, td {
+    border: 1px solid black;
+    text-align:center;
+}
+
+table.jdk-gradle-version, th {
+    table-layout: fixed;
+    width: 150px;
+}
+
+table.jdk-gradle-version, td {
+    table-layout: fixed;
+    width: 50px;
+}
