@@ -1,6 +1,6 @@
 $(function() {
     // constants
-    var JDK_MAJOR = "13";
+    var JDK_MAJOR = "14";
     var JFX_MAJOR = "14";
     
     var JFX_VERSION = "14";
