@@ -1,7 +1,7 @@
 <h2>Runtime images</h2>
 
 <p>
-    If you want to create a runtime image of your JavaFX <span class="JFX_MAJOR">11</span> project follow these instructions.
+    If you want to create a runtime image of your JavaFX project follow these instructions.
 </p>
 
 <p>
@@ -40,7 +40,7 @@ set PATH_TO_FX_MODS="path\to\javafx-jmods-<span class="JFX_VERSION">11</span>"
 <div id="MOD-CLI"></div><h3>Command Line</h3>
 
 <p>
-    You can run or create a runtime image of your JavaFX <span class="JFX_MAJOR">11</span> project from command line. A simple example can be found in this 
+    You can run or create a runtime image of your JavaFX project from command line. A simple example can be found in this 
     <a class="samples" href="https://github.com/openjfx/samples/blob/master/CommandLine/Modular/CLI" target="_blank">project</a>.
 </p>
 
@@ -195,7 +195,7 @@ hellofx\bin\java -m hellofx/hellofx.HelloFX
 <div id="MOD-Maven"></div><h3>Maven</h3>
 
 <p>
-    You can run or create a runtime of your JavaFX <span class="JFX_MAJOR">11</span> Maven project. A simple example can be found in this  
+    You can run or create a runtime of your JavaFX Maven project. A simple example can be found in this  
     <a class="samples" href="https://github.com/openjfx/samples/blob/master/CommandLine/Modular/Maven" target="_blank">project</a>.
 </p>
 
@@ -256,7 +256,7 @@ target\hellofx\bin\launcher
 <div id="MOD-Gradle"></div><h3>Gradle</h3>
 
 <p>
-    You can run or create a runtime of your JavaFX <span class="JFX_MAJOR">11</span> Gradle project. A simple example can be found in this 
+    You can run or create a runtime of your JavaFX Gradle project. A simple example can be found in this 
     <a class="samples" href="https://github.com/openjfx/samples/blob/master/CommandLine/Modular/Gradle" target="_blank">project</a>.
 </p>
 
@@ -468,7 +468,7 @@ java --module-path mods -m hellofx/hellofx.HelloFX
     This custom JRE is platform-specific and it is not intended for distribution, and if there is a new JDK or a new 
     JavaFX SDK, it has to be created all over again. However, its <kbd>jlink</kbd> tool can be used to create a custom
     image with the project that can be distributed.
-    And the (soon to be released) <kbd>jpackage</kbd> <a href="http://jdk.java.net/jpackage/" target="_blank">tool</a> can
+    And the <kbd><a href="http://jdk.java.net/jpackage/" target="_blank">jpackage tool</a></kbd> can
     be used for distributing installers with the jlinked project.
 </div>
 
@@ -476,7 +476,7 @@ java --module-path mods -m hellofx/hellofx.HelloFX
 
 <p>
     Since Java 9, applications should be modular, and distributed with tools like <a href="index.html#modular">jlink</a>.
-    However, if you have a non-modular JavaFX <span class="JFX_MAJOR">11</span> project or you can't use <kbd>jlink</kbd> because you
+    However, if you have a non-modular JavaFX project or you can't use <kbd>jlink</kbd> because you
     have non-modular dependencies where the automatic module naming convention doesn't apply, you can still do a fat jar.
 </p>
 
@@ -646,14 +646,13 @@ runtimeOnly "org.openjfx:javafx-graphics:$javafx.version:mac"
 <a name="command-line"></a><h3>Command Line</h3>
 
 <p>
-    Finally, you can also create a runnable fat jar for your JavaFX <span class="JFX_MAJOR">11</span> project on
-    command line.
+    Finally, you can also create a runnable fat jar for your JavaFX project on command line.
 </p>
 
 <div class="alert alert-danger">
     <strong>Warning</strong>: This is a discouraged tedious error-prone manual process 
-    that should be avoided by using the <a href="#Maven" class="alert-link">Maven</a>'s shade plugin or 
-    the <a href="#Gradle" class="alert-link">Gradle</a>'s jar task, in case <a href="index.html#modular" class="alert-link">jlink</a>
+    that should be avoided by using the <a href="#Maven" class="alert-danger">Maven</a>'s shade plugin or 
+    the <a href="#Gradle" class="alert-danger">Gradle</a>'s jar task, in case <a href="index.html#modular" class="alert-danger">jlink</a>
     is not applicable.
 </div>
 
