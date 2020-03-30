@@ -1,7 +1,8 @@
-<h2>JavaFX <span class="JFX_MAJOR">11</span> and Eclipse</h2>
+<h2>JavaFX and Eclipse</h2>
 
-<p>This section explains how to use Java <span class="JDK_MAJOR">11</span> and JavaFX <span class="JFX_MAJOR">11</span> from Eclipse.
-    Version: 2019-03 (4.11.0) was used for the following screenshots.
+<p>
+    This section explains how to create a JavaFX application in Eclipse.
+    JavaFX 12.0.2 and Eclipse 2019-03 (4.11.0) were used for the IDE screenshots.
 </p>
 
 <p>
@@ -9,8 +10,8 @@
 </p>
 
 <p>
-    Download an appropriate <a href="https://jdk.java.net/12/">JDK <span class="JDK_MAJOR">11</span></a> for your operating system.
-    Make sure <kbd>JAVA_HOME</kbd> is properly set to the Java <span class="JDK_MAJOR">11</span> installation directory. 
+    Download an appropriate JDK for your operating system and set <kbd>JAVA_HOME</kbd> to the JDK directory.
+    Refer to <a href="#install-java">Install Java</a> section for more information.
 </p>
 
 <p>
@@ -18,8 +19,7 @@
 </p>
 
 <p>
-    You can create a JavaFX <span class="JFX_MAJOR">11</span> modular or non-modular project and use the IDE tools,
-    Maven or Gradle build tools.
+    You can create a JavaFX modular or non-modular project and use the IDE tools, Maven or Gradle build tools.
 </p>
 
 <h3>Non-modular projects</h3>
@@ -36,18 +36,17 @@
     Download the appropriate
     <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX SDK</a>
     for your operating system and unzip it to a desired location, for instance
-    <kbd>/Users/your-user/Downloads/javafx-sdk-<span class="JDK_VERSION">12</span></kbd>.
+    <kbd>/Users/your-user/Downloads/javafx-sdk-<span class="JFX_VERSION">11</span></kbd>.
 </p>
 
 <p>
     Create a new <kbd>User Library</kbd> under <kbd>Eclipse -> Window -> Preferences -> Java -> Build Path -> User Libraries -> New</kbd>. 
-    
+
     <a href="images/ide/eclipse/ide/eclipse01.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse01.png" alt="Add User Library"/></a>
-   
-    Name it <kbd>JavaFX12</kbd> and include the jars under the <kbd>lib</kbd> folder from JavaFX <span class="JFX_MAJOR">11</span>.
-    
+
+    Name it <kbd>JavaFX<span class="JFX_MAJOR">11</span></kbd> and include the jars under the <kbd>lib</kbd> folder from JavaFX <span class="JFX_MAJOR">11</span>.
+
     <a href="images/ide/eclipse/ide/eclipse02.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse02.png" alt="Add JavaFX jars"/></a>
-   
 </p>
 
 <h5>1. Create a Java project</h5>
@@ -80,7 +79,7 @@
     <strong>Warning: </strong>
     If you now run the project it will compile but you will get this error:
 
-<pre class="alert"><code class="alert">
+<pre><code>
 Error: JavaFX runtime components are missing, and are required to run this application
 </code></pre>
 
@@ -119,18 +118,12 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 
 <div class="alert alert-warning">
     <strong>Warning: </strong>
-    Make sure the option:
-
-<pre class="alert"><code class="alert">
-Use the -XstartOnFirstThread argument when launching with SWT
-</code></pre>
-    
-is not selected.
+    Make sure the checkbox <b>"Use the -XstartOnFirstThread argument when launching with SWT"</b> is not checked.
 </div>
 
-<p>    
+<p>
     <a href="images/ide/eclipse/ide/eclipse06.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse06.png" alt="VM arguments"/></a>
-    
+
     Click apply and close the dialog.
 </p>
 
@@ -255,7 +248,7 @@ clean javafx:run
     <kbd>&lt;configuration&gt;&lt;executable&gt;/path/to/jdk-12/bin/java&lt;/executable&gt;&lt;/configuration&gt;</kbd>.
 </div>
 
-<p>    
+<p>
     You can also open a terminal and run <kbd>mvn clean javafx:run</kbd> to run the project.
 </p>
 
@@ -263,7 +256,7 @@ clean javafx:run
     <strong>Warning: </strong>
     You might find this exception when running your project:
 
-    <pre class="alert"><code class="alert big">
+<pre><code class="big">
 Exception in thread "WindowsNativeRunloopThread" java.lang.NoSuchMethodError: &lt;init&gt;
     at javafx.graphics/com.sun.glass.ui.win.WinApplication.staticScreen_getScreens(Native Method)
     at javafx.graphics/com.sun.glass.ui.Screen.initScreens(Screen.java:412)
@@ -274,14 +267,14 @@ Exception in thread "JavaFX Application Thread" java.lang.NullPointerException
     at javafx.graphics/com.sun.javafx.tk.quantum.QuantumToolkit.runToolkit(QuantumToolkit.java:313)
     ...
 </code></pre>
-    
-This is happening running on Windows when Eclipse VM is set to Oracle JDK 1.8 using Maven or Gradle projects.
+
+This exception is thrown on Windows when Eclipse VM is set to Oracle JDK 1.8 using Maven or Gradle projects.
 
 A workaround for this is to edit <kbd>eclipse.ini</kbd> and change the <kbd>-vm</kbd> option to JDK <span class="JDK_MAJOR">11</span>.
 
 If that is not possible, another workaround is to add this VM argument to the javafx maven plugin:
 
-<pre class="alert"><code class="alert">
+<pre><code>
 &lt;configuration&gt;
     &lt;options&gt;
         &lt;option&gt;-Djava.library.path=C:\tmp&lt;/option&gt;
@@ -309,7 +302,7 @@ If that is not possible, another workaround is to add this VM argument to the ja
 
     <a href="images/ide/eclipse/gradle/eclipse00.png" target="_blank"><img src="images/ide/eclipse/gradle/eclipse00.png" alt="Create a Gradle project"/></a>
 
-    Provide a name to the project, like <kbd>HelloFX</kbd> and a location for the project. Then point Java Home to JDK <span class="JDK_MAJOR">11</span>.
+    Provide a name to the project, like <kbd>HelloFX</kbd> and a location for the project. Then point <kbd>JAVA_HOME</kbd> to JDK <span class="JDK_MAJOR">11</span>.
 
     <a href="images/ide/eclipse/gradle/eclipse01.png" target="_blank"><img src="images/ide/eclipse/gradle/eclipse01.png" alt="Gradle project settings"/></a>
 
@@ -358,9 +351,9 @@ javafx {
     the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/Eclipse/Non-Modular/Gradle/hellofx/src/main/resources/org/openjfx/styles.css" target="_blank">css</a>
     files.
 </p>
-<p>    
+<p>
     You can add a main class <kbd>MainApp</kbd>, and an <kbd>FXMLController</kbd> class, and add to resources the <kbd>FXML</kbd> file.
-    
+
     <a href="images/ide/eclipse/gradle/eclipse04.png" target="_blank"><img src="images/ide/eclipse/gradle/eclipse04.png" alt="Add JavaFX project"/></a>
 </p>
 
@@ -405,7 +398,7 @@ gradlew run
     <strong>Warning: </strong>
     You might find this exception when running your project:
 
-<pre class="alert"><code class="alert big">
+<pre><code class="big">
 Exception in thread "WindowsNativeRunloopThread" java.lang.NoSuchMethodError: &lt;init&gt;
     at javafx.graphics/com.sun.glass.ui.win.WinApplication.staticScreen_getScreens(Native Method)
     at javafx.graphics/com.sun.glass.ui.Screen.initScreens(Screen.java:412)
@@ -423,7 +416,7 @@ A workaround for this is to edit <kbd>eclipse.ini</kbd> and change the <kbd>-vm<
 
 If that is not possible, another workaround is to add this VM argument to the build file:
 
-<pre class="alert"><code class="alert">
+<pre><code>
 run {
     if (osdetector.os == 'windows') {
         systemProperty "java.library.path", "C:\tmp"
@@ -480,8 +473,8 @@ run {
     <strong>Note: </strong>
     Eclipse will show a warning when creating the <kbd>Application</kbd> class:
     
-<pre class="alert"><code class="alert">
-    The type Stage from module <kbd>javafx.graphics</kbd> may not be accessible to clients due to missing 'requires transitive'
+<pre><code>
+The type Stage from module <kbd>javafx.graphics</kbd> may not be accessible to clients due to missing 'requires transitive'
 </code></pre>
     
     This warning can be prevented by adding the transitive module to the file:
@@ -510,13 +503,7 @@ run {
 
 <div class="alert alert-warning">
     <strong>Warning: </strong>
-    Make sure the option:
-
-    <pre class="alert"><code class="alert">
-Use the -XstartOnFirstThread argument when launching with SWT
-</code></pre>
-
-    is not selected.
+    Make sure the checkbox <b>"Use the -XstartOnFirstThread argument when launching with SWT"</b> is not checked.
 </div>
 
 <h5>5. Run the project</h5>
@@ -653,7 +640,7 @@ clean javafx:run
     <strong>Warning: </strong>
     You might find this exception when running your project:
 
-    <pre class="alert"><code class="alert big">
+<pre><code class="big">
 Exception in thread "WindowsNativeRunloopThread" java.lang.NoSuchMethodError: &lt;init&gt;
     at javafx.graphics/com.sun.glass.ui.win.WinApplication.staticScreen_getScreens(Native Method)
     at javafx.graphics/com.sun.glass.ui.Screen.initScreens(Screen.java:412)
@@ -671,7 +658,7 @@ Exception in thread "JavaFX Application Thread" java.lang.NullPointerException
 
     If that is not possible, another workaround is to add this VM argument to the javafx maven plugin:
 
-    <pre class="alert"><code class="alert">
+<pre><code>
 &lt;configuration&gt;
     &lt;options&gt;
         &lt;option&gt;-Djava.library.path=C:\tmp&lt;/option&gt;

@@ -3,6 +3,7 @@
     --terminal-color: #2B3E50;
     --code-color: #F8F8F1;
     --header-color: #444;
+    --kbd-background-color: #DFF0F7;
     --gradient-color: repeating-linear-gradient(to bottom right, #3f95ea 0%, #52d3aa 100%);
     --button-background-color: #4CD4AC;
 }
@@ -57,8 +58,18 @@ pre.no-border-radius {
     border-radius: 0 5px 5px 5px;
 }
 
-pre.alert {
-    background: transparent;
+div.alert-danger > pre {
+    background-color: #ebcacd;
+    border-color: #ebbdc2;
+    padding-top: 0;
+    margin-top: 1rem;
+}
+
+div.alert-warning > pre {
+    background-color: #f0e4bf;
+    border-color: #f0dfac;
+    padding-top: 0;
+    margin-top: 1rem;
 }
 
 textarea {
@@ -75,18 +86,41 @@ code {
     color: var(--code-color) !important;
 }
 
-code.alert {
-    color: var(--terminal-color) !important;
-}
-
-code.alert.big {
+code.big {
     font-size: 0.9em;
 }
 
+div.alert-danger code,
+div.alert-warning code {
+    color: var(--terminal-color) !important;
+    padding-top: 0;
+}
+
 kbd {
-    background-color: var(--terminal-color);
+    background-color: var(--kbd-background-color);
     white-space: pre-wrap;
-    color: var(--code-color);
+    color: var(--terminal-color);
+}
+
+div.alert-danger > kbd {
+    background-color: #ebcacd;
+    color: var(--terminal-color);
+}
+
+div.alert-warning > kbd {
+    background-color: #f2e2b0;
+    color: var(--terminal-color);
+}
+
+div.alert-danger > kbd a,
+div.alert-warning > kbd a {
+    color: var(--terminal-color);
+    text-decoration: underline;
+}
+
+div.alert-warning > pre > code > kbd,
+div.alert-warning > pre > code > kbd {
+    background-color: #ceb66c;
 }
 
 p {
@@ -101,6 +135,12 @@ p {
 a,
 a:visited {
     color: var(--base-color);
+}
+
+p a,
+p a:visited {
+    color: inherit;
+    text-decoration: underline;
 }
 
 /** Header **/
@@ -340,4 +380,26 @@ img {
 .nav-tabs .nav-link.active {
     color: var(--code-color);
     background-color: var(--terminal-color);
+}
+
+/* Table */
+table.jdk-gradle-version {
+    margin-top: 1em;
+    /* Center align */
+    margin-left:auto;
+    margin-right:auto;
+}
+table.jdk-gradle-version, th, td {
+    border: 1px solid black;
+    text-align:center;
+}
+
+table.jdk-gradle-version, th {
+    table-layout: fixed;
+    width: 150px;
+}
+
+table.jdk-gradle-version, td {
+    table-layout: fixed;
+    width: 50px;
 }

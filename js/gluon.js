@@ -1,12 +1,11 @@
 $(function() {
     // constants
-    var JDK_MAJOR = "13";
-    var JFX_MAJOR = "13";
+    var JDK_MAJOR = "14";
+    var JFX_MAJOR = "14";
     
-    var JDK_VERSION = "13";
-    var JFX_VERSION = "13";
+    var JFX_VERSION = "14";
     var JFX_PLUGIN_VERSION = "0.0.8";
-    var JFX_MVN_PLUGIN_VERSION = "0.0.3";
+    var JFX_MVN_PLUGIN_VERSION = "0.0.4";
     var JFX_MVN_ARCH_VERSION = "0.0.1";
     var JLINK_PLUGIN_VERSION = "2.12.0";
 
@@ -135,7 +134,6 @@ $(function() {
     setTimeout(function() {
         $('.JDK_MAJOR').each(function() { $(this).text(JDK_MAJOR) });
         $('.JFX_MAJOR').each(function() { $(this).text(JFX_MAJOR) });
-        $('.JDK_VERSION').each(function() { $(this).text(JDK_VERSION) });
         $('.JFX_VERSION').each(function() { $(this).text(JFX_VERSION) });
         $('.JFX_PLUGIN_VERSION').each(function() { $(this).text(JFX_PLUGIN_VERSION) });
         $('.JFX_MVN_PLUGIN_VERSION').each(function() { $(this).text(JFX_MVN_PLUGIN_VERSION) });
@@ -148,6 +146,10 @@ $(function() {
             var content = $(this).html();
             var unselectableContent  = replaceAll(content, "$ ", "<span class=\"no-select\">$ </span>");
             $(this).html(unselectableContent);
+        });
+        // Replace OpenJDK link with latest version
+        $('a[id="jdk-download-link"]').each(function() {
+            $(this).attr('href', 'http://jdk.java.net/' + JDK_MAJOR);
         });
     }, 1000);
 
