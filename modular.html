@@ -1,6 +1,10 @@
 <h2>Runtime images</h2>
 
 <p>
+    A runtime image of your JavaFX project is a custom JRE that contains only the platform modules that are required for your application.
+</p>
+
+<p>
     If you want to create a runtime image of your JavaFX project follow these instructions.
 </p>
 
@@ -135,7 +139,7 @@ java --module-path "%PATH_TO_FX%;mods" -m hellofx/hellofx.HelloFX
 <a class="jlink"></a><h4>jlink</h4>
 
 <p>
-    With a modular project, <a href="https://docs.oracle.com/en/java/javase/12/tools/jlink.html" target="_blank">jlink</a>
+    With a modular project, <a href="https://docs.oracle.com/en/java/javase/15/docs/specs/man/jlink.html" target="_blank">jlink</a>
     can be used to create a custom runtime image using the JavaFX jmods:
 </p>
 
@@ -360,7 +364,7 @@ build\image\bin\hellofx
 
 <p>
     For instance, you can create an image that contains the <kbd>java.se</kbd> 
-    <a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.se/module-summary.html" target="_blank">module</a> and the JavaFX modules,
+    <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.se/module-summary.html" target="_blank">module</a> and the JavaFX modules,
     by running:
 </p>
 
@@ -468,7 +472,7 @@ java --module-path mods -m hellofx/hellofx.HelloFX
     This custom JRE is platform-specific and it is not intended for distribution, and if there is a new JDK or a new 
     JavaFX SDK, it has to be created all over again. However, its <kbd>jlink</kbd> tool can be used to create a custom
     image with the project that can be distributed.
-    And the <kbd><a href="http://jdk.java.net/jpackage/" target="_blank">jpackage tool</a></kbd> can
+    And the <kbd><a href="https://docs.oracle.com/en/java/javase/15/docs/specs/man/jpackage.html" target="_blank">jpackage tool</a></kbd> can
     be used for distributing installers with the jlinked project.
 </div>
 
@@ -477,7 +481,7 @@ java --module-path mods -m hellofx/hellofx.HelloFX
 <p>
     Since Java 9, applications should be modular, and distributed with tools like <a href="index.html#modular">jlink</a>.
     However, if you have a non-modular JavaFX project or you can't use <kbd>jlink</kbd> because you
-    have non-modular dependencies where the automatic module naming convention doesn't apply, you can still do a fat jar.
+    have non-modular dependencies where the automatic module naming convention doesn't apply, you can still create a fat jar.
 </p>
 
 <p>

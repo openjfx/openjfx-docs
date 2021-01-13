@@ -7,7 +7,7 @@ $(function() {
     var JFX_PLUGIN_VERSION = "0.0.9";
     var JFX_MVN_PLUGIN_VERSION = "0.0.5";
     var JFX_MVN_ARCH_VERSION = "0.0.5";
-    var JLINK_PLUGIN_VERSION = "2.22.2";
+    var JLINK_PLUGIN_VERSION = "2.23.1";
 
     var nav_top = 70;
         

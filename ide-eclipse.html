@@ -2,11 +2,7 @@
 
 <p>
     This section explains how to create a JavaFX application in Eclipse.
-    JavaFX 12.0.2 and Eclipse 2019-03 (4.11.0) were used for the IDE screenshots.
-</p>
-
-<p>
-    To get Java 12 support, install the patch from the Eclipse MarketPlace: <a href="https://marketplace.eclipse.org/content/java-12-support-eclipse-2019-03-411" target="_blank">Java 12 Support for Eclipse 2019-03 (4.11)</a>.
+    JavaFX 15.0.1 and Eclipse 2020-12 (4.18.0) were used for the IDE screenshots.
 </p>
 
 <p>
@@ -56,9 +52,9 @@
 
     <a href="images/ide/eclipse/ide/eclipse03.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse03.png" alt="Create a Java project"/></a>
 
-    Make sure JDK <span class="JDK_MAJOR">11</span> is selected.
+    Make sure JDK 11 or greater is selected.
 
-    You don't need to add a <kbd>module-info.java</kbd> file. You can include the <kbd>JavaFX12</kbd> library into the classpath.
+    You don't need to add a <kbd>module-info.java</kbd> file. You can include the <kbd>JavaFX<span class="JFX_VERSION">11</span></kbd> library into the classpath.
     
     <a href="images/ide/eclipse/ide/eclipse04.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse04.png" alt="Add JavaFX11 library"/></a>
 
@@ -70,7 +66,7 @@
 <p>    
     You can add a main class <kbd>Main</kbd>, based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/Eclipse/Non-Modular/Java/hellofx/src/hellofx/Main.java" target="_blank">one</a>, 
     with an <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/Eclipse/Non-Modular/Java/hellofx/src/hellofx/hellofx.fxml" target="_blank">FXML</a> file and 
-    a controller<a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/Eclipse/Non-Modular/Java/hellofx/src/hellofx/Controller.java" target="_blank">controller</a>.
+    a <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/Eclipse/Non-Modular/Java/hellofx/src/hellofx/Controller.java" target="_blank">controller</a>.
     
     <a href="images/ide/eclipse/ide/eclipse05.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse05.png" alt="Add JavaFX project"/></a>
 </p>
@@ -152,12 +148,11 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 
 <p>
     If you use the <a href="http://www.eclipse.org/efxclipse/index.html">e(fx)clipse</a> plugin, 
-    make sure you are running at least the version 3.5.0 that can be installed using this
-    <a href="http://download.eclipse.org/efxclipse/updates-released/3.5.0/site">URL</a>.
+    make sure you are running at least the version 3.6.0 that can be installed using from the Eclipse Marketplace.
 
     <a href="images/ide/eclipse/ide/eclipse09.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse09.png" alt="E(fx)clipse"/></a>
 
-    Note that you will have to do exactly the same as in the regular Java project above, including the <kbd>JavaFX12</kbd> library
+    Note that you will have to do exactly the same as in the regular Java project above, including the <kbd>JavaFX<span class="JFX_VERSION">11</span></kbd> library
     and adding the necessary VM arguments.
 </p>
 
@@ -195,7 +190,7 @@ Error: JavaFX runtime components are missing, and are required to run this appli
 
     <a href="images/ide/eclipse/maven/eclipse03.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse03.png" alt="JavaFX FXML archetype"/></a>
 
-    When the project opens, select the JDK <span class="JDK_MAJOR">11</span> for the project (<kbd>File -> Properties -> Java Build Path -> Libraries</kbd>).
+    When the project opens, select the JDK 11 or greater for the project (<kbd>File -> Properties -> Java Build Path -> Libraries</kbd>).
     
     <a href="images/ide/eclipse/maven/eclipse04.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse04.png" alt="Set JDK"/></a>
 
@@ -244,8 +239,12 @@ clean javafx:run
 <div class="alert alert-warning">
     <strong>Note: </strong>
     In case <kbd>JAVA_HOME</kbd> is not set to <span class="JDK_MAJOR">11</span>, running the project might
-    fail. To avoid it, you can add the correct <kbd>java</kbd> command to the javafx-maven-plugin:
-    <kbd>&lt;configuration&gt;&lt;executable&gt;/path/to/jdk-12/bin/java&lt;/executable&gt;&lt;/configuration&gt;</kbd>.
+    fail. To avoid it, you can define <kbd>JAVA_HOME</kbd> as an environment variable (where <kbd>${JAVA_HOME}</kbd> takes the value that can be set in <kbd>Eclipse -> Preferences -> Run/Debug -> String Substitution -> New...</kbd>):
+
+    <a href="images/ide/eclipse/maven/eclipse08.png" target="_blank"><img src="images/ide/eclipse/maven/eclipse08.png" alt="Set Java Home"/></a>
+
+    Alternatively, you can add the correct <kbd>java</kbd> command to the javafx-maven-plugin:
+    <kbd>&lt;configuration&gt;&lt;executable&gt;/path/to/jdk-<span class="JDK_MAJOR">11</span>/bin/java&lt;/executable&gt;&lt;/configuration&gt;</kbd>.
 </div>
 
 <p>
@@ -447,12 +446,12 @@ run {
     
 <p>
     Select <kbd>File -> New -> Java Project</kbd> and provide a name to the project, like <kbd>HelloFX</kbd>, and a location.
-    Make sure JDK <span class="JDK_MAJOR">11</span> is selected.
+    Make sure JDK 11 or greater is selected.
     Verify you have selected the option to create a <kbd>module-info.java</kbd> file, and
     select the output folder as <kbd>HelloFX/bin/hellofx</kbd>.
 </p>
 <p>
-    You can add the <kbd>JavaFX12</kbd> library to the classpath. Then press <kbd>Finish</kbd>.
+    You can add the <kbd>JavaFX<span class="JFX_MAJOR">11</span></kbd> library to the classpath. Then press <kbd>Finish</kbd>.
     A dialog will ask for the name of the module, which should be set in lower case to <kbd>hellofx</kbd>.
     Press <kbd>Create</kbd>. An empty project will be opened.
 </p>
@@ -497,7 +496,7 @@ The type Stage from module <kbd>javafx.graphics</kbd> may not be accessible to c
 <h5>4. Add VM options</h5>
 
 <p>
-    Being a modular project, and since we already added the <kbd>JavaFX12</kbd> library to the module-path,
+    Being a modular project, and since we already added the <kbd>JavaFX<span class="JFX_MAJOR">11</span></kbd> library to the module-path,
     there is no need to add any VM arguments.
 </p>
 
@@ -590,7 +589,7 @@ jre\bin\java -m hellofx/org.openjfx.MainApp
 
 <p>
     Edit the <kbd>module-info</kbd> class. Rename the module to <kbd>hellofx</kbd>. Also, to prevent Eclipse
-    from showing a warning when creating the <kbd>Application</kbd> class, add also the transitive modules to the file:
+    from showing a warning when creating the <kbd>Application</kbd> class, add also the transitive module to the file:
     
     <a href="images/ide/eclipse/modular/maven/eclipse06.png" target="_blank"><img src="images/ide/eclipse/modular/maven/eclipse06.png" alt="module-info"/></a>
 </p>
@@ -617,19 +616,12 @@ clean javafx:run
 <div class="alert alert-warning">
     <strong>Note: </strong>
     In case <kbd>JAVA_HOME</kbd> is not set to <span class="JDK_MAJOR">11</span>, running the project might
-    fail. To avoid it, you can add the correct <kbd>java</kbd> command to the javafx-maven-plugin:
-    <kbd>&lt;configuration&gt;&lt;executable&gt;/path/to/jdk-12/bin/java&lt;/executable&gt;&lt;/configuration&gt;</kbd>.
-</div>
+    fail. To avoid it, you can define <kbd>JAVA_HOME</kbd> as an environment variable (where <kbd>${JAVA_HOME}</kbd> takes the value that can be set in <kbd>Eclipse -> Preferences -> Run/Debug -> String Substitution -> New...</kbd>):
 
-<p>
-    You can also open a terminal and run <kbd>mvn clean javafx:run</kbd> to run the project.
-</p>
+    <a href="images/ide/eclipse/modular/maven/eclipse08.png" target="_blank"><img src="images/ide/eclipse/modular/maven/eclipse08.png" alt="Set Java Home"/></a>
 
-<div class="alert alert-warning">
-    <strong>Note: </strong>
-    In case <kbd>JAVA_HOME</kbd> is not set to <span class="JDK_MAJOR">11</span>, running the project might
-    fail. To avoid it, you can add the correct <kbd>java</kbd> command to the javafx-maven-plugin:
-    <kbd>&lt;configuration&gt;&lt;executable&gt;/path/to/jdk-12/bin/java&lt;/executable&gt;&lt;/configuration&gt;</kbd>.
+    Alternatively, you can add the correct <kbd>java</kbd> command to the javafx-maven-plugin:
+    <kbd>&lt;configuration&gt;&lt;executable&gt;/path/to/jdk-<span class="JDK_MAJOR">11</span>/bin/java&lt;/executable&gt;&lt;/configuration&gt;</kbd>.
 </div>
 
 <p>

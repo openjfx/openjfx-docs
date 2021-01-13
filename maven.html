@@ -3,7 +3,7 @@
 <p>
     If you want to develop JavaFX applications using Maven, you don't have to download
     the JavaFX SDK. Just specify the modules and the versions you want in the <kbd>pom.xml</kbd>,
-    the build system will download the required modules, including the native libraries for your platform.
+    and the build system will download the required modules, including the native libraries for your platform.
 </p>
 <p>
     Here is a <a class="samples" href="https://github.com/openjfx/samples/blob/master/HelloFX/Maven/hellofx/pom.xml" target="_blank">pom.xml</a> 
@@ -42,7 +42,15 @@
 </code></pre>
 
 <p>
-    Run the application (e.g. based on the <a class="samples" href="https://github.com/openjfx/samples/blob/master/HelloFX/Maven/hellofx/src/main/java/HelloFX.java" target="_blank">HelloFX.java</a> 
+    <b>Important</b>: Note that transitive dependencies are automatically resolved
+    (for instance, there is no need to add a dependency for the <kbd>javafx.graphics</kbd> module, since it is
+    <a href="https://openjfx.io/javadoc/15/javafx.controls/module-summary.html" target="_blank">transitively</a> resolved by the
+    <kbd>javafx.controls</kbd> module). But if your application is using <kbd>FXML</kbd>, you will need to
+    add a dependency for the <kbd>javafx.fxml</kbd> module as well.
+</p>
+
+<p>
+    Finally, run the application (e.g. based on the <a class="samples" href="https://github.com/openjfx/samples/blob/master/HelloFX/Maven/hellofx/src/main/java/HelloFX.java" target="_blank">HelloFX.java</a>
     from the referred sample):
 </p>
 
@@ -52,5 +60,5 @@ mvn clean javafx:run
 
 <div class="alert alert-warning">
     <strong>Note: </strong>
-    Make sure to set the JAVA_HOME environment variable to correct JDK location.
+    Make sure to set the JAVA_HOME environment variable to the correct JDK location.
 </div>

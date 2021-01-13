@@ -1,14 +1,14 @@
-<h2>Run HelloWorld using JavaFX</h2>
+<h2>Run HelloWorld using JavaFX SDK</h2>
 
 <p>
-    Download an appropriate
+    If you want to use the JavaFX SDK instead of a build tool, download an appropriate
     <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX runtime</a>
     for your operating system and unzip it to a desired location.
-    For this tutorial, we will be using JavaFX <span class="JFX_MAJOR">11</span>.
+    For this tutorial, we will be using JavaFX <span class="JFX_VERSION">11</span>.
 </p>
 
 <p>
-    Add an environment variable pointing to the lib directory of the runtime:
+    Add an environment variable pointing to the <kbd>lib</kbd> directory of the runtime:
 </p>
 
 <ul class="nav nav-tabs">
@@ -65,9 +65,11 @@ javac --module-path %PATH_TO_FX% --add-modules javafx.controls HelloFX.java
 </div>
 
 <p>
-    <b>Note:</b> Additional modules are required for extended functionality.
-    For example, if your application is using <kbd>FXML</kbd>, you will need to
-    add the <kbd>javafx.fxml</kbd> module, as shown below:
+    <b>Important</b>: Make sure to add the required modules, keeping into account transitive dependencies are automatically resolved
+    (for instance, there is no need to add <kbd>javafx.graphics</kbd> module, since it is
+    <a href="https://openjfx.io/javadoc/12/javafx.controls/module-summary.html" target="_blank">transitively</a> required by the
+    <kbd>javafx.controls</kbd> module). But if your application is using <kbd>FXML</kbd>, you will need to
+    add the <kbd>javafx.fxml</kbd> module as well, as shown below:
 </p>
 
 <ul class="nav nav-tabs">
@@ -93,14 +95,7 @@ javac --module-path %PATH_TO_FX% --add-modules javafx.controls,javafx.fxml Hello
 </div>
 
 <p>
-    Make sure to add the required modules, keeping into account transitive dependencies are automatically resolved
-    (for instance, there is no need to add <kbd>javafx.graphics</kbd> module, since it is
-    <a href="https://openjfx.io/javadoc/12/javafx.controls/module-summary.html" target="_blank">transitively</a> required by the
-    <kbd>javafx.controls</kbd> module).
-</p>
-
-<p>
-Next, run the application using:
+Finally, run the application using:
 </p>
 
 <ul class="nav nav-tabs">
