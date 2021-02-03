@@ -9,6 +9,21 @@
     Here is a <a class="samples" href="https://github.com/openjfx/samples/blob/master/HelloFX/Maven/hellofx/pom.xml" target="_blank">pom.xml</a> 
     file which shows how to achieve this, included in this <a class="samples" href="https://github.com/openjfx/samples/blob/master/HelloFX/Maven" target="_blank">sample</a>.
 </p>
+<p>
+    Alternatively, we have created <a href="https://github.com/openjfx/javafx-maven-archetypes" target="_blank">JavaFX Maven Archetypes</a> to quickly create Maven projects.
+    A simple JavaFX project can be created by executing the following command:
+</p>
+
+<pre><code>
+mvn archetype:generate \
+        -DarchetypeGroupId=org.openjfx \
+        -DarchetypeArtifactId=javafx-archetype-simple \
+        -DarchetypeVersion=0.0.3 \
+        -DgroupId=org.openjfx \
+        -DartifactId=sample \
+        -Dversion=1.0.0 \
+        -Djavafx-version=<span class="JFX_VERSION">11</span>
+</code></pre>
 
 <p>
     The pom uses the <a href="https://github.com/openjfx/javafx-maven-plugin" target="_blank">JavaFX Maven plugin</a>:
