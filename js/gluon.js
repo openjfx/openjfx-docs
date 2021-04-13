@@ -5,7 +5,7 @@ $(function() {
     
     var JFX_VERSION = "15.0.1";
     var JFX_PLUGIN_VERSION = "0.0.9";
-    var JFX_MVN_PLUGIN_VERSION = "0.0.5";
+    var JFX_MVN_PLUGIN_VERSION = "0.0.6";
     var JFX_MVN_ARCH_VERSION = "0.0.5";
     var JLINK_PLUGIN_VERSION = "2.23.1";
 
