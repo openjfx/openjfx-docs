@@ -144,6 +144,34 @@ Error: JavaFX runtime components are missing, and are required to run this appli
     And you can distribute the project or reuse it in other projects too.
 </p>
 
+<p>You can even save the VM argument string including the <kbd>${PATH_TO_FX}</kbd> in it</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-eclipse-non-ide-2" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-eclipse-non-ide-2" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-eclipse-non-ide-2">
+<pre class="no-border-radius"><code>
+    --module-path ${PATH-TO-FX} --add-modules=javafx.controls,javafx.fxml
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-eclipse-non-ide-2">
+<pre><code>
+    --module-path="${PATH-TO-FX}" --add-modules=javafx.controls,javafx.fxml
+</code></pre>
+    </div>
+</div>
+
+<a href="images/ide/eclipse/ide/eclipse10.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse10.png" alt="New VM arguments"/></a>
+
+<p>And then use it in the run configurations as an argument:</p>
+<a href="images/ide/eclipse/ide/eclipse11.png" target="_blank"><img src="images/ide/eclipse/ide/eclipse11.png" alt="New VM arguments"/></a>
+
 <h5>E(fx)clipse</h5>
 
 <p>
