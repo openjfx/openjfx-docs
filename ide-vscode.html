@@ -1,0 +1,575 @@
+<h2>JavaFX and Visual Studio Code</h2>
+
+<p>
+    This section explains how to create a JavaFX application in Visual Studio Code.
+    JavaFX, Visual Studio Code and some extensions were used for the screenshots.
+    The following list shows their versions.
+</p>
+
+<ul>
+    <li>JavaFX: 17.0.1</li>
+    <li>Visual Studio Code: 1.63.2 </li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack" target="_blank">Extension Pack for Java: 0.21.0</a></li>
+    <li><a href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-gradle" target="_blank">Gradle for Java: 3.10.0</a></li>
+</ul>
+
+<p>
+    Download an appropriate JDK for your operating system and set <kbd>JAVA_HOME</kbd> to the JDK directory.
+    Refer to <a href="#install-java">Install Java</a> section for more information.
+</p>
+
+<p>
+    You can create a JavaFX modular or non-modular project and use the IDE tools, Maven or Gradle build tools.
+</p>
+
+<h3>Non-modular projects</h3>
+
+<div id="VSCode-IDE"></div><h4>IDE</h4>
+
+<p>
+    Follow these steps to create a JavaFX non-modular project and use the IDE tools to build it and run it.
+
+    Alternatively, you can download a similar project from <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Non-Modular/Java" target="_blank">here</a>.
+</p>
+
+<p>
+    Download the appropriate
+    <a target="_blank" href="https://gluonhq.com/products/javafx/">JavaFX SDK</a>
+    for your operating system and unzip it to a desired location, for instance
+    <kbd>/Users/your-user/Downloads/javafx-sdk-<span class="JFX_VERSION">11</span></kbd>.
+</p>
+
+<h5>1. Create a Java project</h5>
+
+<p>
+    Select <kbd>Help -> Show All Commands</kbd>, in the dropdown list, enter <kbd>Java: Create Java project...</kbd>, and select it.
+
+    <a href="images/ide/vscode/ide/vscode01.png" target="_blank"><img src="images/ide/vscode/ide/vscode01.png" alt="Create a Java project"/></a>
+
+    Select <kbd>No build tools</kbd> in the list as the project type.
+
+    <a href="images/ide/vscode/ide/vscode02.png" target="_blank"><img src="images/ide/vscode/ide/vscode02.png" alt="Create a project without build tools"/></a>
+
+    Then select the target location you want to store the new project in the file explorer.
+
+    Provide a name to the project, like <kbd>HelloFX</kbd>.
+
+    <a href="images/ide/vscode/ide/vscode03.png" target="_blank"><img src="images/ide/vscode/ide/vscode03.png" alt="Input project name"/></a>
+
+    The new project will be opened in a new Visual Studio Code window.
+
+    You can open the <kbd>App.java</kbd> in the <kbd>src/</kbd> to activate the Java extensions and import the project.
+</p>
+
+<h5>2. Add JavaFX dependencies</h5>
+
+<p>
+    To add JavaFX as dependencies to your project, you can simply copy all the jar files from the lib folder of your downloaded JavaFX SDK, for instance
+    <kbd>/Users/your-user/Downloads/javafx-sdk-<span class="JFX_VERSION">11</span>/lib/</kbd>
+    to the <kbd>lib</kbd> folder of your project.
+
+    Or alternatively, you can add them via the <kbd>Java Projects</kbd> explorer. Click the <kbd>+</kbd> button beside the <kbd>Referenced Library\ies</kbd>,
+    select the JavaFX library jars to add them.
+
+    <a href="images/ide/vscode/ide/vscode04.png" target="_blank"><img src="images/ide/vscode/ide/vscode04.png" alt="Add referenced libraries"/></a>
+</p>
+
+<h5>3.Add JavaFX classes</h5>
+
+<p>
+    Remove the existing <kbd>App.java</kbd>. Create a new folder under <kbd>src/</kbd> and name it as <kbd>hellofx</kbd>. You can add the main class <kbd>App</kbd> in the newly created folder, based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Non-Modular/Java/hellofx/src/hellofx/Main.java" target="_blank">one</a>, 
+    with an <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Non-Modular/Java/hellofx/src/hellofx/hellofx.fxml" target="_blank">FXML</a> file and 
+    a <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Non-Modular/Java/hellofx/src/hellofx/Controller.java" target="_blank">controller</a>.
+
+    <a href="images/ide/vscode/ide/vscode05.png" target="_blank"><img src="images/ide/vscode/ide/vscode05.png" alt="Update the main class"/></a>
+</p>
+
+<h5>4. Create and update launch configurations</h5>
+
+<p>
+    At the left side, switch to the <kbd>Run and Debug</kbd> viewlet, click <kbd>create a launch.json file</kbd>.
+
+    <a href="images/ide/vscode/ide/vscode06.png" target="_blank"><img src="images/ide/vscode/ide/vscode06.png" alt="Create a launch.json file"/></a>
+
+    Or you can directly create a <kbd>launch.json</kbd> file in the <kbd>.vscode</kbd> folder based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Non-Modular/Java/hellofx/.vscode/launch.json" target="_blank">one</a>.
+
+    Replace <kbd>&lt;JavaFX_lib_path&gt;</kbd> to the location lib folder of your downloaded JavaFX SDK.
+
+    <a href="images/ide/vscode/ide/vscode07.png" target="_blank"><img src="images/ide/vscode/ide/vscode07.png" alt="Update launch.json"/></a>
+</p>
+
+<h5>5. Run the project</h5>
+
+<p>
+    In the <kbd>Run and Debug</kbd> viewlet, click the green run button to launch the application.
+
+    <a href="images/ide/vscode/ide/vscode08.png" target="_blank"><img src="images/ide/vscode/ide/vscode08.png" alt="Run the application"/></a>
+</p>
+
+<div id="VSCode-Maven"></div><h4>Maven</h4>
+
+<p>
+    Follow these steps to create a JavaFX non-modular project and use the Maven tools to build it and run it.
+    
+    Alternatively, you can download a similar project from <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Non-Modular/Maven" target="_blank">here</a>.
+
+    Make sure you have the <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack" target="_blank">Extension Pack for Java</a> installed, which includs the required extensions to support Maven projects.
+</p>
+
+<h5>1. Create a Maven project</h5>
+
+<p>
+    Select <kbd>Help -> Show All Commands</kbd>, in the dropdown list, enter <kbd>Java: Create Java project...</kbd>, and select it.
+
+    <a href="images/ide/vscode/maven/vscode01.png" target="_blank"><img src="images/ide/vscode/maven/vscode01.png" alt="Create a Java project"/></a>
+
+    Select <kbd>JavaFX</kbd> in the list as the project type.
+
+    <a href="images/ide/vscode/maven/vscode02.png" target="_blank"><img src="images/ide/vscode/maven/vscode02.png" alt="Create a JavaFX project"/></a>
+
+    Input gruop id, like <kbd>org.openjfx</kbd> and artifact id, like <kbd>hellofx</kbd> and select the project location in the file explorer.
+
+    Then a command will be sent and executed in the terminal, which creates a JavaFX project via the Maven Archetype for you.
+
+    Click <kbd>Open</kbd> button, the new project will be opened in a new Visual Studio Code window.
+
+    <a href="images/ide/vscode/maven/vscode03.png" target="_blank"><img src="images/ide/vscode/maven/vscode03.png" alt="Open the project"/></a>
+
+    For a non-modular project, you can remove the <kbd>module-info.java</kbd> file.
+</p>
+
+<h5>2. Verify the pom</h5>
+
+<p>
+    Edit the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Non-Modular/Maven/hellofx/pom.xml" target="_blank">pom</a> file,
+    and and verify it has the <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd> dependencies and the <kbd>javafx-maven-plugin</kbd> with
+    the <kbd>mainClass</kbd> set to <kbd>org.openjfx.App</kbd>.
+
+    And you can set the dependencies version to <kbd><span class="JFX_VERSION">17.0.1</span></kbd>, and set the <kbd>javafx-maven-plugin</kbd> version to <kbd><span class="JFX_MVN_PLUGIN_VERSION">0.0.8</span></kbd>.
+
+    Maven manages the required dependencies: it will add <kbd>javafx.base</kbd> and <kbd>javafx.graphics</kbd> that are required by
+    <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>, but most important, it will add the required classifier based on your platform, downloading
+    the specific platform jars.
+    
+    <a href="images/ide/vscode/maven/vscode04.png" target="_blank"><img src="images/ide/vscode/maven/vscode04.png" alt="Update the pom"/></a>
+   
+    As for any other maven dependencies, these jars can be found in the local <kbd>.m2</kbd> repository.
+</p>
+
+<h5>3. Verify the code</h5>
+
+<p>
+    Verify the project contains the source code files, like the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/Vscode/Non-Modular/Maven/hellofx/src/main/java/org/openjfx/hellofx/App.java" target="_blank">App</a> main class:
+
+    <a href="images/ide/vscode/maven/vscode05.png" target="_blank"><img src="images/ide/vscode/maven/vscode05.png" alt="Verify the code"/></a>
+</p>
+
+<h5>4. Run the project</h5>
+
+<p>
+    To run the project, open the <kbd>Maven</kbd> explorer, click <kbd>&lt;YOUR_PROJECT_NAME&gt; -> Plugins -> javafx -> javafx:run</kbd>
+
+    <a href="images/ide/vscode/maven/vscode06.png" target="_blank"><img src="images/ide/vscode/maven/vscode06.png" alt="Run the project"/></a>
+
+    Alternatively, you can also open a terminal and run <kbd>mvn clean javafx:run</kbd> to run the project.
+</p>
+
+<div id="VSCode-Gradle"></div><h4>Gradle</h4>
+
+<p>
+    Follow these steps to create a JavaFX project and use the Gradle tools to build it and run it.
+
+    Alternatively, you can download a similar project from <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Non-Modular/Gradle" target="_blank">here</a>.
+
+    Make sure you have the <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack" target="_blank">Extension Pack for Java</a> and <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-gradle" target="_blank">Gradle for Java</a> installed, which includs the required extensions to support Gradle projects.
+</p>
+
+<h5>1. Create a Gradle project</h5>
+
+<p>
+    Select <kbd>Help -> Show All Commands</kbd>, in the dropdown list, enter <kbd>Java: Create Java project...</kbd>, and select it.
+
+    <a href="images/ide/vscode/gradle/vscode01.png" target="_blank"><img src="images/ide/vscode/gradle/vscode01.png" alt="Create a Java project"/></a>
+
+    Select <kbd>Gradle</kbd> in the list as the project type.
+
+    <a href="images/ide/vscode/gradle/vscode02.png" target="_blank"><img src="images/ide/vscode/gradle/vscode02.png" alt="Create a Gradle project"/></a>
+
+    Select the project location in the file explorer and the build script DSL. Input the project name.
+
+    Then the <kbd>Gradle for Java</kbd> extension will create a new Gradle project for you.
+
+    The new project will be opened in a new Visual Studio Code window after the creation finished.
+
+    <a href="images/ide/vscode/gradle/vscode03.png" target="_blank"><img src="images/ide/vscode/gradle/vscode03.png" alt="Open the project"/></a>
+
+    you can remove the <kbd>app/src/test</kbd> folder if you don't want to add tests for the project.
+</p>
+
+<h5>2. Modify the build</h5>
+
+<p>
+    Edit the <kbd>build.gradle</kbd> file under the <kbd>app/</kbd> folder and replace it with this
+    <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Non-Modular/Gradle/hellofx/build.gradle" target="_blank">build</a> file, setting the 
+    <kbd>mainClassName</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
+
+    Make sure the plugin <kbd>org.openjfx.javafxplugin</kbd> is applied and the version is set to <kbd><span class="JFX_PLUGIN_VERSION">0.0.10</span></kbd>
+</p>
+<p>
+    Similar to Maven, we can declare the required JavaFX modules in the <kbd>build.gradle</kbd> file.
+    However, for Gradle we need to apply the JavaFX gradle plugin:
+</p>
+
+<pre><code>
+javafx {
+    version = "<span class="JFX_VERSION">17.0.1</span>"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+</code></pre>
+
+<p>
+    Right click on the <kbd>settings.gradle</kbd> and select <kbd>Update Project</kbd> to update the gradle project.
+
+    <a href="images/ide/vscode/gradle/vscode04.png" target="_blank"><img src="images/ide/vscode/gradle/vscode04.png" alt="Update the project"/></a>
+
+    And you will get the JavaFX dependencies after the update.
+
+    <a href="images/ide/vscode/gradle/vscode05.png" target="_blank"><img src="images/ide/vscode/gradle/vscode05.png" alt="Gradle dependencies"/></a>
+
+    As for any other Gradle dependencies, these jars can be found in the local <kbd>.gradle</kbd> repository.
+</p>
+
+<h5>3. Add the source code</h5>
+
+<p>
+    Remove <kbd>App.java</kbd> and its package. Based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Non-Modular/Gradle/hellofx/src/main/java/org/openjfx/MainApp.java" target="_blank">MainApp</a> class, 
+    add its content to the project main class. Then add the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Non-Modular/Gradle/hellofx/src/main/java/org/openjfx/FXMLController.java" target="_blank">controller</a> 
+    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Non-Modular/Gradle/hellofx/src/main/resources/org/openjfx/scene.fxml" target="_blank">FXML</a> and 
+    the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Non-Modular/Gradle/hellofx/src/main/resources/org/openjfx/styles.css" target="_blank">css</a>
+    files.
+</p>
+<p>
+    You can add a main class <kbd>MainApp</kbd>, and an <kbd>FXMLController</kbd> class, and add to resources the <kbd>FXML</kbd> file.
+
+    <a href="images/ide/vscode/gradle/vscode06.png" target="_blank"><img src="images/ide/vscode/gradle/vscode06.png" alt="Add the source code"/></a>
+</p>
+
+<h5>4. Run the project</h5>
+
+<p>
+    You can open the <kbd>Gradle</kbd> viewlet and click on <kbd>&lt;YOUR_PROJECT_NAME&gt; -> build -> build</kbd> to
+    build the project, and <kbd>&lt;YOUR_PROJECT_NAME&gt; -> application -> run</kbd> to run the project.
+
+    <a href="images/ide/vscode/gradle/vscode07.png" target="_blank"><img src="images/ide/vscode/gradle/vscode07.png" alt="Build and run"/></a>
+</p>
+
+<p>
+    You can also open a terminal and run:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-vscode-non-gradle-1" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-vscode-non-gradle-1" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-vscode-non-gradle-1">
+<pre class="no-border-radius"><code>
+./gradlew run
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-vscode-non-gradle-1">
+<pre><code>
+.\gradlew.bat run
+</code></pre>
+    </div>
+</div>
+
+<h3>Modular projects</h3>
+
+<div id="VSCode-Mod-Maven"></div><h4>Maven</h4>
+
+<p>
+    Follow these steps to create a JavaFX modular project and use the Maven tools to build it and run it.
+    
+    Alternatively, you can download a similar project from <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Modular/Maven" target="_blank">here</a>.
+
+    Make sure you have the <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack" target="_blank">Extension Pack for Java</a> installed, which includs the required extensions to support Maven projects.
+</p>
+
+<h5>1. Create a Maven project</h5>
+
+<p>
+    Select <kbd>Help -> Show All Commands</kbd>, in the dropdown list, enter <kbd>Java: Create Java project...</kbd>, and select it.
+
+    <a href="images/ide/vscode/modular/maven/vscode01.png" target="_blank"><img src="images/ide/vscode/modular/maven/vscode01.png" alt="Create a Java project"/></a>
+
+    Select <kbd>JavaFX</kbd> in the list as the project type.
+
+    <a href="images/ide/vscode/modular/maven/vscode02.png" target="_blank"><img src="images/ide/vscode/modular/maven/vscode02.png" alt="Create a JavaFX project"/></a>
+
+    Input gruop id, like <kbd>org.openjfx</kbd> and artifact id, like <kbd>hellofx</kbd> and select the project location in the file explorer.
+
+    Then a command will be sent and executed in the terminal, which creates a JavaFX project via the Maven Archetype for you.
+
+    Click <kbd>Open</kbd> button, the new project will be opened in a new Visual Studio Code window.
+
+    <a href="images/ide/vscode/modular/maven/vscode03.png" target="_blank"><img src="images/ide/vscode/modular/maven/vscode03.png" alt="Open the project"/></a>
+</p>
+
+<h5>2. Verify the pom</h5>
+
+<p>
+    Edit the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Modular/Maven/hellofx/pom.xml" target="_blank">pom</a> file,
+    and and verify it has the <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd> dependencies and the <kbd>javafx-maven-plugin</kbd> with
+    the <kbd>mainClass</kbd> set to <kbd>org.openjfx.App</kbd>.
+
+    And you can set the dependencies version to <kbd><span class="JFX_VERSION">17.0.1</span></kbd>, and set the <kbd>javafx-maven-plugin</kbd> version to <kbd><span class="JFX_MVN_PLUGIN_VERSION">0.0.8</span></kbd>.
+
+    Maven manages the required dependencies: it will add <kbd>javafx.base</kbd> and <kbd>javafx.graphics</kbd> that are required by
+    <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>, but most important, it will add the required classifier based on your platform, downloading
+    the specific platform jars.
+    
+    <a href="images/ide/vscode/modular/maven/vscode04.png" target="_blank"><img src="images/ide/vscode/modular/maven/vscode04.png" alt="Update the pom"/></a>
+   
+    As for any other maven dependencies, these jars can be found in the local <kbd>.m2</kbd> repository.
+</p>
+
+<h5>3. Verify the code</h5>
+
+<p>
+    Verify the project contains the source code files, like the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/Vscode/Modular/Maven/hellofx/src/main/java/org/openjfx/hellofx/App.java" target="_blank">App</a> main class:
+    <a href="images/ide/vscode/modular/maven/vscode05.png" target="_blank"><img src="images/ide/vscode/modular/maven/vscode05.png" alt="Verify the code"/></a>
+</p>
+
+<h5>4. Run the project</h5>
+
+<p>
+    To run the project, open the <kbd>Maven</kbd> explorer, click <kbd>&lt;YOUR_PROJECT_NAME&gt; -> Plugins -> javafx -> javafx:run</kbd>
+
+    <a href="images/ide/vscode/modular/maven/vscode06.png" target="_blank"><img src="images/ide/vscode/modular/maven/vscode06.png" alt="Run the project"/></a>
+
+    Alternatively, you can also open a terminal and run <kbd>mvn clean javafx:run</kbd> to run the project.
+</p>
+
+<h5>6. Create a custom runtime image</h5>
+
+<p>
+    To create a custom runtime, open the <kbd>Maven</kbd> explorer, click <kbd>&lt;YOUR_PROJECT_NAME&gt; -> Plugins -> javafx -> javafx:jlink</kbd>
+
+    or run from a terminal with <kbd>JAVA_HOME</kbd> set:
+</p>
+
+<pre><code>
+mvn clean javafx:jlink
+</code></pre>
+
+<p>
+    Note the plugin allows the usual options as the <kbd>jlink</kbd> command, as well as creating a
+    launcher or a zip with the custom image.
+</p>
+
+<p>
+    And after the image is built, you can run it from command line:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-vscode-mod-mav-1" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-vscode-mod-mav-1" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-vscode-mod-mav-1">
+<pre class="no-border-radius"><code>
+target/hellofx/bin/launcher
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-vscode-mod-mav-1">
+<pre><code>
+target\hellofx\bin\launcher.bat
+</code></pre>
+    </div>
+</div>
+
+<div id="VSCode-Mod-Gradle"></div><h4>Gradle</h4>
+
+<p>
+    Follow these steps to create a JavaFX project and use the Gradle tools to build it and run it.
+
+    Alternatively, you can download a similar project from <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Modular/Gradle" target="_blank">here</a>.
+
+    Make sure you have the <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack" target="_blank">Extension Pack for Java</a> and <a href="https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-gradle" target="_blank">Gradle for Java</a> installed, which includs the required extensions to support Gradle projects.
+</p>
+
+<h5>1. Create a Gradle project</h5>
+
+<p>
+    Select <kbd>Help -> Show All Commands</kbd>, in the dropdown list, enter <kbd>Java: Create Java project...</kbd>, and select it.
+
+    <a href="images/ide/vscode/modular/gradle/vscode01.png" target="_blank"><img src="images/ide/vscode/modular/gradle/vscode01.png" alt="Create a Java project"/></a>
+
+    Select <kbd>Gradle</kbd> in the list as the project type.
+
+    <a href="images/ide/vscode/modular/gradle/vscode02.png" target="_blank"><img src="images/ide/vscode/modular/gradle/vscode02.png" alt="Create a Gradle project"/></a>
+
+    Select the project location in the file explorer and the build script DSL. Input the project name.
+
+    Then the <kbd>Gradle for Java</kbd> extension will create a new Gradle project for you.
+
+    The new project will be opened in a new Visual Studio Code window after the creation finished.
+
+    <a href="images/ide/vscode/modular/gradle/vscode03.png" target="_blank"><img src="images/ide/vscode/modular/gradle/vscode03.png" alt="Open the project"/></a>
+
+    you can remove the <kbd>app/src/test</kbd> folder if you don't want to add tests for the project.
+</p>
+
+<h5>2. Modify the build</h5>
+
+<p>
+    Edit the <kbd>build.gradle</kbd> file and replace it with this
+    <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Modular/Gradle/hellofx/build.gradle" target="_blank">build</a> file, setting the 
+    <kbd>mainClassName</kbd> accordingly to <kbd>org.openjfx.MainApp</kbd>.
+</p>
+<p>
+    Similar to Maven, we can declare the required JavaFX modules in the <kbd>build.gradle</kbd> file.
+    However, for Gradle we need to apply the JavaFX gradle plugin:
+</p>
+
+<pre><code>
+javafx {
+    version = "<span class="JFX_VERSION">17.0.1</span>"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+</code></pre>
+
+<p>
+    Right click on the <kbd>settings.gradle</kbd> and select <kbd>Update Project</kbd> to update the gradle project.
+
+    <a href="images/ide/vscode/modular/gradle/vscode04.png" target="_blank"><img src="images/ide/vscode/modular/gradle/vscode04.png" alt="Update the project"/></a>
+
+    And you will get the JavaFX dependencies after the update.
+
+    <a href="images/ide/vscode/modular/gradle/vscode05.png" target="_blank"><img src="images/ide/vscode/modular/gradle/vscode05.png" alt="Gradle dependencies"/></a>
+
+    As for any other Gradle dependencies, these jars can be found in the local <kbd>.gradle</kbd> repository.
+</p>
+
+<h5>3. Add the module-info class</h5>
+
+<p>
+    Add the <kbd>module-info</kbd> class, including the required modules <kbd>javafx.controls</kbd> and <kbd>javafx.fxml</kbd>. 
+    Since FXML uses reflection to access the controller in the module, this has to be opened to <kbd>javafx.fxml</kbd>. Finally,
+    export the package <kbd>org.openjfx</kbd>.
+    
+    <a href="images/ide/vscode/modular/gradle/vscode06.png" target="_blank"><img src="images/ide/vscode/modular/gradle/vscode06.png" alt="module-info"/></a>
+</p>
+
+<h5>4. Add the source code</h5>
+
+<p>
+    Remove <kbd>App.java</kbd> and its package. Based on this <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Modular/Gradle/hellofx/src/main/java/org/openjfx/MainApp.java" target="_blank">MainApp</a> class, 
+    add its content to the project main class. Then add the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Modular/Gradle/hellofx/src/main/java/org/openjfx/FXMLController.java" target="_blank">controller</a> 
+    and the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Modular/Gradle/hellofx/src/main/resources/org/openjfx/scene.fxml" target="_blank">FXML</a> and 
+    the <a class="samples" href="https://github.com/openjfx/samples/blob/master/IDE/VSCode/Modular/Gradle/hellofx/src/main/resources/org/openjfx/styles.css" target="_blank">css</a>
+    files.
+</p>
+<p>
+    You can add a main class <kbd>MainApp</kbd>, and an <kbd>FXMLController</kbd> class, and add to resources the <kbd>FXML</kbd> file.
+
+    <a href="images/ide/vscode/modular/gradle/vscode07.png" target="_blank"><img src="images/ide/vscode/modular/gradle/vscode07.png" alt="Add the source code"/></a>
+</p>
+
+<h5>5. Run the project</h5>
+
+<p>
+    You can open the <kbd>Gradle</kbd> viewlet and click on <kbd>&lt;YOUR_PROJECT_NAME&gt; -> build -> build</kbd> to
+    build the project, and <kbd>&lt;YOUR_PROJECT_NAME&gt; -> application -> run</kbd> to run the project.
+
+    <a href="images/ide/vscode/modular/gradle/vscode08.png" target="_blank"><img src="images/ide/vscode/modular/gradle/vscode08.png" alt="Build and run"/></a>
+</p>
+
+<p>
+    You can also open a terminal and run:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-vscode-mod-gradle-1" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-vscode-mod-gradle-1" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-vscode-mod-gradle-1">
+<pre class="no-border-radius"><code>
+./gradlew run
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-vscode-mod-gradle-1">
+<pre><code>
+.\gradlew.bat run
+</code></pre>
+    </div>
+</div>
+
+<h5>6. Create a custom runtime image</h5>
+
+<p>
+    To create a custom runtime, you can use the <a href="https://badass-jlink-plugin.beryx.org/releases/latest/" target="_blank">org.beryx.jlink</a> plugin.
+    It can be easily combined with the JavaFX Gradle plugin.
+</p>
+
+<pre><code>
+plugins {
+  id 'application'
+  id 'org.openjfx.javafxplugin' version '<span class="JFX_PLUGIN_VERSION">0.0.7</span>'
+  id 'org.beryx.jlink' version '<span class="JLINK_PLUGIN_VERSION">2.9.4</span>'
+}
+
+javafx {
+    version = "<span class="JFX_VERSION">12</span>"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+jlink {
+    options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
+    launcher {
+        name = 'hellofx'
+    }
+}
+</code></pre>
+
+<p>
+    Then open the <kbd>Gradle</kbd> viewlet and click on <kbd>&lt;YOUR_PROJECT_NAME&gt; -> build -> jlink</kbd> task to create the image.
+    
+    To run the image:
+</p>
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" href="#nix-vscode-mod-gra-2" data-toggle="tab">Linux/Mac</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#win-vscode-mod-gra-2" data-toggle="tab">Windows</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane active" id="nix-vscode-mod-gra-2">
+<pre class="no-border-radius"><code>
+app/build/image/bin/hellofx
+</code></pre>
+    </div>
+    <div class="tab-pane" id="win-vscode-mod-gra-2">
+<pre><code>
+app\build\image\bin\hellofx.bat
+</code></pre>
+    </div>
+</div>
