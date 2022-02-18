@@ -403,3 +403,8 @@ table.jdk-gradle-version, td {
     table-layout: fixed;
     width: 50px;
 }
+
+/* Visual Code */
+#IDE-VSCode img {
+    padding: 1em;
+}
