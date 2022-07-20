@@ -1,9 +1,9 @@
 $(function() {
     // constants
-    var JDK_MAJOR = "17";
-    var JFX_MAJOR = "17";
+    var JDK_MAJOR = "18";
+    var JFX_MAJOR = "18";
     
-    var JFX_VERSION = "17.0.1";
+    var JFX_VERSION = "18.0.2";
     var JFX_PLUGIN_VERSION = "0.0.10";
     var JFX_MVN_PLUGIN_VERSION = "0.0.8";
     var JFX_MVN_ARCH_VERSION = "0.0.6";
