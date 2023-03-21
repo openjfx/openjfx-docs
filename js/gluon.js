@@ -1,9 +1,11 @@
 $(function() {
     // constants
-    var JDK_MAJOR = "19";
-    var JFX_MAJOR = "19";
+    var MIN_JDK = "17";
+    var JDK_MAJOR = "20";
+    var JFX_MAJOR = "20";
     
-    var JFX_VERSION = "19";
+    var JFX_VERSION = "20";
+    var JFX_LTS_VERSION = "11 or 17";
     var JFX_PLUGIN_VERSION = "0.0.13";
     var JFX_MVN_PLUGIN_VERSION = "0.0.8";
     var JFX_MVN_ARCH_VERSION = "0.0.6";
@@ -132,9 +134,11 @@ $(function() {
     
     // Replace all $ with non-selectable span
     setTimeout(function() {
+        $('.MIN_JDK').each(function() { $(this).text(MIN_JDK) });
         $('.JDK_MAJOR').each(function() { $(this).text(JDK_MAJOR) });
         $('.JFX_MAJOR').each(function() { $(this).text(JFX_MAJOR) });
         $('.JFX_VERSION').each(function() { $(this).text(JFX_VERSION) });
+        $('.JFX_LTS_VERSION').each(function() { $(this).text(JFX_LTS_VERSION) });
         $('.JFX_PLUGIN_VERSION').each(function() { $(this).text(JFX_PLUGIN_VERSION) });
         $('.JFX_MVN_PLUGIN_VERSION').each(function() { $(this).text(JFX_MVN_PLUGIN_VERSION) });
         $('.JFX_MVN_ARCH_VERSION').each(function() { $(this).text(JFX_MVN_ARCH_VERSION) });
