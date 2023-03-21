@@ -1,10 +1,10 @@
 $(function() {
     // constants
-    var JDK_MAJOR = "19";
-    var JFX_MAJOR = "19";
+    var JDK_MAJOR = "20";
+    var JFX_MAJOR = "20";
     
-    var JFX_VERSION = "19";
-    var JFX_PLUGIN_VERSION = "0.0.13";
+    var JFX_VERSION = "20";
+    var JFX_PLUGIN_VERSION = "0.0.14";
     var JFX_MVN_PLUGIN_VERSION = "0.0.8";
     var JFX_MVN_ARCH_VERSION = "0.0.6";
     var JLINK_PLUGIN_VERSION = "2.25.0";
