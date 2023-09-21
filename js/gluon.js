@@ -1,15 +1,15 @@
 $(function() {
     // constants
     var MIN_JDK = "17";
-    var JDK_MAJOR = "20";
-    var JFX_MAJOR = "20";
+    var JDK_MAJOR = "21";
+    var JFX_MAJOR = "21";
     
-    var JFX_VERSION = "20";
-    var JFX_LTS_VERSION = "11 or 17";
-    var JFX_PLUGIN_VERSION = "0.0.13";
+    var JFX_VERSION = "21";
+    var JFX_LTS_VERSION = "17 or 21";
+    var JFX_PLUGIN_VERSION = "0.1.0";
     var JFX_MVN_PLUGIN_VERSION = "0.0.8";
     var JFX_MVN_ARCH_VERSION = "0.0.6";
-    var JLINK_PLUGIN_VERSION = "2.25.0";
+    var JLINK_PLUGIN_VERSION = "2.26.0";
 
     var nav_top = 70;
         
