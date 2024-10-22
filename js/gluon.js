@@ -1,13 +1,15 @@
 $(function() {
     // constants
-    var JDK_MAJOR = "16";
-    var JFX_MAJOR = "17";
+    var MIN_JDK = "17";
+    var JDK_MAJOR = "21";
+    var JFX_MAJOR = "21";
     
-    var JFX_VERSION = "17";
-    var JFX_PLUGIN_VERSION = "0.0.10";
-    var JFX_MVN_PLUGIN_VERSION = "0.0.6";
+    var JFX_VERSION = "23.0.1";
+    var JFX_LTS_VERSION = "17 or 21";
+    var JFX_PLUGIN_VERSION = "0.1.0";
+    var JFX_MVN_PLUGIN_VERSION = "0.0.8";
     var JFX_MVN_ARCH_VERSION = "0.0.6";
-    var JLINK_PLUGIN_VERSION = "2.24.1";
+    var JLINK_PLUGIN_VERSION = "3.0.1";
 
     var nav_top = 70;
         
@@ -132,9 +134,11 @@ $(function() {
     
     // Replace all $ with non-selectable span
     setTimeout(function() {
+        $('.MIN_JDK').each(function() { $(this).text(MIN_JDK) });
         $('.JDK_MAJOR').each(function() { $(this).text(JDK_MAJOR) });
         $('.JFX_MAJOR').each(function() { $(this).text(JFX_MAJOR) });
         $('.JFX_VERSION').each(function() { $(this).text(JFX_VERSION) });
+        $('.JFX_LTS_VERSION').each(function() { $(this).text(JFX_LTS_VERSION) });
         $('.JFX_PLUGIN_VERSION').each(function() { $(this).text(JFX_PLUGIN_VERSION) });
         $('.JFX_MVN_PLUGIN_VERSION').each(function() { $(this).text(JFX_MVN_PLUGIN_VERSION) });
         $('.JFX_MVN_ARCH_VERSION').each(function() { $(this).text(JFX_MVN_ARCH_VERSION) });
