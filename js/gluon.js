@@ -184,4 +184,13 @@ $(function() {
     function replaceAll(str, find, replace) {
         return str.split(find).join(replace);
     }
+
+    // for `<div data-include=..>` to include html files
+    $(function () {
+        var includes = $('[data-include]');
+        $.each(includes, function () {
+        var file = $(this).data('include');
+        $(this).load(file);
+        });
+    });
 });
