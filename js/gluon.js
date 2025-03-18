@@ -2,14 +2,14 @@ $(function() {
     // constants
     var MIN_JDK = "21";
     var JDK_MAJOR = "23";
-    var JFX_MAJOR = "23";
+    var JFX_MAJOR = "24";
     
-    var JFX_VERSION = "23.0.2";
+    var JFX_VERSION = "24";
     var JFX_LTS_VERSION = "17 or 21";
     var JFX_PLUGIN_VERSION = "0.1.0";
     var JFX_MVN_PLUGIN_VERSION = "0.0.8";
     var JFX_MVN_ARCH_VERSION = "0.0.6";
-    var JLINK_PLUGIN_VERSION = "3.0.1";
+    var JLINK_PLUGIN_VERSION = "3.1.1";
 
     var nav_top = 70;
         
