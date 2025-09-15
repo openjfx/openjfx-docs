@@ -1,11 +1,11 @@
 $(function() {
     // constants
-    var MIN_JDK = "22";
+    var MIN_JDK = "23";
     var MIN_JDK_LTS = "21";
     var JDK_MAJOR = "24";
-    var JFX_MAJOR = "24";
+    var JFX_MAJOR = "25";
     
-    var JFX_VERSION = "24.0.2";
+    var JFX_VERSION = "25";
     var JFX_LTS_VERSION = "17 or 21";
     var JFX_PLUGIN_VERSION = "0.1.0";
     var JFX_MVN_PLUGIN_VERSION = "0.0.8";
