@@ -13,6 +13,17 @@ plugins {
 </code></pre>
 
 <p>
+    <b>Attention,</b> before proceding to the next steps, you have to specify a main class,
+    <b>it's the only mandatory configuration</b> for the plugin:
+</p>
+
+<pre><code>
+    application {
+        mainClass = 'Main'
+    }
+</code></pre>
+
+<p>
     Next, we add the required modules. For instance, if we only need the <kbd>javafx.controls</kbd> 
     module, we will include:
 </p>
@@ -70,7 +81,7 @@ javafx {
     </div>
     <div class="tab-pane" id="win-grad">
 <pre><code>
-gradlew run
+gradlew.bat run
 </code></pre>
     </div>
 </div>
