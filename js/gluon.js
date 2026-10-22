@@ -5,7 +5,7 @@ $(function() {
     var JDK_MAJOR = "25";
     var JFX_MAJOR = "27";
 
-    var JFX_VERSION = "27";
+    var JFX_VERSION = "27.0.1";
     var JFX_LTS_VERSION = "17 or 21 or 25";
     var JFX_PLUGIN_VERSION = "0.1.0";
     var JFX_MVN_PLUGIN_VERSION = "0.0.8";
